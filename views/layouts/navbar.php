@@ -8,10 +8,9 @@ use yii\helpers\Html;
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" id="hamburger" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            <a class="nav-link" id="hamburger" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i> Importadora</a>
         </li>
     </ul>
-    <h3 style="color:#fff;">Yii2 Boilerplate</h3>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">

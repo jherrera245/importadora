@@ -4,7 +4,7 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'basic',
+    'id' => 'Ecommerce Yii2',
     'timeZone' => 'America/El_Salvador',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -19,6 +19,10 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+        ],
+        'image' => [
+            'class' => 'yii\image\ImageDriver',
+            'driver' => 'GD'
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
@@ -80,6 +84,24 @@ $config = [
         ],
         'rbac' => [
             'class' => 'yii2mod\rbac\Module',
+        ],
+        'productos' => [
+            'class' => 'app\modules\productos\Productos',
+        ],
+        'compras' => [
+            'class' => 'app\modules\compras\Compras',
+        ],
+        'clientes' => [
+            'class' => 'app\modules\clientes\Clientes',
+        ],
+        'inventario' => [
+            'class' => 'app\modules\inventario\Inventario',
+        ],
+        'ordenes' => [
+            'class' => 'app\modules\ordenes\Ordenes',
+        ],
+        'ventas' => [
+            'class' => 'app\modules\ventas\Ventas',
         ],
     ],
     'params' => $params,

@@ -11,17 +11,13 @@ use yii\helpers\Url;
 /* @var $searchModel backend\models\OsigSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Lista de usuarios del sistema';
+$this->title = 'Lista de usuarios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
     <!-- left column -->
     <div class="col-md-12">
         <div class="tbl-osig-index">
-
-            <h1><?= Html::encode($this->title) ?></h1>
-            <?php // echo $this->render('_search', ['model' => $searchModel]); 
-            ?>
             <?php
             $gridColumns = [
                 [
