@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 29, 2023 at 06:02 AM
+-- Generation Time: Dec 29, 2023 at 03:14 PM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.29
 
@@ -208,13 +208,15 @@ CREATE TABLE `tbl_compras` (
   `fecha` date NOT NULL,
   `anulado` tinyint NOT NULL DEFAULT '0',
   `comentarios` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci,
+  `estado` tinyint(1) NOT NULL,
+  `gastos_transporte` float DEFAULT NULL,
+  `otros_gastos` float DEFAULT NULL,
+  `detalle_otros_gastos` varchar(150) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `valor_aduana` float NOT NULL
   `fecha_ing` datetime DEFAULT NULL,
   `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int DEFAULT NULL,
-  `estado` tinyint(1) NOT NULL,
-  `no_duca` varchar(100) COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `razon_social` varchar(150) COLLATE utf8mb3_spanish2_ci NOT NULL
+  `id_usuario_mod` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -232,31 +234,6 @@ CREATE TABLE `tbl_condicion_producto` (
   `id_usuario_mod` int DEFAULT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_contribuyente`
---
-
-CREATE TABLE `tbl_contribuyente` (
-  `id_contribuyente` int NOT NULL,
-  `nombre_contribuyente` varchar(100) COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `nit` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `dui` varchar(10) COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `nrc` varchar(20) COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `telefono` varchar(20) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `giro` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `direccion_comercial` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `direccion_personal` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `nacionalidad` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `categoria_contribuyente` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int DEFAULT NULL,
-  `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int DEFAULT NULL,
-  `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -734,14 +711,10 @@ CREATE TABLE `tbl_productos` (
   `id_categoria` int NOT NULL,
   `id_sub_categoria` int NOT NULL,
   `id_marca` int NOT NULL,
-  `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int DEFAULT NULL,
-  `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int DEFAULT NULL,
   `estado` tinyint(1) NOT NULL,
-  `pais_procedencia` varchar(100) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `chasis_grabado` varchar(100) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `vin` varchar(17) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `pais_procedencia` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `chasis_grabado` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `vin` varchar(17) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `year` int NOT NULL,
   `tipo_combustible` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
   `id_condicion` int NOT NULL,
@@ -751,7 +724,11 @@ CREATE TABLE `tbl_productos` (
   `vts` float DEFAULT NULL,
   `its` float DEFAULT NULL,
   `aiv` float DEFAULT NULL,
-  `opm` float DEFAULT NULL
+  `opm` float DEFAULT NULL,
+  `fecha_ing` datetime DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `id_usuario_mod` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -784,11 +761,19 @@ CREATE TABLE `tbl_proveedores` (
   `id_municipio` int NOT NULL,
   `telefono` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `id_usuario_ing` int DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `giro` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `nit` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `dui` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `nrc` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `nacionalidad` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `direccion_personal` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `direccion_comercial` varchar(150) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `razon_social` varchar(150) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `fecha_ing` datetime DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
   `id_usuario_mod` int DEFAULT NULL,
-  `fecha_mod` int DEFAULT NULL,
-  `estado` tinyint(1) NOT NULL
+  `fecha_mod` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -929,14 +914,6 @@ ALTER TABLE `tbl_condicion_producto`
   ADD PRIMARY KEY (`id_condicion`),
   ADD KEY `id_usuario_ing` (`id_usuario_ing`),
   ADD KEY `id_usuario_mod` (`id_usuario_mod`);
-
---
--- Indexes for table `tbl_contribuyente`
---
-ALTER TABLE `tbl_contribuyente`
-  ADD PRIMARY KEY (`id_contribuyente`),
-  ADD KEY `tbl_contribuyente_fk_id_usuario_ing` (`id_usuario_ing`),
-  ADD KEY `tbl_contribuyente_fk_id_usuario_mod` (`id_usuario_mod`);
 
 --
 -- Indexes for table `tbl_departamentos`
@@ -1114,12 +1091,6 @@ ALTER TABLE `tbl_condicion_producto`
   MODIFY `id_condicion` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tbl_contribuyente`
---
-ALTER TABLE `tbl_contribuyente`
-  MODIFY `id_contribuyente` int NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `tbl_departamentos`
 --
 ALTER TABLE `tbl_departamentos`
@@ -1267,13 +1238,6 @@ ALTER TABLE `tbl_condicion_producto`
   ADD CONSTRAINT `tbl_condicion_producto_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`),
   ADD CONSTRAINT `tbl_condicion_producto_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`),
   ADD CONSTRAINT `tbl_condicion_producto_ibfk_1` FOREIGN KEY (`id_condicion`) REFERENCES `tbl_productos` (`id_condicion`) ON UPDATE CASCADE;
-
---
--- Constraints for table `tbl_contribuyente`
---
-ALTER TABLE `tbl_contribuyente`
-  ADD CONSTRAINT `tbl_contribuyente_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`),
-  ADD CONSTRAINT `tbl_contribuyente_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
 -- Constraints for table `tbl_det_compras`
