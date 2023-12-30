@@ -26,7 +26,10 @@ Yii::$app->language = 'es_ES';
                     <div class="row">
                         <div class="col-md-12">
                             <?= Html::activeLabel($model, 'nombre', ['class' => '¨form-label']) ?>
-                            <?= $form->field($model, 'nombre', ['showLabels'=>false])->textInput(['autofocus' => true]) ?>
+                            <?= $form->field($model, 'nombre', ['showLabels'=>false])->textInput([
+                                'autofocus' => true,
+                                'placeholder' => 'Ingresa el nombre de la marca'
+                            ]) ?>
                         </div>
 
                         <div class="col-md-12">

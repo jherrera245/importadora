@@ -30,9 +30,13 @@ Yii::$app->language = 'es_ES';
                     <div class="row">
                         <div class="col-md-12">
                             <?= Html::activeLabel($model, 'nombre', ['class' => '¨form-label']) ?>
-                            <?= $form->field($model, 'nombre', ['showLabels'=>false])->textInput(['autofocus' => true]) ?>
+                            <?= $form->field($model, 'nombre', ['showLabels'=>false])->textInput([
+                                'autofocus' => true,
+                                'placeholder' => 'Ingresa el nombre de la subcategoria'
+                            ]) ?>
                         </div>
 
+                        <?php if(!$id_categoria)  {?>
                         <div class="col-md-12">
                             <?= Html::activeLabel($model, 'id_categoria', ['class' => 'control-label']) ?>
                             <?= $form->field($model, 'id_categoria', ['showLabels' => false])->widget(Select2::class, [
@@ -42,6 +46,7 @@ Yii::$app->language = 'es_ES';
                                 'pluginOptions' => ['allowClear' => true],
                             ]) ?>
                         </div>
+                        <?php } ?> 
 
                         <div class="col-md-12">
                             <?= Html::activeLabel($model, 'descripcion', ['class' => '¨form-label']) ?>
@@ -87,7 +92,12 @@ Yii::$app->language = 'es_ES';
                         $model->isNewRecord ? '<i class="fa fa-save"></i> Guardar' : '<i class="fa fa-save"></i> Actualizar', 
                         ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
                     ) ?>
+
+                    <?php if ($id_categoria) { ?>
+                        <?= Html::a('<i class="fa fa-ban"></i> Cancelar', ['categorias/view', 'id_categoria' => $id_categoria], ['class' => 'btn btn-danger']) ?>
+                    <?php } else { ?>
                     <?= Html::a('<i class="fa fa-ban"></i> Cancelar', ['index'], ['class' => 'btn btn-danger']) ?>
+                    <?php } ?>
                 </div>
 
             </div>

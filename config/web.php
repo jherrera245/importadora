@@ -4,7 +4,7 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'Ecommerce Yii2',
+    'id' => 'Importadora',
     'timeZone' => 'America/El_Salvador',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],

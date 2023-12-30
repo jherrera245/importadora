@@ -78,9 +78,9 @@ class Marcas extends \yii\db\ActiveRecord
             'descripcion' => 'Descripción',
             'imagen' => 'Imagen',
             'fecha_ing' => 'Fecha Ingreso',
-            'id_usuario_ing' => 'Usuario Ingreso',
+            'id_usuario_ing' => 'Registrado por',
             'fecha_mod' => 'Fecha Mod',
-            'id_usuario_mod' => 'Usuario Modificación',
+            'id_usuario_mod' => 'Modificado por',
             'estado' => 'Estado',
             'imagenDB' => 'Imagen',
         ];

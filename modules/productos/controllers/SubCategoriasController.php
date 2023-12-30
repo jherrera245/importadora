@@ -2,6 +2,7 @@
 
 namespace app\modules\productos\controllers;
 
+use app\modules\productos\models\Categorias;
 use app\modules\productos\models\SubCategorias;
 use app\modules\productos\models\SubCategoriasSearch;
 use app\models\Bitacora;
@@ -58,10 +59,11 @@ class SubCategoriasController extends Controller
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id_sub_categoria)
+    public function actionView($id_sub_categoria, $id_categoria=null)
     {
         return $this->render('view', [
             'model' => $this->findModel($id_sub_categoria),
+            'id_categoria' => $id_categoria,
         ]);
     }
 
@@ -70,12 +72,17 @@ class SubCategoriasController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($id_categoria=null)
     {
         $model = new SubCategorias();
+        $categoria = Categorias::find()->where(['id_categoria' => $id_categoria])->one();
 
         if ($model->load(Yii::$app->request->post())) {
             $transaction = Yii::$app->db->beginTransaction();
+
+            if ($id_categoria) {
+                $model->id_categoria = $id_categoria;
+            }
 
             try {            
                 if (!$model->save()) {
@@ -111,11 +118,18 @@ class SubCategoriasController extends Controller
             }
 
             Yii::$app->session->setFlash('success', "Registro creado exitosamente.");
+
+            if ($id_categoria) {
+                return $this->redirect(['categorias/view', 'id_categoria' => $id_categoria]);
+            }
+
             return $this->redirect(['view', 'id_sub_categoria' => $model->id_sub_categoria]);
 
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'id_categoria' => $id_categoria,
+                'categoria' => $categoria ? $categoria->nombre : 'No disponible',
             ]);
         }
     }
@@ -127,9 +141,10 @@ class SubCategoriasController extends Controller
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id_sub_categoria)
+    public function actionUpdate($id_sub_categoria, $id_categoria = null)
     {
         $model = $this->findModel($id_sub_categoria);
+        $categoria = Categorias::find()->where(['id_categoria' => $id_categoria])->one();
 
         if ($model->load(Yii::$app->request->post())) {
             $transaction = Yii::$app->db->beginTransaction();
@@ -169,11 +184,18 @@ class SubCategoriasController extends Controller
             }
 
             Yii::$app->session->setFlash('success', "Registro actualizado exitosamente.");
+
+            if ($id_categoria) {
+                return $this->redirect(['categorias/view', 'id_categoria' => $id_categoria]);
+            }
+            
             return $this->redirect(['view', 'id_sub_categoria' => $model->id_sub_categoria]);
 
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'id_categoria' => $id_categoria,
+                'categoria' => $categoria ? $categoria->nombre : 'No disponible',
             ]);
         }
     }
@@ -185,7 +207,7 @@ class SubCategoriasController extends Controller
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id_sub_categoria)
+    public function actionDelete($id_sub_categoria, $id_categoria = null)
     {
         $model = $this->findModel($id_sub_categoria);
         $transaction = Yii::$app->db->beginTransaction();
@@ -226,6 +248,11 @@ class SubCategoriasController extends Controller
         }
 
         //Yii::$app->session->setFlash('success', "Registro actualizado exitosamente.");
+
+        if ($id_categoria) {
+            return $this->redirect(['categorias/view', 'id_categoria' => $id_categoria]);
+        }
+
         return $this->redirect(['index']);
     }
 

@@ -258,7 +258,7 @@ class VentasController extends Controller
         $model = $this->findModel($id_venta);
 
         if ($model->estado == 1) {
-            Yii::$app->session->setFlash('danger', "La compra ya fue procesada no puede agregarse a el inventario. Comuniquese con su administrador.");
+            Yii::$app->session->setFlash('danger', "La venta ya fue procesada no puede agregarse a el inventario. Comuniquese con su administrador.");
             return $this->redirect(['view', 'id_venta' => $id_venta]);
         }
 

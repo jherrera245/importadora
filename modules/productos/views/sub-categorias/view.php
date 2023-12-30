@@ -8,7 +8,12 @@ use coderius\lightbox2\Lightbox2;
 /** @var app\modules\productos\models\SubCategorias $model */
 
 $this->title = 'Detalle';
-$this->params['breadcrumbs'][] = ['label' => 'Listado de Sub Categorías', 'url' => ['index']];
+if ($id_categoria) {
+    $this->params['breadcrumbs'][] = ['label' => 'Categorias', 'url' => ['categorias/index']];
+    $this->params['breadcrumbs'][] = ['label' => $model->categoria->nombre, 'url' => ['categorias/view', 'id_categoria' => $id_categoria]];
+} else {
+    $this->params['breadcrumbs'][] = ['label' => 'Listado de Sub Categorías', 'url' => ['index']];
+}
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>

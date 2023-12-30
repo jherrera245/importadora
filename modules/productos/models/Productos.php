@@ -1,12 +1,12 @@
 <?php
 
 namespace app\modules\productos\models;
-use app\modules\productos\models\ProductosImagenes;
+
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
 use app\models\Usuarios;
-use yii\helpers\Url;
 use Yii;
+
 
 /**
  * This is the model class for table "tbl_productos".
@@ -19,23 +19,40 @@ use Yii;
  * @property int $id_categoria
  * @property int $id_sub_categoria
  * @property int $id_marca
+ * @property int|null $is_car
+ * @property string|null $pais_procedencia
+ * @property string|null $chasis_grabado
+ * @property string|null $vin
+ * @property int $year
+ * @property string $tipo_combustible
+ * @property int $id_condicion
+ * @property float|null $dai
+ * @property float|null $iva
+ * @property float|null $apm
+ * @property float|null $vts
+ * @property float|null $its
+ * @property float|null $aiv
+ * @property float|null $opm
+ * @property int $estado
  * @property string|null $fecha_ing
  * @property int|null $id_usuario_ing
  * @property string|null $fecha_mod
  * @property int|null $id_usuario_mod
- * @property int $estado
  *
  * @property Categorias $categoria
  * @property Marcas $marca
  * @property SubCategorias $subCategoria
+ * @property CondicionProducto $CondicionProducto
+ * @property DetCompras[] $DetCompras
+ * @property DetOrdenes[] $DetOrdenes
+ * @property Inventario[] $Inventarios
+ * @property Kardex[] $Kardexes
+ * @property ProductosImagenes[] $ProductosImagenes
  * @property Usuarios $usuarioIng
  * @property Usuarios $usuarioMod
  */
 class Productos extends \yii\db\ActiveRecord
 {
-
-    const UPLOAD_FOLDER = 'productos';
-    
     /**
      * {@inheritdoc}
      */
@@ -44,7 +61,7 @@ class Productos extends \yii\db\ActiveRecord
         return 'tbl_productos';
     }
 
-        public function behaviors() {
+    public function behaviors() {
         return [
             [
                 'class' => TimestampBehavior::class,
@@ -66,13 +83,14 @@ class Productos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre', 'sku', 'precio', 'id_categoria', 'id_sub_categoria', 'id_marca', 'estado'], 'required'],
+            [['nombre', 'sku', 'precio', 'id_categoria', 'id_sub_categoria', 'id_marca', 'year', 'id_condicion', 'estado'], 'required'],
             [['descripcion'], 'string'],
-            [['precio'], 'number'],
-            [['id_categoria', 'id_sub_categoria', 'id_marca', 'id_usuario_ing', 'id_usuario_mod', 'estado'], 'integer'],
+            [['precio', 'iva'], 'number'],
+            [['id_categoria', 'id_sub_categoria', 'id_marca', 'is_car', 'year', 'id_condicion', 'estado', 'id_usuario_ing', 'id_usuario_mod'], 'integer'],
             [['fecha_ing', 'fecha_mod'], 'safe'],
-            [['nombre', 'sku'], 'string', 'max' => 100],
-            [['sku'], 'unique'], //definiendo sku como unico
+            [['nombre', 'sku', 'pais_procedencia', 'chasis_grabado'], 'string', 'max' => 100],
+            [['vin'], 'string', 'max' => 17],
+            [['tipo_combustible'], 'string', 'max' => 1],
             [['id_categoria'], 'exist', 'skipOnError' => true, 'targetClass' => Categorias::class, 'targetAttribute' => ['id_categoria' => 'id_categoria']],
             [['id_marca'], 'exist', 'skipOnError' => true, 'targetClass' => Marcas::class, 'targetAttribute' => ['id_marca' => 'id_marca']],
             [['id_sub_categoria'], 'exist', 'skipOnError' => true, 'targetClass' => SubCategorias::class, 'targetAttribute' => ['id_sub_categoria' => 'id_sub_categoria']],
@@ -87,19 +105,27 @@ class Productos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_producto' => 'Id',
+            'id_producto' => 'ID',
             'nombre' => 'Nombre',
             'sku' => 'SKU',
             'descripcion' => 'Descripción',
             'precio' => 'Precio',
             'id_categoria' => 'Categoria',
-            'id_sub_categoria' => 'Sub Categoria',
+            'id_sub_categoria' => 'Subcategoria',
             'id_marca' => 'Marca',
-            'fecha_ing' => 'Fecha Ingreso',
-            'id_usuario_ing' => 'Usuario Ingreso',
-            'fecha_mod' => 'Fecha Modificación',
-            'id_usuario_mod' => 'Usuario Modificación',
+            'is_car' => 'Carro',
+            'pais_procedencia' => 'Pais Procedencia',
+            'chasis_grabado' => 'Chasis Grabado',
+            'vin' => 'VIN',
+            'year' => 'Año',
+            'tipo_combustible' => 'Tipo Combustible',
+            'id_condicion' => 'Condición',
+            'iva' => 'IVA',
             'estado' => 'Estado',
+            'fecha_ing' => 'Fecha Ingreso',
+            'id_usuario_ing' => 'Ingresado por',
+            'fecha_mod' => 'Fecha Modificación',
+            'id_usuario_mod' => 'Modificado por',
         ];
     }
 
@@ -166,6 +192,66 @@ class Productos extends \yii\db\ActiveRecord
     public function getSubCategoria()
     {
         return $this->hasOne(SubCategorias::class, ['id_sub_categoria' => 'id_sub_categoria']);
+    }
+
+    /**
+     * Gets query for [[CondicionProducto]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCondicionProducto()
+    {
+        return $this->hasOne(CondicionProducto::class, ['id_condicion' => 'id_condicion']);
+    }
+
+    /**
+     * Gets query for [[DetCompras]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDetCompras()
+    {
+        return $this->hasMany(DetCompras::class, ['id_producto' => 'id_producto']);
+    }
+
+    /**
+     * Gets query for [[DetOrdenes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDetOrdenes()
+    {
+        return $this->hasMany(DetOrdenes::class, ['id_producto' => 'id_producto']);
+    }
+
+    /**
+     * Gets query for [[Inventarios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getInventarios()
+    {
+        return $this->hasMany(Inventario::class, ['id_producto' => 'id_producto']);
+    }
+
+    /**
+     * Gets query for [[Kardexes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getKardexes()
+    {
+        return $this->hasMany(Kardex::class, ['id_producto' => 'id_producto']);
+    }
+
+    /**
+     * Gets query for [[ProductosImagenes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProductosImagenes()
+    {
+        return $this->hasMany(ProductosImagenes::class, ['id_producto' => 'id_producto']);
     }
 
     /**

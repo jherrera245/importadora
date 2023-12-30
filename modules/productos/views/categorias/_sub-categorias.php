@@ -110,8 +110,18 @@ use yii\helpers\Url;
                     [
                         'class' => 'kartik\grid\ActionColumn',
                         'header' => 'Acciones',
-                        'urlCreator' => function ($action, SubCategorias $model, $key, $index, $column) {
-                            return Url::toRoute([$action, 'id_sub_categoria' => $model->id_sub_categoria]);
+                        'urlCreator' => function ($action, SubCategorias $model) {
+                            if ($action === 'view') {
+                                return Url::toRoute(['/productos/sub-categorias/view', 'id_sub_categoria' => $model->id_sub_categoria, 'id_categoria'=>$model->id_categoria]);
+                            }
+
+                            if ($action === 'update') {
+                                return Url::toRoute(['/productos/sub-categorias/update', 'id_sub_categoria' => $model->id_sub_categoria, 'id_categoria'=>$model->id_categoria]);
+                            }
+
+                            if ($action === 'delete') {
+                                return Url::toRoute(['/productos/sub-categorias/delete', 'id_sub_categoria' => $model->id_sub_categoria, 'id_categoria'=>$model->id_categoria]);
+                            }
                         }
                     ],
                 ];
@@ -139,7 +149,7 @@ use yii\helpers\Url;
                     'toolbar' =>  [
                         [
                             'content' =>
-                            Html::a('<i class="fas fa-plus"></i> Agregar', ['create'], [
+                            Html::a('<i class="fas fa-plus"></i> Agregar', ['sub-categorias/create', 'id_categoria' => $id_categoria], [
                                 'class' => 'btn btn-success',
                                 'data-pjax' => 0,
                             ]) . ' ' .

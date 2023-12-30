@@ -27,7 +27,7 @@ use yii\bootstrap4\Breadcrumbs;
 
     <!-- Main content -->
     <div class="content">
-    <?= FlashAlert::widget(); ?>
+        <?= FlashAlert::widget(); ?>
         <?= $content ?><!-- /.container-fluid -->
     </div>
     <!-- /.content -->

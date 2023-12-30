@@ -12,6 +12,7 @@ use kartik\widgets\Select2;
 use app\modules\productos\models\Productos;
 use app\modules\productos\models\SubCategorias;
 use app\modules\productos\models\Categorias;
+use app\modules\productos\models\CondicionProducto;
 use app\modules\productos\models\Marcas;
 
 Yii::$app->language = 'es_ES';
@@ -33,8 +34,11 @@ Yii::$app->language = 'es_ES';
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <?= Html::activeLabel($model, 'nombre', ['class' => '¨form-label']) ?>
-                            <?= $form->field($model, 'nombre', ['showLabels'=>false])->textInput(['autofocus' => true]) ?>
+                            <?= Html::activeLabel($model, 'nombre', ['class' => 'form-label']) ?>
+                            <?= $form->field($model, 'nombre', ['showLabels'=>false])->textInput([
+                                'autofocus' => true,
+                                'placeholder' => 'Ingresa el nombre del producto'
+                            ]) ?>
                         </div>
 
                         <div class="col-md-12">
@@ -75,7 +79,7 @@ Yii::$app->language = 'es_ES';
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'precio', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'precio', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
                                     'precio',
@@ -87,17 +91,106 @@ Yii::$app->language = 'es_ES';
                                             ],
                                         ]
                                     ]
-                                )->textInput(['autofocus' => true]) ?>
+                                )->textInput([
+                                    'autofocus' => true,
+                                    'placeholder' =>'Ingresa el precio del producto'
+                                ]) 
+                            ?>
                         </div>
 
+                        <div class="col-md-6">
+                            <?= Html::activeLabel($model, 'sku', ['class' => 'form-label']) ?>
+                            <?= $form->field($model, 'sku', ['showLabels'=>false])->textInput([
+                                'autofocus' => true,
+                                'placeholder' => 'Ingresa el SKU del producto'
+                            ]) ?>
+                        </div>
 
-                        <div class="col-md-12">
-                            <?= Html::activeLabel($model, 'sku', ['class' => '¨form-label']) ?>
-                            <?= $form->field($model, 'sku', ['showLabels'=>false])->textInput(['autofocus' => true]) ?>
+                        <div class="col-md-6">
+                            <?= Html::activeLabel($model, 'iva', ['class' => 'form-label']) ?>
+                            <?= $form->field($model, 'iva', ['showLabels'=>false])->textInput(['autofocus' => true, "value" => "13"]) ?>
                         </div>
 
                         <div class="col-md-12">
-                            <?= Html::activeLabel($model, 'descripcion', ['class' => '¨form-label']) ?>
+                            <?php
+                                echo $form->field($model, 'is_car')->widget(SwitchInput::class, [
+                                    'pluginOptions' => [
+                                        'handleWidth' => 200,
+                                        'onColor' => 'success',
+                                        'offColor' => 'danger',
+                                        'onText' => '<i class="fa fa-check"></i> Si es vehiculo',
+                                        'offText' => '<i class="fa fa-ban"></i> No es un vehiculo'
+                                    ]
+                                ]);
+                            ?>
+                        </div>
+
+                        <!--inicio  campos si es un auto-->
+
+                        <div id="productos-car_field" class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <?= Html::activeLabel($model, 'pais_procedencia', ['class' => 'form-label']) ?>
+                                    <?= $form->field($model, 'pais_procedencia', ['showLabels'=>false])->textInput([
+                                        'autofocus' => true,
+                                        'placeholder' => 'Ingresa el país de procedencia'
+                                    ]) ?>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <?= Html::activeLabel($model, 'vin', ['class' => 'form-label']) ?>
+                                    <?= $form->field($model, 'vin', ['showLabels'=>false])->textInput([
+                                        'autofocus' => true,
+                                        'placeholder' => 'Ingresa el vin del auto'
+                                    ]) ?>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <?= Html::activeLabel($model, 'chasis_grabado', ['class' => 'form-label']) ?>
+                                    <?= $form->field($model, 'chasis_grabado', ['showLabels'=>false])->textInput([
+                                        'autofocus' => true,
+                                        'placeholder' => 'Ingresa la datos de chasis'
+                                    ]) ?>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <?= Html::activeLabel($model, 'year', ['class' => 'form-label']) ?>
+                                    <?= $form->field($model, 'year', ['showLabels'=>false])->textInput([
+                                        'autofocus' => true,
+                                        'placeholder' => 'Ingresa año de fabricación ej. 2000'
+                                    ]) ?>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <?= Html::activeLabel($model, 'id_condicion', ['class' => 'control-label']) ?>
+                                    <?= $form->field($model, 'id_condicion', ['showLabels' => false])->widget(Select2::class, [
+                                        'data' => ArrayHelper::map(CondicionProducto::find()->all(), 'id_condicion', 'nombre_condicion'),
+                                        'language' => 'es',
+                                        'options' => ['placeholder' => 'Selecciona la condicion del vehiculo',],
+                                        'pluginOptions' => ['allowClear' => true],
+                                    ]) ?>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <?= Html::activeLabel($model, 'tipo_combustible', ['class' => 'control-label']) ?>
+                                    <?= $form->field($model, 'tipo_combustible', ['showLabels' => false])->widget(Select2::class, [
+                                        'data' => [
+                                            1 => 'Gasolina',
+                                            2 => 'Diesel',
+                                            3 => 'Electrico' 
+                                        ],
+                                        'language' => 'es',
+                                        'options' => ['placeholder' => 'Selecciona el tipo de combustible',],
+                                        'pluginOptions' => ['allowClear' => true],
+                                    ]) ?>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- fin campos si es un auto-->
+
+                        <div class="col-md-12">
+                            <?= Html::activeLabel($model, 'descripcion', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'descripcion', ['showLabels'=>false])->widget(Summernote::class ,[
                                 'useKrajeePresets' => false,
                                 'container' => [
@@ -148,3 +241,18 @@ Yii::$app->language = 'es_ES';
     <?php ActiveForm::end(); ?>
     </div>
 </div>
+
+<?php
+    echo $this->registerJs(
+        "
+        $('#productos-car_field').hide();
+        $('#productos-is_car').on('switchChange.bootstrapSwitch', function(e, s){
+            if(s == true){
+                $('#productos-car_field').fadeIn('slow');
+            }else {
+                $('#productos-car_field').fadeOut('slow');
+            }
+        });
+        "
+    );
+?>

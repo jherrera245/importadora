@@ -17,9 +17,9 @@ class ProductosSearch extends Productos
     public function rules()
     {
         return [
-            [['id_producto', 'id_categoria', 'id_sub_categoria', 'id_marca', 'id_usuario_ing', 'id_usuario_mod', 'estado'], 'integer'],
-            [['nombre', 'sku', 'descripcion', 'fecha_ing', 'fecha_mod'], 'safe'],
-            [['precio'], 'number'],
+            [['id_producto', 'id_categoria', 'id_sub_categoria', 'id_marca', 'is_car', 'year', 'id_condicion', 'estado', 'id_usuario_ing', 'id_usuario_mod'], 'integer'],
+            [['nombre', 'sku', 'descripcion', 'pais_procedencia', 'chasis_grabado', 'vin', 'tipo_combustible', 'fecha_ing', 'fecha_mod'], 'safe'],
+            [['precio', 'iva'], 'number'],
         ];
     }
 
@@ -69,16 +69,24 @@ class ProductosSearch extends Productos
             'id_categoria' => $this->id_categoria,
             'id_sub_categoria' => $this->id_sub_categoria,
             'id_marca' => $this->id_marca,
+            'is_car' => $this->is_car,
+            'year' => $this->year,
+            'id_condicion' => $this->id_condicion,
+            'iva' => $this->iva,
+            'estado' => $this->estado,
             // 'fecha_ing' => $this->fecha_ing,
             'id_usuario_ing' => $this->id_usuario_ing,
             'fecha_mod' => $this->fecha_mod,
             'id_usuario_mod' => $this->id_usuario_mod,
-            'estado' => $this->estado,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'sku', $this->sku])
-            ->andFilterWhere(['like', 'descripcion', $this->descripcion]);
+            ->andFilterWhere(['like', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['like', 'pais_procedencia', $this->pais_procedencia])
+            ->andFilterWhere(['like', 'chasis_grabado', $this->chasis_grabado])
+            ->andFilterWhere(['like', 'vin', $this->vin])
+            ->andFilterWhere(['like', 'tipo_combustible', $this->tipo_combustible]);
 
         return $dataProvider;
     }
