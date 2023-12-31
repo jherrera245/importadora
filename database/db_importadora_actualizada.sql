@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 29, 2023 at 03:14 PM
+-- Generation Time: Dec 31, 2023 at 06:54 AM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.29
 
@@ -223,7 +223,7 @@ CREATE TABLE `tbl_compras` (
 
 CREATE TABLE `tbl_condicion_producto` (
   `id_condicion` int NOT NULL,
-  `nombre_condicion` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `nombre_condicion` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
   `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
@@ -278,7 +278,7 @@ CREATE TABLE `tbl_det_compras` (
   `descuento` decimal(10,2) NOT NULL,
   `gastos_transporte` float DEFAULT NULL,
   `otros_gastos` float DEFAULT NULL,
-  `detalle_otros_gastos` varchar(150) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `detalle_otros_gastos` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `valor_aduana` float NOT NULL,
   `dai` float DEFAULT NULL,
   `apm` float DEFAULT NULL,
@@ -334,6 +334,29 @@ CREATE TABLE `tbl_direcciones` (
   `id_usuario_mod` int DEFAULT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_duca`
+--
+
+CREATE TABLE `tbl_duca` (
+  `id_duca` int NOT NULL,
+  `no_correlativo` int NOT NULL,
+  `no_duca` int NOT NULL,
+  `fecha_aceptacion` datetime NOT NULL,
+  `nombre_transportista` varchar(150) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `modo_transporte` varchar(100) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `pais _procedencia` varchar(100) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `pais_destino` varchar(100) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `pais _exportacion` varchar(100) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `id_compra` int NOT NULL,
+  `fecha_ing` datetime DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `id_usuario_mod` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -768,8 +791,8 @@ CREATE TABLE `tbl_proveedores` (
   `nrc` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `nacionalidad` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `direccion_personal` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `direccion_comercial` varchar(150) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `razon_social` varchar(150) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `direccion_comercial` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `razon_social` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `contribuyente` tinyint(1) NOT NULL,
   `estado` tinyint(1) NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
@@ -955,6 +978,15 @@ ALTER TABLE `tbl_direcciones`
   ADD KEY `tbl_direcciones_fk_id_usuario_mod` (`id_usuario_mod`);
 
 --
+-- Indexes for table `tbl_duca`
+--
+ALTER TABLE `tbl_duca`
+  ADD PRIMARY KEY (`id_duca`),
+  ADD KEY `id_compra` (`id_compra`),
+  ADD KEY `id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `id_usuario_mod` (`id_usuario_mod`);
+
+--
 -- Indexes for table `tbl_error_log`
 --
 ALTER TABLE `tbl_error_log`
@@ -1117,6 +1149,12 @@ ALTER TABLE `tbl_direcciones`
   MODIFY `id_direccion` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tbl_duca`
+--
+ALTER TABLE `tbl_duca`
+  MODIFY `id_duca` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_inventario`
 --
 ALTER TABLE `tbl_inventario`
@@ -1269,6 +1307,14 @@ ALTER TABLE `tbl_direcciones`
   ADD CONSTRAINT `tbl_direcciones_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
+-- Constraints for table `tbl_duca`
+--
+ALTER TABLE `tbl_duca`
+  ADD CONSTRAINT `tbl_duca_fk_id_compra` FOREIGN KEY (`id_compra`) REFERENCES `tbl_compras` (`id_compra`),
+  ADD CONSTRAINT `tbl_duca_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`),
+  ADD CONSTRAINT `tbl_duca_ibfk_1` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `tbl_error_log`
 --
 ALTER TABLE `tbl_error_log`
@@ -1315,8 +1361,8 @@ ALTER TABLE `tbl_ordenes`
 --
 ALTER TABLE `tbl_productos`
   ADD CONSTRAINT `tbl_producto_fk_id_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `tbl_categorias` (`id_categoria`),
-  ADD CONSTRAINT `tbl_producto_fk_id_marca` FOREIGN KEY (`id_marca`) REFERENCES `tbl_marcas` (`id_marca`),
   ADD CONSTRAINT `tbl_producto_fk_id_condicion` FOREIGN KEY (`id_condicion`) REFERENCES `tbl_condicion_producto` (`id_condicion`),
+  ADD CONSTRAINT `tbl_producto_fk_id_marca` FOREIGN KEY (`id_marca`) REFERENCES `tbl_marcas` (`id_marca`),
   ADD CONSTRAINT `tbl_producto_fk_id_sub_categoria` FOREIGN KEY (`id_sub_categoria`) REFERENCES `tbl_sub_categorias` (`id_sub_categoria`),
   ADD CONSTRAINT `tbl_producto_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`),
   ADD CONSTRAINT `tbl_producto_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
