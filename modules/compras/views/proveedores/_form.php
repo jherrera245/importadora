@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
+use yii\widgets\MaskedInput;
 use kartik\depdrop\DepDrop;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\SwitchInput;
@@ -38,6 +39,48 @@ Yii::$app->language = 'es_ES';
                         <div class="col-md-6 col-sm-12">
                             <?= Html::activeLabel($model, 'nombre', ['class' => '¨form-label']) ?>
                             <?= $form->field($model, 'nombre', ['showLabels'=>false])->textInput() ?>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                            <?= Html::activeLabel($model, 'razon_social', ['class' => '¨form-label']) ?>
+                            <?= $form->field($model, 'razon_social', ['showLabels'=>false])->textInput() ?>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                            <?= Html::activeLabel($model, 'giro', ['class' => '¨form-label']) ?>
+                            <?= $form->field($model, 'giro', ['showLabels'=>false])->textInput() ?>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                            <?= Html::activeLabel($model, 'nacionalidad', ['class' => '¨form-label']) ?>
+                            <?= $form->field($model, 'nacionalidad', ['showLabels'=>false])->textInput() ?>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                            <?= Html::activeLabel($model, 'nit', ['class' => '¨form-label']) ?>
+                            <?= $form->field($model, 'nit', ['showLabels'=>false])->widget(
+                                MaskedInput::class, [
+                                    'mask' => '9999-999999-999-9'
+                                ]
+                            )->textInput() ?>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                            <?= Html::activeLabel($model, 'dui', ['class' => '¨form-label']) ?>
+                            <?= $form->field($model, 'dui', ['showLabels'=>false])->widget(
+                                MaskedInput::class, [
+                                    'mask' => '99999999-9'
+                                ]
+                            )->textInput() ?>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                            <?= Html::activeLabel($model, 'nrc', ['class' => '¨form-label']) ?>
+                            <?= $form->field($model, 'nrc', ['showLabels'=>false])->widget(
+                                MaskedInput::class, [
+                                    'mask' => '999999-9'
+                                ]
+                            )->textInput() ?>
                         </div>
 
                         <div class="col-md-6 col-sm-12">
@@ -82,7 +125,6 @@ Yii::$app->language = 'es_ES';
                                     ]
                                 )->textInput(['autofocus' => true]) ?>
                         </div>
-
                         
                         <div class="col-md-6 col-sm-12">
                             <?= Html::activeLabel($model, 'telefono', ['class' => '¨form-label']) ?>
@@ -97,9 +139,58 @@ Yii::$app->language = 'es_ES';
                                             ],
                                         ]
                                     ]
+                                )->widget(
+                                    MaskedInput::class, [
+                                        'mask' => '9999-9999'
+                                    ]
                                 )->textInput(['autofocus' => true]) ?>
                         </div>
 
+                        <div class="col-md-6 col-xs-12">
+                            <?= Html::activeLabel($model, 'direccion_personal', ['class' => '¨form-label']) ?>
+                            <?= $form->field($model, 'direccion_personal', ['showLabels'=>false])->widget(Summernote::class ,[
+                                'useKrajeePresets' => false,
+                                'container' => [
+                                    'class' => 'kv-editor-container'
+                                ],
+                                'pluginOptions' => [
+                                    'height' => 200,
+                                    'dialogsFade' => true,
+                                    'toolbar' => [
+                                        ['style1', ['style']],
+                                        ['style2', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript']],
+                                        ['font', ['fontname', 'fontsize', 'color', 'clear']],
+                                        ['para', ['ul', 'ol', 'paragraph']],
+                                        ['insert', ['link', 'table', 'hr']],
+                                    ],
+                                    'fontSizes' => ['8', '9', '10', '11', '12', '13', '14', '16', '18', '20', '24', '36', '48'],
+                                    'placeholder' => 'Escribe la direccion personal',
+                                ]
+                            ]) ?>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12">
+                            <?= Html::activeLabel($model, 'direccion_comercial', ['class' => '¨form-label']) ?>
+                            <?= $form->field($model, 'direccion_comercial', ['showLabels'=>false])->widget(Summernote::class ,[
+                                'useKrajeePresets' => false,
+                                'container' => [
+                                    'class' => 'kv-editor-container'
+                                ],
+                                'pluginOptions' => [
+                                    'height' => 200,
+                                    'dialogsFade' => true,
+                                    'toolbar' => [
+                                        ['style1', ['style']],
+                                        ['style2', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript']],
+                                        ['font', ['fontname', 'fontsize', 'color', 'clear']],
+                                        ['para', ['ul', 'ol', 'paragraph']],
+                                        ['insert', ['link', 'table', 'hr']],
+                                    ],
+                                    'fontSizes' => ['8', '9', '10', '11', '12', '13', '14', '16', '18', '20', '24', '36', '48'],
+                                    'placeholder' => 'Escribe la direccion comercial',
+                                ]
+                            ]) ?>
+                        </div>
 
                         <div class="col-md-12">
                             <?= Html::activeLabel($model, 'descripcion', ['class' => '¨form-label']) ?>
@@ -122,6 +213,20 @@ Yii::$app->language = 'es_ES';
                                     'placeholder' => 'Escribe la descripción del proveedor'
                                 ]
                             ]) ?>
+                        </div>
+
+                        <div class="col-md-12">
+                            <?php
+                                echo $form->field($model, 'contribuyente')->widget(SwitchInput::class, [
+                                    'pluginOptions' => [
+                                        'handleWidth' => 80,
+                                        'onColor' => 'success',
+                                        'offColor' => 'danger',
+                                        'onText' => '<i class="fa fa-check"></i> Si',
+                                        'offText' => '<i class="fa fa-ban"></i> No'
+                                    ]
+                                ]);
+                            ?>
                         </div>
 
                         <div class="col-md-12">

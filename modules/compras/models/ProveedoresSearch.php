@@ -17,8 +17,8 @@ class ProveedoresSearch extends Proveedores
     public function rules()
     {
         return [
-            [['id_proveedor', 'id_departamento', 'id_municipio', 'id_usuario_ing', 'id_usuario_mod', 'fecha_mod', 'estado'], 'integer'],
-            [['codigo', 'nombre', 'descripcion', 'telefono', 'email', 'fecha_ing'], 'safe'],
+            [['id_proveedor', 'id_departamento', 'id_municipio', 'contribuyente', 'estado', 'id_usuario_ing', 'id_usuario_mod', 'fecha_mod'], 'integer'],
+            [['codigo', 'nombre', 'descripcion', 'telefono', 'email', 'giro', 'nit', 'dui', 'nrc', 'nacionalidad', 'direccion_personal', 'direccion_comercial', 'razon_social', 'fecha_ing'], 'safe'],
         ];
     }
 
@@ -66,18 +66,27 @@ class ProveedoresSearch extends Proveedores
             'id_proveedor' => $this->id_proveedor,
             'id_departamento' => $this->id_departamento,
             'id_municipio' => $this->id_municipio,
-            'id_usuario_ing' => $this->id_usuario_ing,
+            'contribuyente' => $this->contribuyente,
+            'estado' => $this->estado,
             // 'fecha_ing' => $this->fecha_ing,
+            'id_usuario_ing' => $this->id_usuario_ing,
             'id_usuario_mod' => $this->id_usuario_mod,
             'fecha_mod' => $this->fecha_mod,
-            'estado' => $this->estado,
         ]);
 
         $query->andFilterWhere(['like', 'codigo', $this->codigo])
             ->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'descripcion', $this->descripcion])
             ->andFilterWhere(['like', 'telefono', $this->telefono])
-            ->andFilterWhere(['like', 'email', $this->email]);
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'giro', $this->giro])
+            ->andFilterWhere(['like', 'nit', $this->nit])
+            ->andFilterWhere(['like', 'dui', $this->dui])
+            ->andFilterWhere(['like', 'nrc', $this->nrc])
+            ->andFilterWhere(['like', 'nacionalidad', $this->nacionalidad])
+            ->andFilterWhere(['like', 'direccion_personal', $this->direccion_personal])
+            ->andFilterWhere(['like', 'direccion_comercial', $this->direccion_comercial])
+            ->andFilterWhere(['like', 'razon_social', $this->razon_social]);
 
         return $dataProvider;
     }

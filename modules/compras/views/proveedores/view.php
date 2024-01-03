@@ -43,6 +43,34 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                         </tr>
                         <tr>
+                            <th>Razon social:</th>
+                            <td><?=$model->razon_social?></td>
+                        </tr>
+                        <tr>
+                            <th>Giro:</th>
+                            <td><?=$model->giro?></td>
+                        </tr>
+                        <tr>
+                            <th>Nacionalidad:</th>
+                            <td><?=$model->nacionalidad?></td>
+                        </tr>
+                        <tr>
+                            <th>NIT:</th>
+                            <td><?=$model->nit?></td>
+                        </tr>
+                        <tr>
+                            <th>DUI:</th>
+                            <td><?=$model->dui?></td>
+                        </tr>
+                        <tr>
+                            <th>NRC:</th>
+                            <td><?=$model->nrc?></td>
+                        </tr>
+                        <tr>
+                            <th>Contribuyente:</th>
+                            <td><?=$model->contribuyente==1 ? "Si" : "No" ?></td>
+                        </tr>
+                        <tr>
                             <th>Email:</th>
                             <td>
                                 <?=$model->email?>

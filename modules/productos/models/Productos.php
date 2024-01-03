@@ -1,7 +1,7 @@
 <?php
 
 namespace app\modules\productos\models;
-
+use app\modules\productos\models\ProductosImagenes;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
 use app\models\Usuarios;
