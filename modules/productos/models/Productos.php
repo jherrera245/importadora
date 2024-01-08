@@ -83,7 +83,7 @@ class Productos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre', 'sku', 'precio', 'id_categoria', 'id_sub_categoria', 'id_marca', 'year', 'id_condicion', 'estado'], 'required'],
+            [['nombre', 'sku', 'precio', 'id_categoria', 'id_sub_categoria', 'id_marca', 'estado'], 'required'],
             [['descripcion'], 'string'],
             [['precio', 'iva'], 'number'],
             [['id_categoria', 'id_sub_categoria', 'id_marca', 'is_car', 'year', 'id_condicion', 'estado', 'id_usuario_ing', 'id_usuario_mod'], 'integer'],
@@ -109,7 +109,7 @@ class Productos extends \yii\db\ActiveRecord
             'nombre' => 'Nombre',
             'sku' => 'SKU',
             'descripcion' => 'Descripción',
-            'precio' => 'Precio',
+            'precio' => 'Valor en inventario',
             'id_categoria' => 'Categoria',
             'id_sub_categoria' => 'Subcategoria',
             'id_marca' => 'Marca',

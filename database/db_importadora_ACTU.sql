@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 31, 2023 at 06:54 AM
+-- Generation Time: Jan 08, 2024 at 05:14 AM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.29
 
@@ -157,6 +157,32 @@ CREATE TABLE `tbl_bitacora` (
   `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Dumping data for table `tbl_bitacora`
+--
+
+INSERT INTO `tbl_bitacora` (`id_bitacora`, `id_registro`, `controlador`, `accion`, `data_original`, `data_modificada`, `id_usuario`, `fecha`) VALUES
+(1, 1, 'clientes', 'create', '\"{\\n    \\\"id_cliente\\\": 1,\\n    \\\"nombre\\\": \\\"Cesar Mauricio\\\",\\n    \\\"apellido\\\": \\\"Martinez Reyes\\\",\\n    \\\"telefono\\\": \\\"7241-9858\\\",\\n    \\\"email\\\": \\\"mauricio@gmail.com\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-04 23:28:42\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-04 23:28:42\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-01-04 23:28:42'),
+(2, 1, 'proveedores', 'create', '\"{\\n    \\\"id_proveedor\\\": 1,\\n    \\\"codigo\\\": \\\"Prove0001\\\",\\n    \\\"nombre\\\": \\\"COPART\\\",\\n    \\\"descripcion\\\": \\\"<p>Esta es una empresa que se dedica a la comercializacion de vehiculos<br><\\\\/p>\\\",\\n    \\\"id_departamento\\\": \\\"14\\\",\\n    \\\"id_municipio\\\": \\\"111\\\",\\n    \\\"telefono\\\": \\\"7878-8822\\\",\\n    \\\"email\\\": \\\"copart@gmail.com\\\",\\n    \\\"giro\\\": \\\"Venta de vehiculos\\\",\\n    \\\"nit\\\": \\\"0000-000000-000-1\\\",\\n    \\\"dui\\\": \\\"12234556-7\\\",\\n    \\\"nrc\\\": \\\"777777-7\\\",\\n    \\\"nacionalidad\\\": \\\"EEUU\\\",\\n    \\\"direccion_personal\\\": \\\"<p>Direccion personal 1<br><\\\\/p>\\\",\\n    \\\"direccion_comercial\\\": \\\"<p>Direccion comercial 1<br><\\\\/p>\\\",\\n    \\\"razon_social\\\": \\\"COPART AUTOS ESPA\\\\u00d1A, S.L.U.\\\",\\n    \\\"contribuyente\\\": \\\"1\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-04 23:35:11\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-04 23:35:11\\\"\\n}\"', NULL, 1, '2024-01-04 23:35:11'),
+(3, 1, 'compras', 'create', '\"{\\n    \\\"id_compra\\\": 1,\\n    \\\"codigo\\\": \\\"CMPR-00001\\\",\\n    \\\"num_factura\\\": \\\"0000001\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"0\\\",\\n    \\\"fecha\\\": \\\"2024-1-04\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"Este es un comentario, puede agregar cualquier tipo de informacion en esta parte<br>\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-04 23:37:13\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-04 23:37:13\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-04 23:37:13'),
+(4, 1, 'compras', 'update', '\"{\\n    \\\"id_compra\\\": 1,\\n    \\\"codigo\\\": \\\"CMPR-00001\\\",\\n    \\\"num_factura\\\": \\\"1\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-01-04\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"Este es un comentario, puede agregar cualquier tipo de informacion en esta parte<br>\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-04 23:37:13\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-04 23:37:13\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"num_factura\\\": \\\"1\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\"\\n}\"', 1, '2024-01-05 09:08:53'),
+(5, 1, 'marcas', 'create', '\"{\\n    \\\"id_marca\\\": 1,\\n    \\\"nombre\\\": \\\"Ford\\\",\\n    \\\"descripcion\\\": \\\"<p>Descripci\\\\u00f3n de la marca FORD<br><\\\\/p>\\\",\\n    \\\"imagen\\\": \\\"\\\\/importadora\\\\/web\\\\/marcas\\\\/W_4dY4WioYFagqdWh4YKDmt3bnXw3ROK.png\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 19:34:57\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 19:34:57\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"0\\\"\\n}\"', NULL, 1, '2024-01-05 19:34:57'),
+(6, 1, 'categorias', 'create', '\"{\\n    \\\"id_categoria\\\": 1,\\n    \\\"nombre\\\": \\\"Veh\\\\u00edculo\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 19:36:28\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 19:36:28\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-01-05 19:36:28'),
+(7, 2, 'categorias', 'create', '\"{\\n    \\\"id_categoria\\\": 2,\\n    \\\"nombre\\\": \\\"Medio de transporte\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 19:37:22\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 19:37:22\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-01-05 19:37:22'),
+(8, 1, 'sub-categorias', 'create', '\"{\\n    \\\"id_sub_categoria\\\": 1,\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"nombre\\\": \\\"Tractor\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 19:37:38\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 19:37:38\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-01-05 19:37:38'),
+(9, 1, 'productos', 'create', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 1\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-05 20:17:31'),
+(10, 1, 'productos', 'delete', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 1\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000.00\\\",\\n    \\\"id_categoria\\\": 2,\\n    \\\"id_sub_categoria\\\": 1,\\n    \\\"id_marca\\\": 1,\\n    \\\"is_car\\\": 0,\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": null,\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": null,\\n    \\\"iva\\\": 13,\\n    \\\"estado\\\": 1,\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"estado\\\": 0\\n}\"', 1, '2024-01-05 20:20:18'),
+(11, 2, 'productos', 'create', '\"{\\n    \\\"id_producto\\\": 2,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 1\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"50000\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:20:47\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 20:20:47\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-05 20:20:47'),
+(12, 1, 'compras', 'inventario', '\"{\\n    \\\"id_compra\\\": 1,\\n    \\\"codigo\\\": \\\"CMPR-00001\\\",\\n    \\\"num_factura\\\": 1,\\n    \\\"id_proveedor\\\": 1,\\n    \\\"tipo_compra\\\": 1,\\n    \\\"fecha\\\": \\\"2024-01-04\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"Este es un comentario, puede agregar cualquier tipo de informacion en esta parte<br>\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-04 23:37:13\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 09:08:53\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"estado\\\": 1\\n}\"', 1, '2024-01-06 20:25:01'),
+(13, 2, 'compras', 'create', '\"{\\n    \\\"id_compra\\\": 2,\\n    \\\"codigo\\\": \\\"CMPR-00002\\\",\\n    \\\"num_factura\\\": \\\"2\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-1-06\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-06 20:25:44\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-06 20:25:44\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-06 20:25:44'),
+(14, 1, 'productos', 'update', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 2\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000.00\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"0\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 20:20:18\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"nombre\\\": \\\"Tractor ejemplo 2\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"0\\\"\\n}\"', 1, '2024-01-06 20:26:05'),
+(15, 1, 'productos', 'update', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 2\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000.00\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-06 20:26:05\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', 1, '2024-01-06 20:26:13'),
+(16, 3, 'compras', 'create', '\"{\\n    \\\"id_compra\\\": 3,\\n    \\\"codigo\\\": \\\"CMPR-00003\\\",\\n    \\\"num_factura\\\": \\\"3\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-1-07\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-07 18:46:16\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-07 18:46:16\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-07 18:46:16'),
+(17, 2, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 2,\\n    \\\"id_compra\\\": \\\"3\\\",\\n    \\\"id_producto\\\": \\\"1\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"22000\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": null,\\n    \\\"otros_gastos\\\": null,\\n    \\\"detalle_otros_gastos\\\": null,\\n    \\\"valor_aduana\\\": null,\\n    \\\"dai\\\": null,\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"5278dc9f-169c-472f-b443-0d839efd258b\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-07 19:37:59\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-07 19:37:59\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-07 19:37:59'),
+(18, 1, 'productos', 'update', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 2\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000.00\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-06 20:26:13\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"\\\",\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', 1, '2024-01-07 19:38:26'),
+(19, 1, 'productos', 'update', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 2\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000.00\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-07 19:38:26\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"\\\",\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', 1, '2024-01-07 19:38:50'),
+(20, 3, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 3,\\n    \\\"id_compra\\\": \\\"2\\\",\\n    \\\"id_producto\\\": \\\"1\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"30000\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": null,\\n    \\\"otros_gastos\\\": null,\\n    \\\"detalle_otros_gastos\\\": null,\\n    \\\"valor_aduana\\\": null,\\n    \\\"dai\\\": null,\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"32ac0860-0dff-4575-b4eb-6a67095a2e14\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-07 19:41:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-07 19:41:31\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-07 19:41:31');
+
 -- --------------------------------------------------------
 
 --
@@ -173,6 +199,14 @@ CREATE TABLE `tbl_categorias` (
   `id_usuario_mod` int DEFAULT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_categorias`
+--
+
+INSERT INTO `tbl_categorias` (`id_categoria`, `nombre`, `descripcion`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(1, 'Vehículo', '', '2024-01-05 19:36:28', 1, '2024-01-05 19:36:28', 1, 1),
+(2, 'Medio de transporte', '', '2024-01-05 19:37:22', 1, '2024-01-05 19:37:22', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -192,6 +226,13 @@ CREATE TABLE `tbl_clientes` (
   `id_usuario_mod` int DEFAULT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_clientes`
+--
+
+INSERT INTO `tbl_clientes` (`id_cliente`, `nombre`, `apellido`, `telefono`, `email`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(1, 'Cesar Mauricio', 'Martinez Reyes', '7241-9858', 'mauricio@gmail.com', '2024-01-04 23:28:42', 1, '2024-01-04 23:28:42', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -214,6 +255,15 @@ CREATE TABLE `tbl_compras` (
   `fecha_mod` datetime DEFAULT NULL,
   `id_usuario_mod` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_compras`
+--
+
+INSERT INTO `tbl_compras` (`id_compra`, `codigo`, `num_factura`, `id_proveedor`, `tipo_compra`, `fecha`, `anulado`, `comentarios`, `estado`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
+(1, 'CMPR-00001', 1, 1, 1, '2024-01-04', 0, 'Este es un comentario, puede agregar cualquier tipo de informacion en esta parte<br>', 1, '2024-01-04 23:37:13', 1, '2024-01-06 20:25:01', 1),
+(2, 'CMPR-00002', 2, 1, 1, '2024-01-06', 0, '', 0, '2024-01-06 20:25:44', 1, '2024-01-06 20:25:44', 1),
+(3, 'CMPR-00003', 3, 1, 1, '2024-01-07', 0, '', 0, '2024-01-07 18:46:16', 1, '2024-01-07 18:46:16', 1);
 
 -- --------------------------------------------------------
 
@@ -276,22 +326,31 @@ CREATE TABLE `tbl_det_compras` (
   `cantidad` int NOT NULL,
   `costo` decimal(10,2) NOT NULL,
   `descuento` decimal(10,2) NOT NULL,
-  `gastos_transporte` float DEFAULT NULL,
-  `otros_gastos` float DEFAULT NULL,
+  `gastos_transporte` decimal(10,2) DEFAULT NULL,
+  `otros_gastos` decimal(10,2) DEFAULT NULL,
   `detalle_otros_gastos` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `valor_aduana` float NOT NULL,
-  `dai` float DEFAULT NULL,
-  `apm` float DEFAULT NULL,
-  `vts` float DEFAULT NULL,
-  `its` float DEFAULT NULL,
-  `aiv` float DEFAULT NULL,
-  `opm` float DEFAULT NULL,
+  `valor_aduana` decimal(10,2) DEFAULT NULL,
+  `dai` decimal(10,2) DEFAULT NULL,
+  `apm` decimal(10,2) DEFAULT NULL,
+  `vts` decimal(10,2) DEFAULT NULL,
+  `its` decimal(10,2) DEFAULT NULL,
+  `aiv` decimal(10,2) DEFAULT NULL,
+  `opm` decimal(10,2) DEFAULT NULL,
   `uuid` varchar(36) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
   `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
   `id_usuario_mod` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_det_compras`
+--
+
+INSERT INTO `tbl_det_compras` (`id_det_compra`, `id_compra`, `id_producto`, `cantidad`, `costo`, `descuento`, `gastos_transporte`, `otros_gastos`, `detalle_otros_gastos`, `valor_aduana`, `dai`, `apm`, `vts`, `its`, `aiv`, `opm`, `uuid`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
+(1, 2, 2, 1, '22222.00', '0.00', NULL, NULL, NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+(2, 3, 1, 1, '22000.00', '0.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5278dc9f-169c-472f-b443-0d839efd258b', '2024-01-07 19:37:59', 1, '2024-01-07 19:37:59', 1),
+(3, 2, 1, 1, '30000.00', '0.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '32ac0860-0dff-4575-b4eb-6a67095a2e14', '2024-01-07 19:41:31', 1, '2024-01-07 19:41:31', 1);
 
 -- --------------------------------------------------------
 
@@ -424,6 +483,13 @@ CREATE TABLE `tbl_marcas` (
   `id_usuario_mod` int DEFAULT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `tbl_marcas`
+--
+
+INSERT INTO `tbl_marcas` (`id_marca`, `nombre`, `descripcion`, `imagen`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(1, 'Ford', '<p>Descripción de la marca FORD<br></p>', '/importadora/web/marcas/W_4dY4WioYFagqdWh4YKDmt3bnXw3ROK.png', '2024-01-05 19:34:57', 1, '2024-01-05 19:34:57', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -744,9 +810,9 @@ CREATE TABLE `tbl_productos` (
   `vin` varchar(17) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `pais_procedencia` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `chasis_grabado` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `year` int NOT NULL,
+  `year` int DEFAULT NULL,
   `tipo_combustible` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `id_condicion` int NOT NULL,
+  `id_condicion` int DEFAULT NULL,
   `iva` float DEFAULT NULL,
   `estado` tinyint(1) NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
@@ -754,6 +820,14 @@ CREATE TABLE `tbl_productos` (
   `fecha_mod` datetime DEFAULT NULL,
   `id_usuario_mod` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_productos`
+--
+
+INSERT INTO `tbl_productos` (`id_producto`, `nombre`, `sku`, `descripcion`, `precio`, `id_categoria`, `id_sub_categoria`, `id_marca`, `is_car`, `vin`, `pais_procedencia`, `chasis_grabado`, `year`, `tipo_combustible`, `id_condicion`, `iva`, `estado`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
+(1, 'Tractor ejemplo 2', '4225-776-3234', '', '30000.00', 2, 1, 1, 0, '', '', '', NULL, '', NULL, NULL, 1, '2024-01-05 20:17:31', 1, '2024-01-07 19:38:50', 1),
+(2, 'Tractor ejemplo 1', '4225-776-3234', '', '50000.00', 2, 1, 1, 0, '', '', '', NULL, '', NULL, 13, 1, '2024-01-05 20:20:47', 1, '2024-01-05 20:20:47', 1);
 
 -- --------------------------------------------------------
 
@@ -801,6 +875,13 @@ CREATE TABLE `tbl_proveedores` (
   `fecha_mod` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
+--
+-- Dumping data for table `tbl_proveedores`
+--
+
+INSERT INTO `tbl_proveedores` (`id_proveedor`, `codigo`, `nombre`, `descripcion`, `id_departamento`, `id_municipio`, `telefono`, `email`, `giro`, `nit`, `dui`, `nrc`, `nacionalidad`, `direccion_personal`, `direccion_comercial`, `razon_social`, `contribuyente`, `estado`, `fecha_ing`, `id_usuario_ing`, `id_usuario_mod`, `fecha_mod`) VALUES
+(1, 'Prove0001', 'COPART', '<p>Esta es una empresa que se dedica a la comercializacion de vehiculos<br></p>', 14, 111, '7878-8822', 'copart@gmail.com', 'Venta de vehiculos', '0000-000000-000-1', '12234556-7', '777777-7', 'EEUU', '<p>Direccion personal 1<br></p>', '<p>Direccion comercial 1<br></p>', 'COPART AUTOS ESPAÑA, S.L.U.', 1, 1, '2024-01-04 23:35:11', 1, 1, 2024);
+
 -- --------------------------------------------------------
 
 --
@@ -818,6 +899,13 @@ CREATE TABLE `tbl_sub_categorias` (
   `id_usuario_mod` int DEFAULT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_sub_categorias`
+--
+
+INSERT INTO `tbl_sub_categorias` (`id_sub_categoria`, `id_categoria`, `nombre`, `descripcion`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(1, 2, 'Tractor', '', '2024-01-05 19:37:38', 1, '2024-01-05 19:37:38', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -844,7 +932,7 @@ CREATE TABLE `tbl_usuarios` (
 --
 
 INSERT INTO `tbl_usuarios` (`id_usuario`, `username`, `nombre`, `apellido`, `auth_key`, `password_hash`, `email`, `imagen`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Admin', 'Admin', 'AxK42pI4nqEvIyBOBUJVfSR9oRTq-chL', '$2y$13$vfsku0ucja/nzCddYYjL3upKL9uDe/gUyNXK0gqTX0eJ7nFTRIrEu', 'admin@outlook.com', '/avatars/7A5_ev7RvHv5CzTWNZxOLeGpVGZM-ZZv.gif', 1, 1677203598, 1677203598),
+(1, 'admin', 'Admin', 'Admin', 'AxK42pI4nqEvIyBOBUJVfSR9oRTq-chL', '$2y$13$0/DSaoFP1GHYgc8rvaxxUuGSnfEjUIV67KObUclpEcBbIcbhQo0qK', 'admin@outlook.com', '/avatars/7A5_ev7RvHv5CzTWNZxOLeGpVGZM-ZZv.gif', 1, 1677203598, 1677203598),
 (2, 'Demo', 'demo', 'Demo', '_LDZ2AUvtDDoy36zC6bJhNgJRM9rYO3D', '$2y$13$hGFn5B62kUT0kmTZtQS8We5sIj0vsg1mDH/dyf/j1tZVatVcD4khi', 'demo@outlook.com', '/avatars/default.png', 1, 1677203935, 1677203935);
 
 -- --------------------------------------------------------
@@ -1098,25 +1186,25 @@ ALTER TABLE `tbl_ventas`
 -- AUTO_INCREMENT for table `tbl_bitacora`
 --
 ALTER TABLE `tbl_bitacora`
-  MODIFY `id_bitacora` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bitacora` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_categorias`
 --
 ALTER TABLE `tbl_categorias`
-  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_clientes`
 --
 ALTER TABLE `tbl_clientes`
-  MODIFY `id_cliente` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_compras`
 --
 ALTER TABLE `tbl_compras`
-  MODIFY `id_compra` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_compra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_condicion_producto`
@@ -1134,7 +1222,7 @@ ALTER TABLE `tbl_departamentos`
 -- AUTO_INCREMENT for table `tbl_det_compras`
 --
 ALTER TABLE `tbl_det_compras`
-  MODIFY `id_det_compra` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_det_compra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_det_ordenes`
@@ -1170,7 +1258,7 @@ ALTER TABLE `tbl_kardex`
 -- AUTO_INCREMENT for table `tbl_marcas`
 --
 ALTER TABLE `tbl_marcas`
-  MODIFY `id_marca` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_marca` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_municipios`
@@ -1188,7 +1276,7 @@ ALTER TABLE `tbl_ordenes`
 -- AUTO_INCREMENT for table `tbl_productos`
 --
 ALTER TABLE `tbl_productos`
-  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_productos_imagenes`
@@ -1200,13 +1288,13 @@ ALTER TABLE `tbl_productos_imagenes`
 -- AUTO_INCREMENT for table `tbl_proveedores`
 --
 ALTER TABLE `tbl_proveedores`
-  MODIFY `id_proveedor` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_proveedor` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_sub_categorias`
 --
 ALTER TABLE `tbl_sub_categorias`
-  MODIFY `id_sub_categoria` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sub_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_usuarios`

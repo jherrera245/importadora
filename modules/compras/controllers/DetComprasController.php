@@ -14,6 +14,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use yii\data\ActiveDataProvider;
+use Exception;
 use yii\helpers\ArrayHelper;
 use Yii;
 

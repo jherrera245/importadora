@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                         </tr>
                         <tr>
-                            <th>Precio:</th>
+                            <th>Valor en inventario:</th>
                             <td>
                                 <span class="badge bg-green">$<?=$model->precio?></span>
                             </td>

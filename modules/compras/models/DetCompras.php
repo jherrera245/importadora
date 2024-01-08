@@ -17,6 +17,16 @@ use yii\behaviors\BlameableBehavior;
  * @property int $cantidad
  * @property float $costo
  * @property float $descuento
+ * @property float|null $gastos_transporte
+ * @property float|null $otros_gastos
+ * @property string|null $detalle_otros_gastos
+ * @property float|null $valor_aduana
+ * @property float|null $dai
+ * @property float|null $apm
+ * @property float|null $vts
+ * @property float|null $its
+ * @property float|null $aiv
+ * @property float|null $opm
  * @property string $uuid
  * @property string|null $fecha_ing
  * @property int|null $id_usuario_ing
@@ -60,9 +70,9 @@ class DetCompras extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_compra', 'id_producto', 'cantidad', 'costo', 'descuento', 'valor_aduana', 'uuid'], 'required'],
+            [['id_compra', 'id_producto', 'cantidad', 'costo', 'descuento', 'uuid'], 'required'],
             [['id_compra', 'id_producto', 'cantidad', 'id_usuario_ing', 'id_usuario_mod'], 'integer'],
-            [['costo', 'descuento', 'gastos_transporte', 'otros_gastos', 'valor_aduana', 'dai' , 'apm', 'vts', 'its', 'aiv', 'opm'], 'number'],
+            [['costo', 'descuento', 'gastos_transporte', 'otros_gastos', 'valor_aduana', 'dai', 'apm', 'vts', 'its', 'aiv', 'opm'], 'number'],
             [['fecha_ing', 'fecha_mod'], 'safe'],
             [['detalle_otros_gastos'], 'string', 'max' => 150],
             [['uuid'], 'string', 'max' => 36],
@@ -79,27 +89,27 @@ class DetCompras extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_det_compra' => 'Id',
-            'id_compra' => 'Compra',
-            'id_producto' => 'Producto',
+            'id_det_compra' => 'Id Det Compra',
+            'id_compra' => 'Id Compra',
+            'id_producto' => 'Id Producto',
             'cantidad' => 'Cantidad',
             'costo' => 'Costo',
             'descuento' => 'Descuento',
-            'gastos_transporte' => 'Gastos en transporte',
-            'otros_gastos' => 'Otros gastos',
-            'detalle_otros_gastos' => 'Detalle de otros gastos',
-            'valor_aduana' => 'Valor en aduana',
-            'dai' => 'DAI',
-            'apm' => 'APM',
-            'vts' => 'VTS',
-            'its' => 'ITS',
-            'aiv' => 'AIV',
-            'opm' => 'OPM',
+            'gastos_transporte' => 'Gastos Transporte',
+            'otros_gastos' => 'Otros Gastos',
+            'detalle_otros_gastos' => 'Detalle Otros Gastos',
+            'valor_aduana' => 'Valor Aduana',
+            'dai' => 'Dai',
+            'apm' => 'Apm',
+            'vts' => 'Vts',
+            'its' => 'Its',
+            'aiv' => 'Aiv',
+            'opm' => 'Opm',
             'uuid' => 'Uuid',
-            'fecha_ing' => 'Fecha Ingreso',
-            'id_usuario_ing' => 'Registrado por',
-            'fecha_mod' => 'Fecha Modificación',
-            'id_usuario_mod' => 'Modificado por',
+            'fecha_ing' => 'Fecha Ing',
+            'id_usuario_ing' => 'Id Usuario Ing',
+            'fecha_mod' => 'Fecha Mod',
+            'id_usuario_mod' => 'Id Usuario Mod',
         ];
     }
 
