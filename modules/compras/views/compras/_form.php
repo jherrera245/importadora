@@ -29,7 +29,7 @@ Yii::$app->language = 'es_ES';
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2 col-sm-12">
-                            <?= Html::activeLabel($model, 'num_factura', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'num_factura', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'num_factura', ['showLabels'=>false])->textInput(['autofocus' => true]) ?>
                         </div>
 
@@ -44,7 +44,7 @@ Yii::$app->language = 'es_ES';
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'fecha', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'fecha', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'fecha', ['showLabels'=>false])->widget(
                                 DatePicker::class, [
                                     'options' => [
@@ -60,7 +60,7 @@ Yii::$app->language = 'es_ES';
                         </div>
 
                         <div class="col-md-2 col-sm-12">
-                            <?= Html::activeLabel($model, 'tipo_compra', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'tipo_compra', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'tipo_compra', ['showLabels'=>false])->radioList(
                                 [
                                     0 => 'Contado',
@@ -75,7 +75,7 @@ Yii::$app->language = 'es_ES';
                         </div>
 
                         <div class="col-md-12">
-                            <?= Html::activeLabel($model, 'comentarios', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'comentarios', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'comentarios', ['showLabels'=>false])->widget(Summernote::class ,[
                                 'useKrajeePresets' => false,
                                 'container' => [

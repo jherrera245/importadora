@@ -30,7 +30,8 @@
         "yurkinx/yii2-image": "^1.3",
         "2amigos/yii2-gallery-widget": "~1.0",
         "thamtech/yii2-uuid": "^1.2",
-        "kartik-v/yii2-editable": "dev-master"
+        "kartik-v/yii2-editable": "dev-master",
+        "kartik-v/yii2-detail-view": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

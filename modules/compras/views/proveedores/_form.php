@@ -32,32 +32,32 @@ Yii::$app->language = 'es_ES';
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
-                            <?= Html::activeLabel($model, 'codigo', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'codigo', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'codigo', ['showLabels'=>false])->textInput(['autofocus' => true]) ?>
                         </div>
 
                         <div class="col-md-6 col-sm-12">
-                            <?= Html::activeLabel($model, 'nombre', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'nombre', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'nombre', ['showLabels'=>false])->textInput() ?>
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'razon_social', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'razon_social', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'razon_social', ['showLabels'=>false])->textInput() ?>
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'giro', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'giro', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'giro', ['showLabels'=>false])->textInput() ?>
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'nacionalidad', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'nacionalidad', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'nacionalidad', ['showLabels'=>false])->textInput() ?>
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'nit', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'nit', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'nit', ['showLabels'=>false])->widget(
                                 MaskedInput::class, [
                                     'mask' => '9999-999999-999-9'
@@ -66,7 +66,7 @@ Yii::$app->language = 'es_ES';
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'dui', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'dui', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'dui', ['showLabels'=>false])->widget(
                                 MaskedInput::class, [
                                     'mask' => '99999999-9'
@@ -75,7 +75,7 @@ Yii::$app->language = 'es_ES';
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'nrc', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'nrc', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'nrc', ['showLabels'=>false])->widget(
                                 MaskedInput::class, [
                                     'mask' => '999999-9'
@@ -111,7 +111,7 @@ Yii::$app->language = 'es_ES';
                         </div>
 
                         <div class="col-md-6 col-sm-12">
-                            <?= Html::activeLabel($model, 'email', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'email', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
                                     'email',
@@ -127,7 +127,7 @@ Yii::$app->language = 'es_ES';
                         </div>
                         
                         <div class="col-md-6 col-sm-12">
-                            <?= Html::activeLabel($model, 'telefono', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'telefono', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
                                     'telefono',
@@ -147,7 +147,7 @@ Yii::$app->language = 'es_ES';
                         </div>
 
                         <div class="col-md-6 col-xs-12">
-                            <?= Html::activeLabel($model, 'direccion_personal', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'direccion_personal', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'direccion_personal', ['showLabels'=>false])->widget(Summernote::class ,[
                                 'useKrajeePresets' => false,
                                 'container' => [
@@ -170,7 +170,7 @@ Yii::$app->language = 'es_ES';
                         </div>
 
                         <div class="col-md-6 col-xs-12">
-                            <?= Html::activeLabel($model, 'direccion_comercial', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'direccion_comercial', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'direccion_comercial', ['showLabels'=>false])->widget(Summernote::class ,[
                                 'useKrajeePresets' => false,
                                 'container' => [
@@ -193,7 +193,7 @@ Yii::$app->language = 'es_ES';
                         </div>
 
                         <div class="col-md-12">
-                            <?= Html::activeLabel($model, 'descripcion', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'descripcion', ['class' => 'form-label']) ?>
                             <?= $form->field($model, 'descripcion', ['showLabels'=>false])->widget(Summernote::class ,[
                                 'useKrajeePresets' => false,
                                 'container' => [

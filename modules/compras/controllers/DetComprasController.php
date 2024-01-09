@@ -238,7 +238,48 @@ class DetComprasController extends Controller
             'editar-descuento' => [
                 'class' => EditableColumnAction::class,
                 'modelClass' => DetCompras::class,
-            ]
+            ],
+            'editar-gastos-transporte' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
+            'editar-otros-gastos' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
+            'editar-detalle-otros-gastos' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
+            'editar-valor-aduana' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
+            'editar-dai' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
+            'editar-apm' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
+            'editar-vts' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
+            'editar-its' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
+            'editar-aiv' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
+            'editar-opm' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
         ]);
     }
+    
 }

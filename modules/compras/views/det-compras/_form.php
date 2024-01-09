@@ -15,6 +15,15 @@ use kartik\grid\GridView;
 /** @var yii\web\View $this */
 /** @var app\modules\compras\models\DetCompras $model */
 /** @var yii\widgets\ActiveForm $form */
+
+echo Editable::widget([
+    'name'=>'person_name', 
+    'asPopover' => false,
+    'value' => 'Kartik Visweswaran',
+    'header' => 'Name',
+    'size'=>'md',
+    'options' => ['class'=>'form-control', 'placeholder'=>'Enter person name...']
+]);
 ?>
 
 <div class="row">
@@ -129,7 +138,7 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'cantidad', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'cantidad', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
                                     'cantidad',
@@ -145,7 +154,7 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'costo', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'costo', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
                                     'costo',
@@ -161,7 +170,7 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'descuento', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'descuento', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
                                     'descuento',
@@ -177,10 +186,10 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'gastos_transporte', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'gastos_transporte', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'descuento',
+                                    'gastos_transporte',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -193,10 +202,10 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'otros_gastos', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'otros_gastos', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'descuento',
+                                    'otros_gastos',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -209,10 +218,10 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'detalle_otros_gastos', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'detalle_otros_gastos', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'descuento',
+                                    'detalle_otros_gastos',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -225,10 +234,10 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'valor_aduana', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'valor_aduana', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'descuento',
+                                    'valor_aduana',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -241,10 +250,10 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'dai', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'dai', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'descuento',
+                                    'dai',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -257,10 +266,10 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'apm', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'apm', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'descuento',
+                                    'apm',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -273,10 +282,10 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'vts', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'vts', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'descuento',
+                                    'vts',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -289,10 +298,10 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'its', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'its', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'descuento',
+                                    'its',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -305,10 +314,10 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'aiv', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'aiv', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'descuento',
+                                    'aiv',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -321,10 +330,10 @@ use kartik\grid\GridView;
                         </div>
 
                         <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'opm', ['class' => '¨form-label']) ?>
+                            <?= Html::activeLabel($model, 'opm', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'descuento',
+                                    'opm',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -359,7 +368,6 @@ use kartik\grid\GridView;
 <div class="row">
     <div class="col-md-12">
         <div class="tbl-det-compras">
-
             <?php
                 $gridColumns = [
                     [
@@ -375,7 +383,7 @@ use kartik\grid\GridView;
                         'vAlign' => 'middle',
                         'attribute' => 'id_producto',
                         'value' => function($model) {
-                            return $model->producto->nombre;
+                            return $model->producto->nombre . ' ' . $model->producto->marca->nombre . ' ' . $model->producto->chasis_grabado;
                         },
                         'pageSummary' => 'Totales'
                     ],
@@ -388,15 +396,14 @@ use kartik\grid\GridView;
                             'inputType' => Editable::INPUT_TEXT,
                             'options' => [
                                 'pluginOptions' => [
-                                    'min' => 0, 
-                                    'max' => 10000,
+                                    'min' => 0,
                                 ],
                             ],
                         ],
                         'refreshGrid' => true,
                         'hAlign' => 'right',
                         'vAlign' => 'middle',
-                        'width' => '150px',
+                        'width' => '80px',
                         'pageSummary' => true,
                         'filter' => false,
                     ],
@@ -409,15 +416,14 @@ use kartik\grid\GridView;
                             'inputType' => Editable::INPUT_TEXT,
                             'options' => [
                                 'pluginOptions' => [
-                                    'min' => 0, 
-                                    'max' => 10000,
+                                    'min' => 0,
                                 ],
                             ],
                         ],
                         'refreshGrid' => true,
                         'hAlign' => 'right',
                         'vAlign' => 'middle',
-                        'width' => '150px',
+                        'width' => '80px',
                         'pageSummary' => true,
                         'filter' => false,
                         'format' => 'currency',
@@ -432,7 +438,69 @@ use kartik\grid\GridView;
                             'options' => [
                                 'pluginOptions' => [
                                     'min' => 0, 
-                                    'max' => 10000,
+                                    'max' => 100,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'width' => '80px',
+                        'pageSummary' => false,
+                        'filter' => false,
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'gastos_transporte',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-gastos-transporte']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'width' => '90px',
+                        'pageSummary' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'otros_gastos',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-otros-gastos']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'width' => '90px',
+                        'pageSummary' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'detalle_otros_gastos',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-detalle-otros-gastos']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
                                 ],
                             ],
                         ],
@@ -440,8 +508,156 @@ use kartik\grid\GridView;
                         'hAlign' => 'right',
                         'vAlign' => 'middle',
                         'width' => '150px',
-                        'pageSummary' => false,
+                        'pageSummary' => true,
                         'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'valor_aduana',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-valor-aduana']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'width' => '80px',
+                        'pageSummary' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'dai',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-dai']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'width' => '150px',
+                        'pageSummary' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'apm',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-apm']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'width' => '150px',
+                        'pageSummary' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'vts',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-vts']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'width' => '150px',
+                        'pageSummary' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'its',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-its']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'width' => '150px',
+                        'pageSummary' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'aiv',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-aiv']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'width' => '150px',
+                        'pageSummary' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'opm',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-opm']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'width' => '150px',
+                        'pageSummary' => true,
+                        'filter' => false,
+                        'format' => 'currency',
                     ],
                     [
                         'class' => 'kartik\grid\FormulaColumn',
@@ -453,7 +669,7 @@ use kartik\grid\GridView;
                             return ($widget->col(2, $value) * $widget->col(3, $value) * ($widget->col(4, $value) /100));
                         },
                         'headerOptions' => ['class' => 'kartik-sheet-style'],
-                        'width' => '10%',
+                        'width' => '200px',
                         'mergeHeader'=> true,
                         'pageSummary' => true,
                         'footer' => true,
@@ -470,7 +686,7 @@ use kartik\grid\GridView;
                             return (($widget->col(2, $value) * $widget->col(3, $value)) - $widget->col(5, $value));
                         },
                         'headerOptions' => ['class' => 'kartik-sheet-style'],
-                        'width' => '10%',
+                        'width' => '200px',
                         'mergeHeader'=> true,
                         'pageSummary' => true,
                         'footer' => true,
@@ -487,7 +703,7 @@ use kartik\grid\GridView;
                             return ($widget->col(6, $value) * 0.13);
                         },
                         'headerOptions' => ['class' => 'kartik-sheet-style'],
-                        'width' => '10%',
+                        'width' => '200px',
                         'mergeHeader'=> true,
                         'pageSummary' => true,
                         'footer' => true,
@@ -535,6 +751,7 @@ use kartik\grid\GridView;
                     'containerOptions' => ['style' => 'overflow: auto'], // only set when $responsive = false
                     'headerRowOptions' => ['class' => 'kartik-sheet-style'],
                     'filterRowOptions' => ['class' => 'kartik-sheet-style'],
+                    'tableOptions' =>['style' => 'width: 2500px;'],
                     'pjax' => true, // pjax is set to always true for this demo
                     // set your toolbar
                     'toolbar' =>  [],
