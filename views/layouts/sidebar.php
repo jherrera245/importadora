@@ -128,7 +128,7 @@ use yii\helpers\Url;
 
                 
                 <!------- MÓDULO COMPRAS ------->
-                <?php if (in_array(\Yii::$app->controller->id, ['proveedores', 'compras'])) {
+                <?php if (in_array(\Yii::$app->controller->id, ['proveedores', 'compras', 'duca'])) {
                     $li = "nav-item has-treeview active menu-open";
                     $a = "nav-link active";
                 } else {
@@ -171,6 +171,22 @@ use yii\helpers\Url;
                             <a class="<?= $a; ?>" href="<?php echo Url::toRoute(['/compras/compras/index']); ?>">
                                 <i class="nav-icon far fa-circle text-green"></i>
                                 <p>Compras</p>
+                            </a>
+                        </li>
+                        <!-------------------------------------------------->
+                        <!-------------------------------------------------->
+                        <?php if (Yii::$app->controller->id == 'duca' && in_array(\Yii::$app->controller->action->id, ['index', 'create', 'update', 'view'])) {
+                            $li = "nav-item active";
+                            $a = "nav-link active";
+                        } else {
+                            $li = "nav-item";
+                            $a = "nav-link";
+                        }
+                        ?>
+                        <li class="<?= $li; ?>">
+                            <a class="<?= $a; ?>" href="<?php echo Url::toRoute(['/compras/duca/index']); ?>">
+                                <i class="nav-icon far fa-circle text-red"></i>
+                                <p>Duca</p>
                             </a>
                         </li>
                         <!-------------------------------------------------->

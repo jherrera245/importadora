@@ -257,7 +257,7 @@ $this->registerCssFile('https://code.ionicframework.com/ionicons/2.0.1/css/ionic
     <div class="login-box">
         <div class="login-logo">
             <!--a href="<?= Yii::$app->homeUrl ?>"></!--a><br-->
-            <?= Html::a('<img src="/logo.png" class="logo-lg" align="middle" height="80px"' . Yii::$app->name . '</span>') ?>
+            <?= Html::a('<img src="/importadora/web/importadoraLogo.png" class="logo-lg" align="middle" height="80px"' . Yii::$app->name . '</span>') ?>
         </div>
         <!-- /.login-logo -->
         <?= $content ?>
