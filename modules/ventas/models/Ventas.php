@@ -85,7 +85,7 @@ class Ventas extends \yii\db\ActiveRecord
             'num_factura' => 'Número de Factura',
             'tipo_venta' => 'Tipo de Venta',
             'fecha' => 'Fecha',
-            'comentarios' => 'Comentarios',
+            'comentarios' => 'Descripcion del bien',
             'fecha_ing' => 'Fecha Ingreso',
             'id_usuario_ing' => 'Registrado por',
             'fecha_mod' => 'Fecha Modificación',

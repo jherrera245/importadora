@@ -87,7 +87,7 @@ class DetOrdenes extends \yii\db\ActiveRecord
             'id_orden' => 'Orden',
             'id_producto' => 'Producto',
             'cantidad' => 'Cantidad',
-            'precio' => 'Precio',
+            'precio' => 'Valor Unitario',
             'descuento' => 'Descuento',
             'uuid' => 'Uuid',
             'credito_fiscal' => 'Credito Fiscal',
