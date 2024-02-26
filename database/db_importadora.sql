@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-12-2023 a las 17:00:59
--- Versión del servidor: 5.7.36
--- Versión de PHP: 7.4.26
+-- Host: localhost:3306
+-- Generation Time: Feb 26, 2024 at 05:45 PM
+-- Server version: 8.0.30
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,28 +18,23 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `db_importadora`
+-- Database: `db_importadora`
 --
-CREATE DATABASE IF NOT EXISTS `db_importadora` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci;
-USE `db_importadora`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `auth_assignment`
+-- Table structure for table `auth_assignment`
 --
 
-DROP TABLE IF EXISTS `auth_assignment`;
-CREATE TABLE IF NOT EXISTS `auth_assignment` (
-  `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`item_name`,`user_id`),
-  KEY `idx-auth_assignment-user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `auth_assignment` (
+  `item_name` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `user_id` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `created_at` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
--- Volcado de datos para la tabla `auth_assignment`
+-- Dumping data for table `auth_assignment`
 --
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
@@ -49,25 +44,21 @@ INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `auth_item`
+-- Table structure for table `auth_item`
 --
 
-DROP TABLE IF EXISTS `auth_item`;
-CREATE TABLE IF NOT EXISTS `auth_item` (
-  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `type` smallint(6) NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
-  `rule_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+CREATE TABLE `auth_item` (
+  `name` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `type` smallint NOT NULL,
+  `description` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `rule_name` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `data` blob,
-  `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`name`),
-  KEY `rule_name` (`rule_name`),
-  KEY `idx-auth_item-type` (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `created_at` int DEFAULT NULL,
+  `updated_at` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
--- Volcado de datos para la tabla `auth_item`
+-- Dumping data for table `auth_item`
 --
 
 INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
@@ -75,6 +66,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/clientes/direcciones/*', 2, NULL, NULL, NULL, 1685116303, 1685116303),
 ('/compras/compras/*', 2, NULL, NULL, NULL, 1685062067, 1685062067),
 ('/compras/det-compras/*', 2, NULL, NULL, NULL, 1685062168, 1685062168),
+('/compras/duca/*', 2, NULL, NULL, NULL, 1707282156, 1707282156),
 ('/compras/proveedores/*', 2, NULL, NULL, NULL, 1683336636, 1683336636),
 ('/debug/*', 2, NULL, NULL, NULL, 1677807204, 1677807204),
 ('/gii/*', 2, NULL, NULL, NULL, 1677807211, 1677807211),
@@ -98,19 +90,16 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `auth_item_child`
+-- Table structure for table `auth_item_child`
 --
 
-DROP TABLE IF EXISTS `auth_item_child`;
-CREATE TABLE IF NOT EXISTS `auth_item_child` (
-  `parent` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `child` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`parent`,`child`),
-  KEY `child` (`child`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `auth_item_child` (
+  `parent` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `child` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
--- Volcado de datos para la tabla `auth_item_child`
+-- Dumping data for table `auth_item_child`
 --
 
 INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
@@ -118,6 +107,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('PermisoAdmin', '/clientes/direcciones/*'),
 ('PermisoAdmin', '/compras/compras/*'),
 ('PermisoAdmin', '/compras/det-compras/*'),
+('PermisoAdmin', '/compras/duca/*'),
 ('PermisoAdmin', '/compras/proveedores/*'),
 ('PermisoAdmin', '/debug/*'),
 ('PermisoAdmin', '/gii/*'),
@@ -142,125 +132,186 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `auth_rule`
+-- Table structure for table `auth_rule`
 --
 
-DROP TABLE IF EXISTS `auth_rule`;
-CREATE TABLE IF NOT EXISTS `auth_rule` (
-  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `auth_rule` (
+  `name` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `data` blob,
-  `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `created_at` int DEFAULT NULL,
+  `updated_at` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_bitacora`
+-- Table structure for table `tbl_bitacora`
 --
 
-DROP TABLE IF EXISTS `tbl_bitacora`;
-CREATE TABLE IF NOT EXISTS `tbl_bitacora` (
-  `id_bitacora` int(11) NOT NULL AUTO_INCREMENT,
-  `id_registro` int(11) NOT NULL,
+CREATE TABLE `tbl_bitacora` (
+  `id_bitacora` int NOT NULL,
+  `id_registro` int NOT NULL,
   `controlador` varchar(25) NOT NULL,
   `accion` varchar(25) NOT NULL,
   `data_original` json DEFAULT NULL,
   `data_modificada` json DEFAULT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `fecha` datetime NOT NULL,
-  PRIMARY KEY (`id_bitacora`),
-  KEY `id_usuario` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_usuario` int NOT NULL,
+  `fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `tbl_bitacora`
+--
+
+INSERT INTO `tbl_bitacora` (`id_bitacora`, `id_registro`, `controlador`, `accion`, `data_original`, `data_modificada`, `id_usuario`, `fecha`) VALUES
+(1, 1, 'clientes', 'create', '\"{\\n    \\\"id_cliente\\\": 1,\\n    \\\"nombre\\\": \\\"Cesar Mauricio\\\",\\n    \\\"apellido\\\": \\\"Martinez Reyes\\\",\\n    \\\"telefono\\\": \\\"7241-9858\\\",\\n    \\\"email\\\": \\\"mauricio@gmail.com\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-04 23:28:42\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-04 23:28:42\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-01-04 23:28:42'),
+(2, 1, 'proveedores', 'create', '\"{\\n    \\\"id_proveedor\\\": 1,\\n    \\\"codigo\\\": \\\"Prove0001\\\",\\n    \\\"nombre\\\": \\\"COPART\\\",\\n    \\\"descripcion\\\": \\\"<p>Esta es una empresa que se dedica a la comercializacion de vehiculos<br><\\\\/p>\\\",\\n    \\\"id_departamento\\\": \\\"14\\\",\\n    \\\"id_municipio\\\": \\\"111\\\",\\n    \\\"telefono\\\": \\\"7878-8822\\\",\\n    \\\"email\\\": \\\"copart@gmail.com\\\",\\n    \\\"giro\\\": \\\"Venta de vehiculos\\\",\\n    \\\"nit\\\": \\\"0000-000000-000-1\\\",\\n    \\\"dui\\\": \\\"12234556-7\\\",\\n    \\\"nrc\\\": \\\"777777-7\\\",\\n    \\\"nacionalidad\\\": \\\"EEUU\\\",\\n    \\\"direccion_personal\\\": \\\"<p>Direccion personal 1<br><\\\\/p>\\\",\\n    \\\"direccion_comercial\\\": \\\"<p>Direccion comercial 1<br><\\\\/p>\\\",\\n    \\\"razon_social\\\": \\\"COPART AUTOS ESPA\\\\u00d1A, S.L.U.\\\",\\n    \\\"contribuyente\\\": \\\"1\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-04 23:35:11\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-04 23:35:11\\\"\\n}\"', NULL, 1, '2024-01-04 23:35:11'),
+(3, 1, 'compras', 'create', '\"{\\n    \\\"id_compra\\\": 1,\\n    \\\"codigo\\\": \\\"CMPR-00001\\\",\\n    \\\"num_factura\\\": \\\"0000001\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"0\\\",\\n    \\\"fecha\\\": \\\"2024-1-04\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"Este es un comentario, puede agregar cualquier tipo de informacion en esta parte<br>\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-04 23:37:13\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-04 23:37:13\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-04 23:37:13'),
+(4, 1, 'compras', 'update', '\"{\\n    \\\"id_compra\\\": 1,\\n    \\\"codigo\\\": \\\"CMPR-00001\\\",\\n    \\\"num_factura\\\": \\\"1\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-01-04\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"Este es un comentario, puede agregar cualquier tipo de informacion en esta parte<br>\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-04 23:37:13\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-04 23:37:13\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"num_factura\\\": \\\"1\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\"\\n}\"', 1, '2024-01-05 09:08:53'),
+(5, 1, 'marcas', 'create', '\"{\\n    \\\"id_marca\\\": 1,\\n    \\\"nombre\\\": \\\"Ford\\\",\\n    \\\"descripcion\\\": \\\"<p>Descripci\\\\u00f3n de la marca FORD<br><\\\\/p>\\\",\\n    \\\"imagen\\\": \\\"\\\\/importadora\\\\/web\\\\/marcas\\\\/W_4dY4WioYFagqdWh4YKDmt3bnXw3ROK.png\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 19:34:57\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 19:34:57\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"0\\\"\\n}\"', NULL, 1, '2024-01-05 19:34:57'),
+(6, 1, 'categorias', 'create', '\"{\\n    \\\"id_categoria\\\": 1,\\n    \\\"nombre\\\": \\\"Veh\\\\u00edculo\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 19:36:28\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 19:36:28\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-01-05 19:36:28'),
+(7, 2, 'categorias', 'create', '\"{\\n    \\\"id_categoria\\\": 2,\\n    \\\"nombre\\\": \\\"Medio de transporte\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 19:37:22\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 19:37:22\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-01-05 19:37:22'),
+(8, 1, 'sub-categorias', 'create', '\"{\\n    \\\"id_sub_categoria\\\": 1,\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"nombre\\\": \\\"Tractor\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 19:37:38\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 19:37:38\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-01-05 19:37:38'),
+(9, 1, 'productos', 'create', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 1\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-05 20:17:31'),
+(10, 1, 'productos', 'delete', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 1\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000.00\\\",\\n    \\\"id_categoria\\\": 2,\\n    \\\"id_sub_categoria\\\": 1,\\n    \\\"id_marca\\\": 1,\\n    \\\"is_car\\\": 0,\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": null,\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": null,\\n    \\\"iva\\\": 13,\\n    \\\"estado\\\": 1,\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"estado\\\": 0\\n}\"', 1, '2024-01-05 20:20:18'),
+(11, 2, 'productos', 'create', '\"{\\n    \\\"id_producto\\\": 2,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 1\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"50000\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:20:47\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 20:20:47\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-05 20:20:47'),
+(12, 1, 'compras', 'inventario', '\"{\\n    \\\"id_compra\\\": 1,\\n    \\\"codigo\\\": \\\"CMPR-00001\\\",\\n    \\\"num_factura\\\": 1,\\n    \\\"id_proveedor\\\": 1,\\n    \\\"tipo_compra\\\": 1,\\n    \\\"fecha\\\": \\\"2024-01-04\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"Este es un comentario, puede agregar cualquier tipo de informacion en esta parte<br>\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-04 23:37:13\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 09:08:53\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"estado\\\": 1\\n}\"', 1, '2024-01-06 20:25:01'),
+(13, 2, 'compras', 'create', '\"{\\n    \\\"id_compra\\\": 2,\\n    \\\"codigo\\\": \\\"CMPR-00002\\\",\\n    \\\"num_factura\\\": \\\"2\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-1-06\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-06 20:25:44\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-06 20:25:44\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-06 20:25:44'),
+(14, 1, 'productos', 'update', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 2\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000.00\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"0\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-05 20:20:18\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"nombre\\\": \\\"Tractor ejemplo 2\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"0\\\"\\n}\"', 1, '2024-01-06 20:26:05'),
+(15, 1, 'productos', 'update', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 2\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000.00\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-06 20:26:05\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', 1, '2024-01-06 20:26:13'),
+(16, 3, 'compras', 'create', '\"{\\n    \\\"id_compra\\\": 3,\\n    \\\"codigo\\\": \\\"CMPR-00003\\\",\\n    \\\"num_factura\\\": \\\"3\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-1-07\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-07 18:46:16\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-07 18:46:16\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-07 18:46:16'),
+(17, 2, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 2,\\n    \\\"id_compra\\\": \\\"3\\\",\\n    \\\"id_producto\\\": \\\"1\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"22000\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": null,\\n    \\\"otros_gastos\\\": null,\\n    \\\"detalle_otros_gastos\\\": null,\\n    \\\"valor_aduana\\\": null,\\n    \\\"dai\\\": null,\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"5278dc9f-169c-472f-b443-0d839efd258b\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-07 19:37:59\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-07 19:37:59\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-07 19:37:59'),
+(18, 1, 'productos', 'update', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 2\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000.00\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-06 20:26:13\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"\\\",\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', 1, '2024-01-07 19:38:26'),
+(19, 1, 'productos', 'update', '\"{\\n    \\\"id_producto\\\": 1,\\n    \\\"nombre\\\": \\\"Tractor ejemplo 2\\\",\\n    \\\"sku\\\": \\\"4225-776-3234\\\",\\n    \\\"descripcion\\\": \\\"\\\",\\n    \\\"precio\\\": \\\"30000.00\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-05 20:17:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-07 19:38:26\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"\\\",\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', 1, '2024-01-07 19:38:50'),
+(20, 3, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 3,\\n    \\\"id_compra\\\": \\\"2\\\",\\n    \\\"id_producto\\\": \\\"1\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"30000\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": null,\\n    \\\"otros_gastos\\\": null,\\n    \\\"detalle_otros_gastos\\\": null,\\n    \\\"valor_aduana\\\": null,\\n    \\\"dai\\\": null,\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"32ac0860-0dff-4575-b4eb-6a67095a2e14\\\",\\n    \\\"fecha_ing\\\": \\\"2024-01-07 19:41:31\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-07 19:41:31\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-01-07 19:41:31'),
+(21, 3, 'compras', 'inventario', '\"{\\n    \\\"id_compra\\\": 3,\\n    \\\"codigo\\\": \\\"CMPR-00003\\\",\\n    \\\"num_factura\\\": 3,\\n    \\\"id_proveedor\\\": 1,\\n    \\\"tipo_compra\\\": 1,\\n    \\\"fecha\\\": \\\"2024-01-07\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-01-07 18:46:16\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-01-07 18:46:16\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"estado\\\": 1\\n}\"', 1, '2024-02-06 22:15:01'),
+(22, 4, 'compras', 'create', '\"{\\n    \\\"id_compra\\\": 4,\\n    \\\"codigo\\\": \\\"CMPR-00004\\\",\\n    \\\"num_factura\\\": \\\"00002\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-2-09\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-02-09 15:08:40\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-09 15:08:40\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-02-09 15:08:40'),
+(23, 4, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 4,\\n    \\\"id_compra\\\": \\\"4\\\",\\n    \\\"id_producto\\\": \\\"2\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"20000\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"0.00\\\",\\n    \\\"otros_gastos\\\": \\\"0.00\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"\\\",\\n    \\\"valor_aduana\\\": \\\"0.00\\\",\\n    \\\"dai\\\": \\\"0.00\\\",\\n    \\\"apm\\\": \\\"0.00\\\",\\n    \\\"vts\\\": \\\"0.00\\\",\\n    \\\"its\\\": \\\"0.00\\\",\\n    \\\"aiv\\\": \\\"0.00\\\",\\n    \\\"opm\\\": \\\"0.00\\\",\\n    \\\"uuid\\\": \\\"52d68ef3-30f2-4f7c-868b-2e8df655cc06\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-09 15:18:01\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-09 15:18:01\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-02-09 15:18:01'),
+(24, 4, 'compras', 'inventario', '\"{\\n    \\\"id_compra\\\": 4,\\n    \\\"codigo\\\": \\\"CMPR-00004\\\",\\n    \\\"num_factura\\\": 2,\\n    \\\"id_proveedor\\\": 1,\\n    \\\"tipo_compra\\\": 1,\\n    \\\"fecha\\\": \\\"2024-02-09\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-02-09 15:08:40\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-09 15:08:40\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', '\"{\\n    \\\"estado\\\": 1\\n}\"', 1, '2024-02-09 15:20:53'),
+(25, 2, 'clientes', 'create', '\"{\\n    \\\"id_cliente\\\": 2,\\n    \\\"nombre\\\": \\\"Cliente 1\\\",\\n    \\\"apellido\\\": \\\"Apellido Cliente\\\",\\n    \\\"telefono\\\": \\\"7898-3669\\\",\\n    \\\"email\\\": \\\"sdf@gmail.com\\\",\\n    \\\"nit\\\": \\\"123456789-12\\\",\\n    \\\"nrc\\\": \\\"1252255-2\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-26 09:26:53\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 09:26:53\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-02-26 09:26:53'),
+(26, 1, 'direcciones', 'create', '\"{\\n    \\\"id_direccion\\\": 1,\\n    \\\"id_cliente\\\": \\\"1\\\",\\n    \\\"contacto\\\": \\\"German Osorto Reyes\\\",\\n    \\\"telefono\\\": \\\"7859-9668\\\",\\n    \\\"direccion\\\": \\\"<p>Colonia San Miguel<br><\\\\/p>\\\",\\n    \\\"id_departamento\\\": \\\"12\\\",\\n    \\\"id_municipio\\\": \\\"67\\\",\\n    \\\"principal\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-26 09:40:29\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 09:40:29\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-02-26 09:40:29'),
+(27, 1, 'ordenes', 'create', '\"{\\n    \\\"id_orden\\\": 1,\\n    \\\"codigo\\\": \\\"ORCL-00001\\\",\\n    \\\"id_cliente\\\": \\\"1\\\",\\n    \\\"id_direccion\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-2-26\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-02-26 09:46:41\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 09:46:41\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": 0\\n}\"', NULL, 1, '2024-02-26 09:46:41'),
+(28, 3, 'clientes', 'create', '\"{\\n    \\\"id_cliente\\\": 3,\\n    \\\"nombre\\\": \\\"Cliente nuevo Contr\\\",\\n    \\\"apellido\\\": \\\"Apellido Contr\\\",\\n    \\\"telefono\\\": \\\"7248-6986\\\",\\n    \\\"email\\\": \\\"sj@gmail.com\\\",\\n    \\\"nit\\\": \\\"2233-9699-69\\\",\\n    \\\"nrc\\\": \\\"252229-66\\\",\\n    \\\"contribuyente\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-26 10:00:22\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 10:00:22\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-02-26 10:00:22'),
+(29, 2, 'ordenes', 'create', '\"{\\n    \\\"id_orden\\\": 2,\\n    \\\"codigo\\\": \\\"ORCL-00002\\\",\\n    \\\"id_cliente\\\": \\\"1\\\",\\n    \\\"id_direccion\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-2-26\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-02-26 11:13:39\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 11:13:39\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": 0\\n}\"', NULL, 1, '2024-02-26 11:13:39');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_categorias`
+-- Table structure for table `tbl_categorias`
 --
 
-DROP TABLE IF EXISTS `tbl_categorias`;
-CREATE TABLE IF NOT EXISTS `tbl_categorias` (
-  `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `descripcion` text COLLATE utf8_spanish2_ci,
+CREATE TABLE `tbl_categorias` (
+  `id_categoria` int NOT NULL,
+  `nombre` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
-  `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_categoria`),
-  KEY `tbl_categoiras_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_categoiras_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_mod` int DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_categorias`
+--
+
+INSERT INTO `tbl_categorias` (`id_categoria`, `nombre`, `descripcion`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(1, 'Vehículo', '', '2024-01-05 19:36:28', 1, '2024-01-05 19:36:28', 1, 1),
+(2, 'Medio de transporte', '', '2024-01-05 19:37:22', 1, '2024-01-05 19:37:22', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_clientes`
+-- Table structure for table `tbl_clientes`
 --
 
-DROP TABLE IF EXISTS `tbl_clientes`;
-CREATE TABLE IF NOT EXISTS `tbl_clientes` (
-  `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `apellido` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `telefono` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+CREATE TABLE `tbl_clientes` (
+  `id_cliente` int NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `apellido` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `telefono` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `nit` varchar(20) COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `nrc` varchar(20) COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `contribuyente` tinyint(1) NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
-  `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_cliente`),
-  KEY `tbl_clientes_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_clientes_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_mod` int DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_clientes`
+--
+
+INSERT INTO `tbl_clientes` (`id_cliente`, `nombre`, `apellido`, `telefono`, `email`, `nit`, `nrc`, `contribuyente`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(1, 'Cesar Mauricio', 'Martinez Reyes', '7241-9858', 'mauricio@gmail.com', '', '', 0, '2024-01-04 23:28:42', 1, '2024-01-04 23:28:42', 1, 1),
+(2, 'Cliente 1', 'Apellido Cliente', '7898-3669', 'sdf@gmail.com', '123456789-12', '1252255-2', 0, '2024-02-26 09:26:53', 1, '2024-02-26 09:26:53', 1, 1),
+(3, 'Cliente nuevo Contr', 'Apellido Contr', '7248-6986', 'sj@gmail.com', '2233-9699-69', '252229-66', 1, '2024-02-26 10:00:22', 1, '2024-02-26 10:00:22', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_compras`
+-- Table structure for table `tbl_compras`
 --
 
-DROP TABLE IF EXISTS `tbl_compras`;
-CREATE TABLE IF NOT EXISTS `tbl_compras` (
-  `id_compra` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(10) COLLATE utf8_spanish2_ci NOT NULL,
-  `num_factura` int(8) NOT NULL,
-  `id_proveedor` int(11) NOT NULL,
-  `tipo_compra` tinyint(4) NOT NULL,
+CREATE TABLE `tbl_compras` (
+  `id_compra` int NOT NULL,
+  `codigo` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `num_factura` int NOT NULL,
+  `id_proveedor` int NOT NULL,
+  `tipo_compra` tinyint NOT NULL,
   `fecha` date NOT NULL,
-  `anulado` tinyint(4) NOT NULL DEFAULT '0',
-  `comentarios` text COLLATE utf8_spanish2_ci,
-  `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
-  `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
+  `anulado` tinyint NOT NULL DEFAULT '0',
+  `comentarios` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci,
   `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_compra`),
-  KEY `tbl_compras_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_compras_fk_id_usuario_mod` (`id_usuario_mod`),
-  KEY `tbl_compras_fk_id_proveedor` (`id_proveedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `fecha_ing` datetime DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `id_usuario_mod` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_compras`
+--
+
+INSERT INTO `tbl_compras` (`id_compra`, `codigo`, `num_factura`, `id_proveedor`, `tipo_compra`, `fecha`, `anulado`, `comentarios`, `estado`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
+(1, 'CMPR-00001', 1, 1, 1, '2024-01-04', 0, 'Este es un comentario, puede agregar cualquier tipo de informacion en esta parte<br>', 1, '2024-01-04 23:37:13', 1, '2024-01-06 20:25:01', 1),
+(2, 'CMPR-00002', 2, 1, 1, '2024-01-06', 0, '', 0, '2024-01-06 20:25:44', 1, '2024-01-06 20:25:44', 1),
+(3, 'CMPR-00003', 3, 1, 1, '2024-01-07', 0, '', 1, '2024-01-07 18:46:16', 1, '2024-02-06 22:15:01', 1),
+(4, 'CMPR-00004', 2, 1, 1, '2024-02-09', 0, '', 1, '2024-02-09 15:08:40', 1, '2024-02-09 15:20:53', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_departamentos`
+-- Table structure for table `tbl_condicion_producto`
 --
 
-DROP TABLE IF EXISTS `tbl_departamentos`;
-CREATE TABLE IF NOT EXISTS `tbl_departamentos` (
-  `id_departamento` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `codigo` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  PRIMARY KEY (`id_departamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+CREATE TABLE `tbl_condicion_producto` (
+  `id_condicion` int NOT NULL,
+  `nombre_condicion` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `fecha_ing` datetime DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `id_usuario_mod` int DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+-- --------------------------------------------------------
 
 --
--- Volcado de datos para la tabla `tbl_departamentos`
+-- Table structure for table `tbl_departamentos`
+--
+
+CREATE TABLE `tbl_departamentos` (
+  `id_departamento` int NOT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `codigo` varchar(5) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `tbl_departamentos`
 --
 
 INSERT INTO `tbl_departamentos` (`id_departamento`, `nombre`, `codigo`) VALUES
@@ -282,183 +333,230 @@ INSERT INTO `tbl_departamentos` (`id_departamento`, `nombre`, `codigo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_det_compras`
+-- Table structure for table `tbl_det_compras`
 --
 
-DROP TABLE IF EXISTS `tbl_det_compras`;
-CREATE TABLE IF NOT EXISTS `tbl_det_compras` (
-  `id_det_compra` int(11) NOT NULL AUTO_INCREMENT,
-  `id_compra` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
+CREATE TABLE `tbl_det_compras` (
+  `id_det_compra` int NOT NULL,
+  `id_compra` int NOT NULL,
+  `id_producto` int NOT NULL,
+  `cantidad` int NOT NULL,
   `costo` decimal(10,2) NOT NULL,
   `descuento` decimal(10,2) NOT NULL,
-  `uuid` varchar(36) COLLATE utf8_spanish2_ci NOT NULL,
+  `gastos_transporte` decimal(10,2) DEFAULT NULL,
+  `otros_gastos` decimal(10,2) DEFAULT NULL,
+  `detalle_otros_gastos` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `valor_aduana` decimal(10,2) DEFAULT NULL,
+  `dai` decimal(10,2) DEFAULT NULL,
+  `apm` decimal(10,2) DEFAULT NULL,
+  `vts` decimal(10,2) DEFAULT NULL,
+  `its` decimal(10,2) DEFAULT NULL,
+  `aiv` decimal(10,2) DEFAULT NULL,
+  `opm` decimal(10,2) DEFAULT NULL,
+  `uuid` varchar(36) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_det_compra`),
-  KEY `tbl_det_compras_fk_id_compra` (`id_compra`),
-  KEY `tbl_det_compras_fk_id_producto` (`id_producto`),
-  KEY `tbl_det_compras_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_det_compras_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_mod` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_det_compras`
+--
+
+INSERT INTO `tbl_det_compras` (`id_det_compra`, `id_compra`, `id_producto`, `cantidad`, `costo`, `descuento`, `gastos_transporte`, `otros_gastos`, `detalle_otros_gastos`, `valor_aduana`, `dai`, `apm`, `vts`, `its`, `aiv`, `opm`, `uuid`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
+(1, 2, 2, 1, '22222.00', '0.00', NULL, NULL, NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+(2, 3, 1, 1, '22000.00', '0.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5278dc9f-169c-472f-b443-0d839efd258b', '2024-01-07 19:37:59', 1, '2024-01-07 19:37:59', 1),
+(4, 4, 2, 1, '20000.00', '0.00', '0.00', '0.00', '', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '52d68ef3-30f2-4f7c-868b-2e8df655cc06', '2024-02-09 15:18:01', 1, '2024-02-09 15:18:01', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_det_ordenes`
+-- Table structure for table `tbl_det_ordenes`
 --
 
-DROP TABLE IF EXISTS `tbl_det_ordenes`;
-CREATE TABLE IF NOT EXISTS `tbl_det_ordenes` (
-  `id_det_orden` int(11) NOT NULL AUTO_INCREMENT,
-  `id_orden` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
+CREATE TABLE `tbl_det_ordenes` (
+  `id_det_orden` int NOT NULL,
+  `id_orden` int NOT NULL,
+  `id_producto` int NOT NULL,
+  `cantidad` int NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   `descuento` decimal(10,2) NOT NULL,
-  `uuid` varchar(36) COLLATE utf8_spanish2_ci NOT NULL,
+  `uuid` varchar(36) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `credito_fiscal` decimal(10,2) DEFAULT NULL,
+  `consumidor_final` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_det_orden`),
-  KEY `tbl_det_ordenes_fk_id_orden` (`id_orden`),
-  KEY `tbl_det_ordenes_fk_id_producto` (`id_producto`),
-  KEY `tbl_det_ordenes_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_det_ordenes_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_mod` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_direcciones`
+-- Table structure for table `tbl_direcciones`
 --
 
-DROP TABLE IF EXISTS `tbl_direcciones`;
-CREATE TABLE IF NOT EXISTS `tbl_direcciones` (
-  `id_direccion` int(11) NOT NULL AUTO_INCREMENT,
-  `id_cliente` int(11) NOT NULL,
-  `contacto` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
-  `telefono` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `direccion` text COLLATE utf8_spanish2_ci NOT NULL,
-  `id_departamento` int(11) NOT NULL,
-  `id_municipio` int(11) NOT NULL,
+CREATE TABLE `tbl_direcciones` (
+  `id_direccion` int NOT NULL,
+  `id_cliente` int NOT NULL,
+  `contacto` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `telefono` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `direccion` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `id_departamento` int NOT NULL,
+  `id_municipio` int NOT NULL,
   `principal` tinyint(1) NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
-  `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_direccion`),
-  KEY `tbl_direcciones_fk_id_cliente` (`id_cliente`),
-  KEY `tbl_direcciones_fk_id_departamento` (`id_departamento`),
-  KEY `tbl_direcciones_fk_id_municipio` (`id_municipio`),
-  KEY `tbl_direcciones_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_direcciones_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_mod` int DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_direcciones`
+--
+
+INSERT INTO `tbl_direcciones` (`id_direccion`, `id_cliente`, `contacto`, `telefono`, `direccion`, `id_departamento`, `id_municipio`, `principal`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(1, 1, 'German Osorto Reyes', '7859-9668', '<p>Colonia San Miguel<br></p>', 12, 67, 1, '2024-02-26 09:40:29', 1, '2024-02-26 09:40:29', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_error_log`
+-- Table structure for table `tbl_duca`
 --
 
-DROP TABLE IF EXISTS `tbl_error_log`;
-CREATE TABLE IF NOT EXISTS `tbl_error_log` (
-  `id_error_log` int(11) NOT NULL,
+CREATE TABLE `tbl_duca` (
+  `id_duca` int NOT NULL,
+  `no_correlativo` int NOT NULL,
+  `no_duca` int NOT NULL,
+  `fecha_aceptacion` datetime NOT NULL,
+  `nombre_transportista` varchar(150) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `modo_transporte` varchar(100) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `pais_procedencia` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `pais_destino` varchar(100) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `pais_exportacion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `id_compra` int NOT NULL,
+  `fecha_ing` datetime DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `id_usuario_mod` int DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_duca`
+--
+
+INSERT INTO `tbl_duca` (`id_duca`, `no_correlativo`, `no_duca`, `fecha_aceptacion`, `nombre_transportista`, `modo_transporte`, `pais_procedencia`, `pais_destino`, `pais_exportacion`, `id_compra`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(2, 1233334, 13232, '2024-02-09 17:18:39', 'asdsd', 'dsds', 'dasds', 'dddds', 'asdads', 3, '2024-02-09 17:18:39', 1, '2024-02-09 17:18:39', 1, 1),
+(3, 2, 2, '2024-02-09 00:00:00', 'Mauricio Reyes', 'Terrestres', '', '', '', 3, '2024-02-09 12:57:43', 1, '2024-02-09 12:57:43', 1, 1),
+(4, 3, 3, '2024-02-09 00:00:00', '', '', '', '', '', 4, '2024-02-09 15:19:36', 1, '2024-02-09 15:19:36', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_error_log`
+--
+
+CREATE TABLE `tbl_error_log` (
+  `id_error_log` int NOT NULL,
   `controller` varchar(50) NOT NULL,
   `mensaje` text NOT NULL,
-  `us_id` int(11) NOT NULL,
-  `fecha` datetime NOT NULL,
-  PRIMARY KEY (`id_error_log`),
-  KEY `us_id` (`us_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `us_id` int NOT NULL,
+  `fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_inventario`
+-- Table structure for table `tbl_inventario`
 --
 
-DROP TABLE IF EXISTS `tbl_inventario`;
-CREATE TABLE IF NOT EXISTS `tbl_inventario` (
-  `id_inventario` int(11) NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(36) COLLATE utf8_spanish2_ci NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `existencia` int(11) NOT NULL,
-  `existencia_original` int(11) NOT NULL,
+CREATE TABLE `tbl_inventario` (
+  `id_inventario` int NOT NULL,
+  `uuid` varchar(36) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `id_producto` int NOT NULL,
+  `existencia` int NOT NULL,
+  `existencia_original` int NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_inventario`),
-  KEY `tbl_inventario_id_producto` (`id_producto`),
-  KEY `tbl_inventario_id_usuario_ing` (`id_usuario_ing`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_ing` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_inventario`
+--
+
+INSERT INTO `tbl_inventario` (`id_inventario`, `uuid`, `id_producto`, `existencia`, `existencia_original`, `fecha_ing`, `id_usuario_ing`) VALUES
+(1, '5278dc9f-169c-472f-b443-0d839efd258b', 1, 1, 1, '2024-02-06 22:15:01', 1),
+(2, '52d68ef3-30f2-4f7c-868b-2e8df655cc06', 2, 1, 1, '2024-02-09 15:20:53', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_kardex`
+-- Table structure for table `tbl_kardex`
 --
 
-DROP TABLE IF EXISTS `tbl_kardex`;
-CREATE TABLE IF NOT EXISTS `tbl_kardex` (
-  `id_kardex` int(11) NOT NULL AUTO_INCREMENT,
-  `id_documento` int(11) NOT NULL,
-  `cod_documento` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `num_documento` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `tipo_documento` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `uuid` varchar(36) COLLATE utf8_spanish2_ci NOT NULL,
+CREATE TABLE `tbl_kardex` (
+  `id_kardex` int NOT NULL,
+  `id_documento` int NOT NULL,
+  `cod_documento` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `num_documento` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `tipo_documento` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `id_producto` int NOT NULL,
+  `cantidad` int NOT NULL,
+  `uuid` varchar(36) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_kardex`),
-  KEY `tbl_kardex_id_producto` (`id_producto`),
-  KEY `tbl_kardex_id_usuario_ing` (`id_usuario_ing`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_ing` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_kardex`
+--
+
+INSERT INTO `tbl_kardex` (`id_kardex`, `id_documento`, `cod_documento`, `num_documento`, `tipo_documento`, `id_producto`, `cantidad`, `uuid`, `fecha_ing`, `id_usuario_ing`) VALUES
+(1, 3, 'CMPR-00003', '3', 'COMPRA', 1, 1, '5278dc9f-169c-472f-b443-0d839efd258b', '2024-02-06 22:15:01', 1),
+(2, 4, 'CMPR-00004', '2', 'COMPRA', 2, 1, '52d68ef3-30f2-4f7c-868b-2e8df655cc06', '2024-02-09 15:20:53', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_marcas`
+-- Table structure for table `tbl_marcas`
 --
 
-DROP TABLE IF EXISTS `tbl_marcas`;
-CREATE TABLE IF NOT EXISTS `tbl_marcas` (
-  `id_marca` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_marcas` (
+  `id_marca` int NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `descripcion` text,
   `imagen` varchar(255) DEFAULT NULL,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
-  `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_marca`),
-  KEY `tbl_marcas_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `fk_marcas_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_usuario_mod` int DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `tbl_marcas`
+--
+
+INSERT INTO `tbl_marcas` (`id_marca`, `nombre`, `descripcion`, `imagen`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(1, 'Ford', '<p>Descripción de la marca FORD<br></p>', '/importadora/web/marcas/W_4dY4WioYFagqdWh4YKDmt3bnXw3ROK.png', '2024-01-05 19:34:57', 1, '2024-01-05 19:34:57', 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_municipios`
+-- Table structure for table `tbl_municipios`
 --
 
-DROP TABLE IF EXISTS `tbl_municipios`;
-CREATE TABLE IF NOT EXISTS `tbl_municipios` (
-  `id_municipio` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `id_departamento` int(11) NOT NULL,
-  PRIMARY KEY (`id_municipio`),
-  KEY `id_departamento` (`id_departamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8;
+CREATE TABLE `tbl_municipios` (
+  `id_municipio` int NOT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `id_departamento` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Volcado de datos para la tabla `tbl_municipios`
+-- Dumping data for table `tbl_municipios`
 --
 
 INSERT INTO `tbl_municipios` (`id_municipio`, `nombre`, `id_departamento`) VALUES
@@ -728,231 +826,593 @@ INSERT INTO `tbl_municipios` (`id_municipio`, `nombre`, `id_departamento`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_ordenes`
+-- Table structure for table `tbl_ordenes`
 --
 
-DROP TABLE IF EXISTS `tbl_ordenes`;
-CREATE TABLE IF NOT EXISTS `tbl_ordenes` (
-  `id_orden` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(10) COLLATE utf8_spanish2_ci NOT NULL,
-  `id_cliente` int(11) NOT NULL,
-  `id_direccion` int(11) NOT NULL,
+CREATE TABLE `tbl_ordenes` (
+  `id_orden` int NOT NULL,
+  `codigo` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `id_cliente` int NOT NULL,
+  `id_direccion` int NOT NULL,
   `fecha` date NOT NULL,
-  `anulado` tinyint(4) NOT NULL,
+  `anulado` tinyint NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
-  `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_orden`),
-  KEY `tbl_ordenes_fk_id_cliente` (`id_cliente`),
-  KEY `tbl_ordenes_fk_id_direccion` (`id_direccion`),
-  KEY `tbl_ordenes_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_ordenes_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_mod` int DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_ordenes`
+--
+
+INSERT INTO `tbl_ordenes` (`id_orden`, `codigo`, `id_cliente`, `id_direccion`, `fecha`, `anulado`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(1, 'ORCL-00001', 1, 1, '2024-02-26', 0, '2024-02-26 09:46:41', 1, '2024-02-26 09:46:41', 1, 0),
+(2, 'ORCL-00002', 1, 1, '2024-02-26', 0, '2024-02-26 11:13:39', 1, '2024-02-26 11:13:39', 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_productos`
+-- Table structure for table `tbl_productos`
 --
 
-DROP TABLE IF EXISTS `tbl_productos`;
-CREATE TABLE IF NOT EXISTS `tbl_productos` (
-  `id_producto` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `sku` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `descripcion` text COLLATE utf8_spanish2_ci,
+CREATE TABLE `tbl_productos` (
+  `id_producto` int NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `sku` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci,
   `precio` decimal(10,2) NOT NULL,
-  `id_categoria` int(11) NOT NULL,
-  `id_sub_categoria` int(11) NOT NULL,
-  `id_marca` int(11) NOT NULL,
-  `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
-  `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
+  `id_categoria` int NOT NULL,
+  `id_sub_categoria` int NOT NULL,
+  `id_marca` int NOT NULL,
+  `is_car` tinyint(1) NOT NULL,
+  `vin` varchar(17) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `pais_procedencia` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `chasis_grabado` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  `tipo_combustible` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `id_condicion` int DEFAULT NULL,
+  `iva` float DEFAULT NULL,
   `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_producto`),
-  KEY `tbl_producto_fk_id_categoria` (`id_categoria`),
-  KEY `tbl_producto_fk_id_sub_categoria` (`id_sub_categoria`),
-  KEY `tbl_producto_fk_id_marca` (`id_marca`),
-  KEY `tbl_producto_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_producto_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `fecha_ing` datetime DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `id_usuario_mod` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_productos`
+--
+
+INSERT INTO `tbl_productos` (`id_producto`, `nombre`, `sku`, `descripcion`, `precio`, `id_categoria`, `id_sub_categoria`, `id_marca`, `is_car`, `vin`, `pais_procedencia`, `chasis_grabado`, `year`, `tipo_combustible`, `id_condicion`, `iva`, `estado`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
+(1, 'Tractor ejemplo 2', '4225-776-3234', '', '30000.00', 2, 1, 1, 0, '', '', '', NULL, '', NULL, NULL, 1, '2024-01-05 20:17:31', 1, '2024-01-07 19:38:50', 1),
+(2, 'Tractor ejemplo 1', '4225-776-3234', '', '50000.00', 2, 1, 1, 0, '', '', '', NULL, '', NULL, 13, 1, '2024-01-05 20:20:47', 1, '2024-01-05 20:20:47', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_productos_imagenes`
+-- Table structure for table `tbl_productos_imagenes`
 --
 
-DROP TABLE IF EXISTS `tbl_productos_imagenes`;
-CREATE TABLE IF NOT EXISTS `tbl_productos_imagenes` (
-  `id_producto_imagen` int(11) NOT NULL AUTO_INCREMENT,
-  `id_producto` int(11) NOT NULL,
-  `imagen` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+CREATE TABLE `tbl_productos_imagenes` (
+  `id_producto_imagen` int NOT NULL,
+  `id_producto` int NOT NULL,
+  `imagen` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
   `principal` tinyint(1) NOT NULL,
   `fecha_ing` datetime NOT NULL,
-  `id_usuario_ing` int(11) NOT NULL,
-  PRIMARY KEY (`id_producto_imagen`),
-  KEY `tbl_productos_imagenes_fk_id_producto` (`id_producto`),
-  KEY `tbl_productos_imagenes_fk_id_usuario_ing` (`id_usuario_ing`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_ing` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_proveedores`
+-- Table structure for table `tbl_proveedores`
 --
 
-DROP TABLE IF EXISTS `tbl_proveedores`;
-CREATE TABLE IF NOT EXISTS `tbl_proveedores` (
-  `id_proveedor` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `descripcion` text COLLATE utf8_spanish2_ci,
-  `id_departamento` int(11) NOT NULL,
-  `id_municipio` int(11) NOT NULL,
-  `telefono` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
-  `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
-  `fecha_mod` int(11) DEFAULT NULL,
+CREATE TABLE `tbl_proveedores` (
+  `id_proveedor` int NOT NULL,
+  `codigo` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci,
+  `id_departamento` int NOT NULL,
+  `id_municipio` int NOT NULL,
+  `telefono` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `giro` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `nit` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `dui` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `nrc` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `nacionalidad` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `direccion_personal` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `direccion_comercial` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `razon_social` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `contribuyente` tinyint(1) NOT NULL,
   `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_proveedor`),
-  KEY `tbl_proveedores_fk_id_departamento` (`id_departamento`),
-  KEY `tbl_proveedores_fk_id_municipio` (`id_municipio`),
-  KEY `tbl_proveedores_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_proveedores_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `fecha_ing` datetime DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
+  `id_usuario_mod` int DEFAULT NULL,
+  `fecha_mod` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_proveedores`
+--
+
+INSERT INTO `tbl_proveedores` (`id_proveedor`, `codigo`, `nombre`, `descripcion`, `id_departamento`, `id_municipio`, `telefono`, `email`, `giro`, `nit`, `dui`, `nrc`, `nacionalidad`, `direccion_personal`, `direccion_comercial`, `razon_social`, `contribuyente`, `estado`, `fecha_ing`, `id_usuario_ing`, `id_usuario_mod`, `fecha_mod`) VALUES
+(1, 'Prove0001', 'COPART', '<p>Esta es una empresa que se dedica a la comercializacion de vehiculos<br></p>', 14, 111, '7878-8822', 'copart@gmail.com', 'Venta de vehiculos', '0000-000000-000-1', '12234556-7', '777777-7', 'EEUU', '<p>Direccion personal 1<br></p>', '<p>Direccion comercial 1<br></p>', 'COPART AUTOS ESPAÑA, S.L.U.', 1, 1, '2024-01-04 23:35:11', 1, 1, 2024);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_sub_categorias`
+-- Table structure for table `tbl_sub_categorias`
 --
 
-DROP TABLE IF EXISTS `tbl_sub_categorias`;
-CREATE TABLE IF NOT EXISTS `tbl_sub_categorias` (
-  `id_sub_categoria` int(11) NOT NULL AUTO_INCREMENT,
-  `id_categoria` int(11) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `descripcion` text COLLATE utf8_spanish2_ci,
+CREATE TABLE `tbl_sub_categorias` (
+  `id_sub_categoria` int NOT NULL,
+  `id_categoria` int NOT NULL,
+  `nombre` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
-  `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_sub_categoria`),
-  KEY `tbl_sub_categorias_fk_id_categoria` (`id_categoria`),
-  KEY `tbl_sub_categorias_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_sub_categorias_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_mod` int DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_sub_categorias`
+--
+
+INSERT INTO `tbl_sub_categorias` (`id_sub_categoria`, `id_categoria`, `nombre`, `descripcion`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`, `estado`) VALUES
+(1, 2, 'Tractor', '', '2024-01-05 19:37:38', 1, '2024-01-05 19:37:38', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_usuarios`
+-- Table structure for table `tbl_usuarios`
 --
 
-DROP TABLE IF EXISTS `tbl_usuarios`;
-CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
-  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `nombre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `apellido` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `imagen` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `status` smallint(6) NOT NULL DEFAULT '10',
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id_usuario`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `tbl_usuarios` (
+  `id_usuario` int NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `apellido` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `auth_key` varchar(32) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `password_hash` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `imagen` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `status` smallint NOT NULL DEFAULT '10',
+  `created_at` int NOT NULL,
+  `updated_at` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
--- Volcado de datos para la tabla `tbl_usuarios`
+-- Dumping data for table `tbl_usuarios`
 --
 
 INSERT INTO `tbl_usuarios` (`id_usuario`, `username`, `nombre`, `apellido`, `auth_key`, `password_hash`, `email`, `imagen`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Admin', 'Admin', 'AxK42pI4nqEvIyBOBUJVfSR9oRTq-chL', '$2y$13$vfsku0ucja/nzCddYYjL3upKL9uDe/gUyNXK0gqTX0eJ7nFTRIrEu', 'admin@outlook.com', '/avatars/7A5_ev7RvHv5CzTWNZxOLeGpVGZM-ZZv.gif', 1, 1677203598, 1677203598),
+(1, 'admin', 'Admin', 'Admin', 'AxK42pI4nqEvIyBOBUJVfSR9oRTq-chL', '$2y$13$nV15ga15APLWl0K3S7B1h.8kd6twdrZektnAoK6YUZKLQ7b59Vyhe', 'admin@outlook.com', '/importadora/web/avatars/KWdR6NNOWW4FEYRvhPz4d2GPYh3x-Epo.png', 1, 1677203598, 1677203598),
 (2, 'Demo', 'demo', 'Demo', '_LDZ2AUvtDDoy36zC6bJhNgJRM9rYO3D', '$2y$13$hGFn5B62kUT0kmTZtQS8We5sIj0vsg1mDH/dyf/j1tZVatVcD4khi', 'demo@outlook.com', '/avatars/default.png', 1, 1677203935, 1677203935);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_ventas`
+-- Table structure for table `tbl_ventas`
 --
 
-DROP TABLE IF EXISTS `tbl_ventas`;
-CREATE TABLE IF NOT EXISTS `tbl_ventas` (
-  `id_venta` int(11) NOT NULL AUTO_INCREMENT,
-  `id_orden` int(11) NOT NULL,
-  `codigo` varchar(10) COLLATE utf8_spanish2_ci NOT NULL,
-  `num_factura` int(8) NOT NULL,
+CREATE TABLE `tbl_ventas` (
+  `id_venta` int NOT NULL,
+  `id_orden` int NOT NULL,
+  `codigo` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `num_factura` int NOT NULL,
   `tipo_venta` tinyint(1) NOT NULL,
   `fecha` date NOT NULL,
-  `comentarios` text COLLATE utf8_spanish2_ci NOT NULL,
+  `comentarios` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
   `fecha_ing` datetime DEFAULT NULL,
-  `id_usuario_ing` int(11) DEFAULT NULL,
+  `id_usuario_ing` int DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
-  `id_usuario_mod` int(11) DEFAULT NULL,
-  `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_venta`),
-  KEY `tbl_ventas_fk_id_orden` (`id_orden`),
-  KEY `tbl_ventas_fk_id_usuario_ing` (`id_usuario_ing`),
-  KEY `tbl_ventas_fk_id_usuario_mod` (`id_usuario_mod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `id_usuario_mod` int DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 --
--- Restricciones para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Filtros para la tabla `auth_assignment`
+-- Indexes for table `auth_assignment`
+--
+ALTER TABLE `auth_assignment`
+  ADD PRIMARY KEY (`item_name`,`user_id`),
+  ADD KEY `idx-auth_assignment-user_id` (`user_id`);
+
+--
+-- Indexes for table `auth_item`
+--
+ALTER TABLE `auth_item`
+  ADD PRIMARY KEY (`name`),
+  ADD KEY `rule_name` (`rule_name`),
+  ADD KEY `idx-auth_item-type` (`type`);
+
+--
+-- Indexes for table `auth_item_child`
+--
+ALTER TABLE `auth_item_child`
+  ADD PRIMARY KEY (`parent`,`child`),
+  ADD KEY `child` (`child`);
+
+--
+-- Indexes for table `auth_rule`
+--
+ALTER TABLE `auth_rule`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `tbl_bitacora`
+--
+ALTER TABLE `tbl_bitacora`
+  ADD PRIMARY KEY (`id_bitacora`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indexes for table `tbl_categorias`
+--
+ALTER TABLE `tbl_categorias`
+  ADD PRIMARY KEY (`id_categoria`),
+  ADD KEY `tbl_categoiras_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_categoiras_fk_id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_clientes`
+--
+ALTER TABLE `tbl_clientes`
+  ADD PRIMARY KEY (`id_cliente`),
+  ADD KEY `tbl_clientes_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_clientes_fk_id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_compras`
+--
+ALTER TABLE `tbl_compras`
+  ADD PRIMARY KEY (`id_compra`),
+  ADD KEY `tbl_compras_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_compras_fk_id_usuario_mod` (`id_usuario_mod`),
+  ADD KEY `tbl_compras_fk_id_proveedor` (`id_proveedor`);
+
+--
+-- Indexes for table `tbl_condicion_producto`
+--
+ALTER TABLE `tbl_condicion_producto`
+  ADD PRIMARY KEY (`id_condicion`),
+  ADD KEY `id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_departamentos`
+--
+ALTER TABLE `tbl_departamentos`
+  ADD PRIMARY KEY (`id_departamento`);
+
+--
+-- Indexes for table `tbl_det_compras`
+--
+ALTER TABLE `tbl_det_compras`
+  ADD PRIMARY KEY (`id_det_compra`),
+  ADD KEY `tbl_det_compras_fk_id_compra` (`id_compra`),
+  ADD KEY `tbl_det_compras_fk_id_producto` (`id_producto`),
+  ADD KEY `tbl_det_compras_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_det_compras_fk_id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_det_ordenes`
+--
+ALTER TABLE `tbl_det_ordenes`
+  ADD PRIMARY KEY (`id_det_orden`),
+  ADD KEY `tbl_det_ordenes_fk_id_orden` (`id_orden`),
+  ADD KEY `tbl_det_ordenes_fk_id_producto` (`id_producto`),
+  ADD KEY `tbl_det_ordenes_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_det_ordenes_fk_id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_direcciones`
+--
+ALTER TABLE `tbl_direcciones`
+  ADD PRIMARY KEY (`id_direccion`),
+  ADD KEY `tbl_direcciones_fk_id_cliente` (`id_cliente`),
+  ADD KEY `tbl_direcciones_fk_id_departamento` (`id_departamento`),
+  ADD KEY `tbl_direcciones_fk_id_municipio` (`id_municipio`),
+  ADD KEY `tbl_direcciones_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_direcciones_fk_id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_duca`
+--
+ALTER TABLE `tbl_duca`
+  ADD PRIMARY KEY (`id_duca`),
+  ADD KEY `id_compra` (`id_compra`),
+  ADD KEY `id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_error_log`
+--
+ALTER TABLE `tbl_error_log`
+  ADD PRIMARY KEY (`id_error_log`),
+  ADD KEY `us_id` (`us_id`);
+
+--
+-- Indexes for table `tbl_inventario`
+--
+ALTER TABLE `tbl_inventario`
+  ADD PRIMARY KEY (`id_inventario`),
+  ADD KEY `tbl_inventario_id_producto` (`id_producto`),
+  ADD KEY `tbl_inventario_id_usuario_ing` (`id_usuario_ing`);
+
+--
+-- Indexes for table `tbl_kardex`
+--
+ALTER TABLE `tbl_kardex`
+  ADD PRIMARY KEY (`id_kardex`),
+  ADD KEY `tbl_kardex_id_producto` (`id_producto`),
+  ADD KEY `tbl_kardex_id_usuario_ing` (`id_usuario_ing`);
+
+--
+-- Indexes for table `tbl_marcas`
+--
+ALTER TABLE `tbl_marcas`
+  ADD PRIMARY KEY (`id_marca`),
+  ADD KEY `tbl_marcas_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `fk_marcas_fk_id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_municipios`
+--
+ALTER TABLE `tbl_municipios`
+  ADD PRIMARY KEY (`id_municipio`),
+  ADD KEY `id_departamento` (`id_departamento`);
+
+--
+-- Indexes for table `tbl_ordenes`
+--
+ALTER TABLE `tbl_ordenes`
+  ADD PRIMARY KEY (`id_orden`),
+  ADD KEY `tbl_ordenes_fk_id_cliente` (`id_cliente`),
+  ADD KEY `tbl_ordenes_fk_id_direccion` (`id_direccion`),
+  ADD KEY `tbl_ordenes_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_ordenes_fk_id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_productos`
+--
+ALTER TABLE `tbl_productos`
+  ADD PRIMARY KEY (`id_producto`),
+  ADD KEY `tbl_producto_fk_id_categoria` (`id_categoria`),
+  ADD KEY `tbl_producto_fk_id_sub_categoria` (`id_sub_categoria`),
+  ADD KEY `tbl_producto_fk_id_marca` (`id_marca`),
+  ADD KEY `tbl_producto_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_producto_fk_id_usuario_mod` (`id_usuario_mod`),
+  ADD KEY `id_condicion` (`id_condicion`);
+
+--
+-- Indexes for table `tbl_productos_imagenes`
+--
+ALTER TABLE `tbl_productos_imagenes`
+  ADD PRIMARY KEY (`id_producto_imagen`),
+  ADD KEY `tbl_productos_imagenes_fk_id_producto` (`id_producto`),
+  ADD KEY `tbl_productos_imagenes_fk_id_usuario_ing` (`id_usuario_ing`);
+
+--
+-- Indexes for table `tbl_proveedores`
+--
+ALTER TABLE `tbl_proveedores`
+  ADD PRIMARY KEY (`id_proveedor`),
+  ADD KEY `tbl_proveedores_fk_id_departamento` (`id_departamento`),
+  ADD KEY `tbl_proveedores_fk_id_municipio` (`id_municipio`),
+  ADD KEY `tbl_proveedores_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_proveedores_fk_id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_sub_categorias`
+--
+ALTER TABLE `tbl_sub_categorias`
+  ADD PRIMARY KEY (`id_sub_categoria`),
+  ADD KEY `tbl_sub_categorias_fk_id_categoria` (`id_categoria`),
+  ADD KEY `tbl_sub_categorias_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_sub_categorias_fk_id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- Indexes for table `tbl_usuarios`
+--
+ALTER TABLE `tbl_usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `tbl_ventas`
+--
+ALTER TABLE `tbl_ventas`
+  ADD PRIMARY KEY (`id_venta`),
+  ADD KEY `tbl_ventas_fk_id_orden` (`id_orden`),
+  ADD KEY `tbl_ventas_fk_id_usuario_ing` (`id_usuario_ing`),
+  ADD KEY `tbl_ventas_fk_id_usuario_mod` (`id_usuario_mod`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_bitacora`
+--
+ALTER TABLE `tbl_bitacora`
+  MODIFY `id_bitacora` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `tbl_categorias`
+--
+ALTER TABLE `tbl_categorias`
+  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_clientes`
+--
+ALTER TABLE `tbl_clientes`
+  MODIFY `id_cliente` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_compras`
+--
+ALTER TABLE `tbl_compras`
+  MODIFY `id_compra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_condicion_producto`
+--
+ALTER TABLE `tbl_condicion_producto`
+  MODIFY `id_condicion` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_departamentos`
+--
+ALTER TABLE `tbl_departamentos`
+  MODIFY `id_departamento` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `tbl_det_compras`
+--
+ALTER TABLE `tbl_det_compras`
+  MODIFY `id_det_compra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_det_ordenes`
+--
+ALTER TABLE `tbl_det_ordenes`
+  MODIFY `id_det_orden` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_direcciones`
+--
+ALTER TABLE `tbl_direcciones`
+  MODIFY `id_direccion` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_duca`
+--
+ALTER TABLE `tbl_duca`
+  MODIFY `id_duca` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_inventario`
+--
+ALTER TABLE `tbl_inventario`
+  MODIFY `id_inventario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_kardex`
+--
+ALTER TABLE `tbl_kardex`
+  MODIFY `id_kardex` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_marcas`
+--
+ALTER TABLE `tbl_marcas`
+  MODIFY `id_marca` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_municipios`
+--
+ALTER TABLE `tbl_municipios`
+  MODIFY `id_municipio` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
+
+--
+-- AUTO_INCREMENT for table `tbl_ordenes`
+--
+ALTER TABLE `tbl_ordenes`
+  MODIFY `id_orden` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_productos`
+--
+ALTER TABLE `tbl_productos`
+  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_productos_imagenes`
+--
+ALTER TABLE `tbl_productos_imagenes`
+  MODIFY `id_producto_imagen` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_proveedores`
+--
+ALTER TABLE `tbl_proveedores`
+  MODIFY `id_proveedor` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_sub_categorias`
+--
+ALTER TABLE `tbl_sub_categorias`
+  MODIFY `id_sub_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_usuarios`
+--
+ALTER TABLE `tbl_usuarios`
+  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_ventas`
+--
+ALTER TABLE `tbl_ventas`
+  MODIFY `id_venta` int NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `auth_assignment`
 --
 ALTER TABLE `auth_assignment`
   ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `auth_item`
+-- Constraints for table `auth_item`
 --
 ALTER TABLE `auth_item`
   ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `auth_item_child`
+-- Constraints for table `auth_item_child`
 --
 ALTER TABLE `auth_item_child`
   ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `tbl_bitacora`
+-- Constraints for table `tbl_bitacora`
 --
 ALTER TABLE `tbl_bitacora`
   ADD CONSTRAINT `tbl_bitacora_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_categorias`
+-- Constraints for table `tbl_categorias`
 --
 ALTER TABLE `tbl_categorias`
   ADD CONSTRAINT `tbl_categoiras_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`),
   ADD CONSTRAINT `tbl_categoiras_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_clientes`
+-- Constraints for table `tbl_clientes`
 --
 ALTER TABLE `tbl_clientes`
   ADD CONSTRAINT `tbl_clientes_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`),
   ADD CONSTRAINT `tbl_clientes_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_compras`
+-- Constraints for table `tbl_compras`
 --
 ALTER TABLE `tbl_compras`
   ADD CONSTRAINT `tbl_compras_fk_id_proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `tbl_proveedores` (`id_proveedor`),
@@ -960,7 +1420,14 @@ ALTER TABLE `tbl_compras`
   ADD CONSTRAINT `tbl_compras_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_det_compras`
+-- Constraints for table `tbl_condicion_producto`
+--
+ALTER TABLE `tbl_condicion_producto`
+  ADD CONSTRAINT `tbl_condicion_producto_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`),
+  ADD CONSTRAINT `tbl_condicion_producto_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
+
+--
+-- Constraints for table `tbl_det_compras`
 --
 ALTER TABLE `tbl_det_compras`
   ADD CONSTRAINT `tbl_det_compras_fk_id_compra` FOREIGN KEY (`id_compra`) REFERENCES `tbl_compras` (`id_compra`),
@@ -969,7 +1436,7 @@ ALTER TABLE `tbl_det_compras`
   ADD CONSTRAINT `tbl_det_compras_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_det_ordenes`
+-- Constraints for table `tbl_det_ordenes`
 --
 ALTER TABLE `tbl_det_ordenes`
   ADD CONSTRAINT `tbl_det_ordenes_fk_id_orden` FOREIGN KEY (`id_orden`) REFERENCES `tbl_ordenes` (`id_orden`),
@@ -978,7 +1445,7 @@ ALTER TABLE `tbl_det_ordenes`
   ADD CONSTRAINT `tbl_det_ordenes_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_direcciones`
+-- Constraints for table `tbl_direcciones`
 --
 ALTER TABLE `tbl_direcciones`
   ADD CONSTRAINT `tbl_direcciones_fk_id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `tbl_clientes` (`id_cliente`),
@@ -988,40 +1455,48 @@ ALTER TABLE `tbl_direcciones`
   ADD CONSTRAINT `tbl_direcciones_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_error_log`
+-- Constraints for table `tbl_duca`
+--
+ALTER TABLE `tbl_duca`
+  ADD CONSTRAINT `tbl_duca_fk_id_compra` FOREIGN KEY (`id_compra`) REFERENCES `tbl_compras` (`id_compra`),
+  ADD CONSTRAINT `tbl_duca_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`),
+  ADD CONSTRAINT `tbl_duca_ibfk_1` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_error_log`
 --
 ALTER TABLE `tbl_error_log`
   ADD CONSTRAINT `tbl_error_log_ibfk_1` FOREIGN KEY (`us_id`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_inventario`
+-- Constraints for table `tbl_inventario`
 --
 ALTER TABLE `tbl_inventario`
   ADD CONSTRAINT `tbl_inventario_id_producto` FOREIGN KEY (`id_producto`) REFERENCES `tbl_productos` (`id_producto`),
   ADD CONSTRAINT `tbl_inventario_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_kardex`
+-- Constraints for table `tbl_kardex`
 --
 ALTER TABLE `tbl_kardex`
   ADD CONSTRAINT `tbl_kardex_id_producto` FOREIGN KEY (`id_producto`) REFERENCES `tbl_productos` (`id_producto`),
   ADD CONSTRAINT `tbl_kardex_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_marcas`
+-- Constraints for table `tbl_marcas`
 --
 ALTER TABLE `tbl_marcas`
   ADD CONSTRAINT `fk_marcas_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`),
   ADD CONSTRAINT `tbl_marcas_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_municipios`
+-- Constraints for table `tbl_municipios`
 --
 ALTER TABLE `tbl_municipios`
   ADD CONSTRAINT `tbl_municipios_fk_id_departamento` FOREIGN KEY (`id_departamento`) REFERENCES `tbl_departamentos` (`id_departamento`);
 
 --
--- Filtros para la tabla `tbl_ordenes`
+-- Constraints for table `tbl_ordenes`
 --
 ALTER TABLE `tbl_ordenes`
   ADD CONSTRAINT `tbl_ordenes_fk_id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `tbl_clientes` (`id_cliente`),
@@ -1030,24 +1505,25 @@ ALTER TABLE `tbl_ordenes`
   ADD CONSTRAINT `tbl_ordenes_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_productos`
+-- Constraints for table `tbl_productos`
 --
 ALTER TABLE `tbl_productos`
   ADD CONSTRAINT `tbl_producto_fk_id_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `tbl_categorias` (`id_categoria`),
+  ADD CONSTRAINT `tbl_producto_fk_id_condicion` FOREIGN KEY (`id_condicion`) REFERENCES `tbl_condicion_producto` (`id_condicion`),
   ADD CONSTRAINT `tbl_producto_fk_id_marca` FOREIGN KEY (`id_marca`) REFERENCES `tbl_marcas` (`id_marca`),
   ADD CONSTRAINT `tbl_producto_fk_id_sub_categoria` FOREIGN KEY (`id_sub_categoria`) REFERENCES `tbl_sub_categorias` (`id_sub_categoria`),
   ADD CONSTRAINT `tbl_producto_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`),
   ADD CONSTRAINT `tbl_producto_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_productos_imagenes`
+-- Constraints for table `tbl_productos_imagenes`
 --
 ALTER TABLE `tbl_productos_imagenes`
   ADD CONSTRAINT `tbl_productos_imagenes_fk_id_producto` FOREIGN KEY (`id_producto`) REFERENCES `tbl_productos` (`id_producto`),
   ADD CONSTRAINT `tbl_productos_imagenes_fk_id_usuario_ing` FOREIGN KEY (`id_usuario_ing`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_proveedores`
+-- Constraints for table `tbl_proveedores`
 --
 ALTER TABLE `tbl_proveedores`
   ADD CONSTRAINT `tbl_proveedores_fk_id_departamento` FOREIGN KEY (`id_departamento`) REFERENCES `tbl_departamentos` (`id_departamento`),
@@ -1056,7 +1532,7 @@ ALTER TABLE `tbl_proveedores`
   ADD CONSTRAINT `tbl_proveedores_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_sub_categorias`
+-- Constraints for table `tbl_sub_categorias`
 --
 ALTER TABLE `tbl_sub_categorias`
   ADD CONSTRAINT `tbl_sub_categorias_fk_id_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `tbl_categorias` (`id_categoria`),
@@ -1064,7 +1540,7 @@ ALTER TABLE `tbl_sub_categorias`
   ADD CONSTRAINT `tbl_sub_categorias_fk_id_usuario_mod` FOREIGN KEY (`id_usuario_mod`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
--- Filtros para la tabla `tbl_ventas`
+-- Constraints for table `tbl_ventas`
 --
 ALTER TABLE `tbl_ventas`
   ADD CONSTRAINT `tbl_ventas_fk_id_orden` FOREIGN KEY (`id_orden`) REFERENCES `tbl_ordenes` (`id_orden`),
