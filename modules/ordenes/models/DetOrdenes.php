@@ -18,6 +18,8 @@ use yii\behaviors\BlameableBehavior;
  * @property float $precio
  * @property float $descuento
  * @property string $uuid
+ * @property string $consumidor_final
+ * @property float $credito_fiscal
  * @property string|null $fecha_ing
  * @property int|null $id_usuario_ing
  * @property string|null $fecha_mod
@@ -64,9 +66,10 @@ class DetOrdenes extends \yii\db\ActiveRecord
         return [
             [['id_orden', 'id_producto', 'cantidad', 'precio', 'descuento', 'uuid'], 'required'],
             [['id_orden', 'id_producto', 'cantidad', 'id_usuario_ing', 'id_usuario_mod'], 'integer'],
-            [['precio', 'descuento'], 'number'],
+            [['precio', 'descuento', 'credito_fiscal'], 'number'],
             [['fecha_ing', 'fecha_mod'], 'safe'],
             [['uuid'], 'string', 'max' => 36],
+            [['consumidor_final'], 'string', 'max' => 100],
             [['id_orden'], 'exist', 'skipOnError' => true, 'targetClass' => Ordenes::class, 'targetAttribute' => ['id_orden' => 'id_orden']],
             [['id_producto'], 'exist', 'skipOnError' => true, 'targetClass' => Productos::class, 'targetAttribute' => ['id_producto' => 'id_producto']],
             [['id_usuario_ing'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['id_usuario_ing' => 'id_usuario']],
@@ -87,6 +90,8 @@ class DetOrdenes extends \yii\db\ActiveRecord
             'precio' => 'Precio',
             'descuento' => 'Descuento',
             'uuid' => 'Uuid',
+            'credito_fiscal' => 'Credito Fiscal',
+            'consumidor_final' => 'Documento de Consumidor Final',
             'fecha_ing' => 'Fecha Ingreso',
             'id_usuario_ing' => 'Registrado por',
             'fecha_mod' => 'Fecha Modificación',

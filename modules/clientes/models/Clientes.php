@@ -17,11 +17,15 @@ use Yii;
  * @property string $apellido
  * @property string $telefono
  * @property string $email
+ * @property string|null $nit
+ * @property string|null $nrc
+ *  @property int $contribuyente
  * @property string|null $fecha_ing
  * @property int|null $id_usuario_ing
  * @property string|null $fecha_mod
  * @property int|null $id_usuario_mod
  * @property int $estado
+
  *
  * @property Direcciones[] $Direcciones
  * @property Usuarios $usuarioIng
@@ -59,10 +63,11 @@ class Clientes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre', 'apellido', 'telefono', 'email', 'estado'], 'required'],
+            [['nombre', 'apellido', 'telefono', 'email', 'contribuyente', 'estado'], 'required'],
             [['fecha_ing', 'fecha_mod'], 'safe'],
             [['id_usuario_ing', 'id_usuario_mod', 'estado'], 'integer'],
             [['nombre', 'apellido'], 'string', 'max' => 100],
+            [['nit', 'nrc'], 'string', 'max' => 12],
             [['telefono'], 'string', 'max' => 15],
             [['email'], 'string', 'max' => 255],
             [['id_usuario_ing'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['id_usuario_ing' => 'id_usuario']],
@@ -81,6 +86,9 @@ class Clientes extends \yii\db\ActiveRecord
             'apellido' => 'Apellido',
             'telefono' => 'Teléfono',
             'email' => 'Email',
+            'nit' => 'NIT',
+            'nrc' => 'NRC',
+            'contribuyente' => 'Contribuyente',
             'fecha_ing' => 'Fecha de Ingreso',
             'id_usuario_ing' => 'Ingresado por',
             'fecha_mod' => 'Fecha de Modoficación',

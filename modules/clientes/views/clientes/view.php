@@ -52,6 +52,26 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                         </tr>
                         <tr>
+                            <th>NIT:</th>
+                            <td>
+                                <?=$model->nit?>
+                            </td>
+                        </tr>
+                        <tr>    
+                            <th>NRC:</th>
+                            <td>
+                                <?=$model->nrc?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Contribuyente:</th>
+                            <td>
+                                <span class="badge bg-<?=$model->contribuyente == 1 ? 'green' : 'red'?>">
+                                    <?= $model->contribuyente == 1 ? 'Si' : 'No/' ?>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
                             <th>Fecha de Creación:</th>
                             <td><?=date('d-m-Y H:m:i', strtotime($model->fecha_ing))?></td>
                         </tr>

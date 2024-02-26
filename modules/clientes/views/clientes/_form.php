@@ -66,7 +66,31 @@ Yii::$app->language = 'es_ES';
                                 )->textInput(['autofocus' => true]) ?>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-6 col-sm-12">
+                            <?= Html::activeLabel($model, 'nit', ['class' => '¨form-label']) ?>
+                            <?= $form->field($model, 'nit', ['showLabels'=>false])->textInput(['autofocus' => true]) ?>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <?= Html::activeLabel($model, 'nrc', ['class' => '¨form-label']) ?>
+                            <?= $form->field($model, 'nrc', ['showLabels'=>false])->textInput() ?>
+                        </div>
+
+                        <div class="col-md-6">
+                            <?php
+                                echo $form->field($model, 'contribuyente')->widget(SwitchInput::class, [
+                                    'pluginOptions' => [
+                                        'handleWidth' => 80,
+                                        'onColor' => 'success',
+                                        'offColor' => 'danger',
+                                        'onText' => '<i class="fa fa-check"></i> Si',
+                                        'offText' => '<i class="fa fa-ban"></i> No'
+                                    ]
+                                ]);
+                            ?>
+                        </div>
+
+                        <div class="col-md-6">
                             <?php
                                 echo $form->field($model, 'estado')->widget(SwitchInput::class, [
                                     'pluginOptions' => [

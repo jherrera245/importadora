@@ -136,7 +136,31 @@ use kartik\grid\GridView;
                                     ]
                                 )->textInput(['type'=>'number', 'min'=>'1']) ?>
                         </div>
-
+                        <?php
+                            if ($orden->cliente->contribuyente == 1) {   ?>
+                                <div class="col-md-4 col-sm-12">
+                                    <?= Html::activeLabel($model, 'credito_fiscal', ['class' => '¨form-label']) ?>
+                                    <?= $form->field(
+                                            $model, 
+                                            'credito_fiscal',
+                                            [
+                                                'showLabels'=>false,
+                                                'addon' => [ 
+                                                    'prepend' => [
+                                                        ['content' => '$'],
+                                                    ],
+                                                ]
+                                            ]
+                                        )->textInput(['type'=>'number', 'step' => '0.01', 'readonly' => false]) ?>
+                                    </div>
+                                
+                        <?php } else { ?>
+                            <div class="col-md-4 col-sm-12">
+                                <?= Html::activeLabel($model, 'consumidor_final', ['class' => '¨form-label']) ?>
+                                <?= $form->field($model, 'consumidor_final', ['showLabels'=>false])->textInput(['autofocus' => true]) ?>
+                            </div>
+                        <?php } ?>
+                
                         <div class="col-md-4 col-sm-12">
                             <?= Html::activeLabel($model, 'precio', ['class' => '¨form-label']) ?>
                             <?= $form->field(
