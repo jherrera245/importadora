@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <th>Contribuyente:</th>
                             <td>
                                 <span class="badge bg-<?=$model->contribuyente == 1 ? 'green' : 'red'?>">
-                                    <?= $model->contribuyente == 1 ? 'Si' : 'No/' ?>
+                                    <?= $model->contribuyente == 1 ? 'Si' : 'No' ?>
                                 </span>
                             </td>
                         </tr>

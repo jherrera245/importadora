@@ -202,6 +202,22 @@ echo Editable::widget([
                         </div>
 
                         <div class="col-md-4 col-sm-12">
+                            <?= Html::activeLabel($model, 'seguro', ['class' => 'form-label']) ?>
+                            <?= $form->field(
+                                    $model, 
+                                    'seguro',
+                                    [
+                                        'showLabels'=>false,
+                                        'addon' => [ 
+                                            'append' => [
+                                                ['content' => '$'],
+                                            ],
+                                        ]
+                                    ]
+                                )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
                             <?= Html::activeLabel($model, 'otros_gastos', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 

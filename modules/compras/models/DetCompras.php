@@ -18,6 +18,7 @@ use yii\behaviors\BlameableBehavior;
  * @property float $costo
  * @property float $descuento
  * @property float|null $gastos_transporte
+ * @property float|null $seguro
  * @property float|null $otros_gastos
  * @property string|null $detalle_otros_gastos
  * @property float|null $valor_aduana
@@ -72,7 +73,7 @@ class DetCompras extends \yii\db\ActiveRecord
         return [
             [['id_compra', 'id_producto', 'cantidad', 'costo', 'descuento', 'uuid'], 'required'],
             [['id_compra', 'id_producto', 'cantidad', 'id_usuario_ing', 'id_usuario_mod'], 'integer'],
-            [['costo', 'descuento', 'gastos_transporte', 'otros_gastos', 'valor_aduana', 'dai', 'apm', 'vts', 'its', 'aiv', 'opm'], 'number'],
+            [['costo', 'descuento', 'gastos_transporte', 'seguro', 'otros_gastos', 'valor_aduana', 'dai', 'apm', 'vts', 'its', 'aiv', 'opm'], 'number'],
             [['fecha_ing', 'fecha_mod'], 'safe'],
             [['detalle_otros_gastos'], 'string', 'max' => 150],
             [['uuid'], 'string', 'max' => 36],
@@ -96,6 +97,7 @@ class DetCompras extends \yii\db\ActiveRecord
             'costo' => 'Costo',
             'descuento' => 'Descuento',
             'gastos_transporte' => 'Gastos Transporte',
+            'seguro' => 'seguro',
             'otros_gastos' => 'Otros Gastos',
             'detalle_otros_gastos' => 'Detalle Otros Gastos',
             'valor_aduana' => 'Valor Aduana',
