@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 26, 2024 at 05:45 PM
+-- Generation Time: Feb 27, 2024 at 12:03 AM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.29
 
@@ -192,7 +192,8 @@ INSERT INTO `tbl_bitacora` (`id_bitacora`, `id_registro`, `controlador`, `accion
 (26, 1, 'direcciones', 'create', '\"{\\n    \\\"id_direccion\\\": 1,\\n    \\\"id_cliente\\\": \\\"1\\\",\\n    \\\"contacto\\\": \\\"German Osorto Reyes\\\",\\n    \\\"telefono\\\": \\\"7859-9668\\\",\\n    \\\"direccion\\\": \\\"<p>Colonia San Miguel<br><\\\\/p>\\\",\\n    \\\"id_departamento\\\": \\\"12\\\",\\n    \\\"id_municipio\\\": \\\"67\\\",\\n    \\\"principal\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-26 09:40:29\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 09:40:29\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-02-26 09:40:29'),
 (27, 1, 'ordenes', 'create', '\"{\\n    \\\"id_orden\\\": 1,\\n    \\\"codigo\\\": \\\"ORCL-00001\\\",\\n    \\\"id_cliente\\\": \\\"1\\\",\\n    \\\"id_direccion\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-2-26\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-02-26 09:46:41\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 09:46:41\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": 0\\n}\"', NULL, 1, '2024-02-26 09:46:41'),
 (28, 3, 'clientes', 'create', '\"{\\n    \\\"id_cliente\\\": 3,\\n    \\\"nombre\\\": \\\"Cliente nuevo Contr\\\",\\n    \\\"apellido\\\": \\\"Apellido Contr\\\",\\n    \\\"telefono\\\": \\\"7248-6986\\\",\\n    \\\"email\\\": \\\"sj@gmail.com\\\",\\n    \\\"nit\\\": \\\"2233-9699-69\\\",\\n    \\\"nrc\\\": \\\"252229-66\\\",\\n    \\\"contribuyente\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-26 10:00:22\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 10:00:22\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-02-26 10:00:22'),
-(29, 2, 'ordenes', 'create', '\"{\\n    \\\"id_orden\\\": 2,\\n    \\\"codigo\\\": \\\"ORCL-00002\\\",\\n    \\\"id_cliente\\\": \\\"1\\\",\\n    \\\"id_direccion\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-2-26\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-02-26 11:13:39\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 11:13:39\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": 0\\n}\"', NULL, 1, '2024-02-26 11:13:39');
+(29, 2, 'ordenes', 'create', '\"{\\n    \\\"id_orden\\\": 2,\\n    \\\"codigo\\\": \\\"ORCL-00002\\\",\\n    \\\"id_cliente\\\": \\\"1\\\",\\n    \\\"id_direccion\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-2-26\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-02-26 11:13:39\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 11:13:39\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": 0\\n}\"', NULL, 1, '2024-02-26 11:13:39'),
+(30, 1, 'det-ordenes', 'create', '\"{\\n    \\\"id_det_orden\\\": 1,\\n    \\\"id_orden\\\": \\\"1\\\",\\n    \\\"id_producto\\\": \\\"2\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"precio\\\": \\\"50000.00\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"uuid\\\": \\\"52d68ef3-30f2-4f7c-868b-2e8df655cc06\\\",\\n    \\\"credito_fiscal\\\": null,\\n    \\\"consumidor_final\\\": \\\"\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-26 11:52:44\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 11:52:44\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-02-26 11:52:44');
 
 -- --------------------------------------------------------
 
@@ -344,6 +345,7 @@ CREATE TABLE `tbl_det_compras` (
   `costo` decimal(10,2) NOT NULL,
   `descuento` decimal(10,2) NOT NULL,
   `gastos_transporte` decimal(10,2) DEFAULT NULL,
+  `seguro` decimal(10,2) DEFAULT NULL,
   `otros_gastos` decimal(10,2) DEFAULT NULL,
   `detalle_otros_gastos` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `valor_aduana` decimal(10,2) DEFAULT NULL,
@@ -364,10 +366,10 @@ CREATE TABLE `tbl_det_compras` (
 -- Dumping data for table `tbl_det_compras`
 --
 
-INSERT INTO `tbl_det_compras` (`id_det_compra`, `id_compra`, `id_producto`, `cantidad`, `costo`, `descuento`, `gastos_transporte`, `otros_gastos`, `detalle_otros_gastos`, `valor_aduana`, `dai`, `apm`, `vts`, `its`, `aiv`, `opm`, `uuid`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
-(1, 2, 2, 1, '22222.00', '0.00', NULL, NULL, NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
-(2, 3, 1, 1, '22000.00', '0.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5278dc9f-169c-472f-b443-0d839efd258b', '2024-01-07 19:37:59', 1, '2024-01-07 19:37:59', 1),
-(4, 4, 2, 1, '20000.00', '0.00', '0.00', '0.00', '', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '52d68ef3-30f2-4f7c-868b-2e8df655cc06', '2024-02-09 15:18:01', 1, '2024-02-09 15:18:01', 1);
+INSERT INTO `tbl_det_compras` (`id_det_compra`, `id_compra`, `id_producto`, `cantidad`, `costo`, `descuento`, `gastos_transporte`, `seguro`, `otros_gastos`, `detalle_otros_gastos`, `valor_aduana`, `dai`, `apm`, `vts`, `its`, `aiv`, `opm`, `uuid`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
+(1, 2, 2, 1, '22222.00', '0.00', NULL, '0.00', NULL, NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+(2, 3, 1, 1, '22000.00', '0.00', NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5278dc9f-169c-472f-b443-0d839efd258b', '2024-01-07 19:37:59', 1, '2024-01-07 19:37:59', 1),
+(4, 4, 2, 1, '20000.00', '0.00', '0.00', '0.00', '0.00', '', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '52d68ef3-30f2-4f7c-868b-2e8df655cc06', '2024-02-09 15:18:01', 1, '2024-02-09 15:18:01', 1);
 
 -- --------------------------------------------------------
 
@@ -1246,7 +1248,7 @@ ALTER TABLE `tbl_ventas`
 -- AUTO_INCREMENT for table `tbl_bitacora`
 --
 ALTER TABLE `tbl_bitacora`
-  MODIFY `id_bitacora` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_bitacora` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tbl_categorias`
@@ -1288,7 +1290,7 @@ ALTER TABLE `tbl_det_compras`
 -- AUTO_INCREMENT for table `tbl_det_ordenes`
 --
 ALTER TABLE `tbl_det_ordenes`
-  MODIFY `id_det_orden` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_det_orden` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_direcciones`
