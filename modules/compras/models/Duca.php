@@ -83,7 +83,7 @@ class Duca extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_duca' => 'Id Duca',
+            'id_duca' => 'ID',
             'no_correlativo' => 'No Correlativo',
             'no_duca' => 'No Duca',
             'fecha_aceptacion' => 'Fecha Aceptacion',
