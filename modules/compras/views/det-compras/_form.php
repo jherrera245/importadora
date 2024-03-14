@@ -233,7 +233,7 @@ echo Editable::widget([
                                 )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
+                        <div class="col-md-3 col-sm-12">
                             <?= Html::activeLabel($model, 'detalle_otros_gastos', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
@@ -249,7 +249,7 @@ echo Editable::widget([
                                 )->textInput(['type'=>'text']) ?>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
+                        <div class="col-md-3 col-sm-12">
                             <?= Html::activeLabel($model, 'valor_aduana', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
@@ -265,7 +265,7 @@ echo Editable::widget([
                                 )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
+                        <div class="col-md-3 col-sm-12">
                             <?= Html::activeLabel($model, 'dai', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
@@ -281,11 +281,11 @@ echo Editable::widget([
                                 )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'apm', ['class' => 'form-label']) ?>
+                        <div class="col-md-3 col-sm-12">
+                            <?= Html::activeLabel($model, 'iva', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
-                                    'apm',
+                                    'iva',
                                     [
                                         'showLabels'=>false,
                                         'addon' => [ 
@@ -294,71 +294,7 @@ echo Editable::widget([
                                             ],
                                         ]
                                     ]
-                                )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
-                        </div>
-
-                        <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'vts', ['class' => 'form-label']) ?>
-                            <?= $form->field(
-                                    $model, 
-                                    'vts',
-                                    [
-                                        'showLabels'=>false,
-                                        'addon' => [ 
-                                            'append' => [
-                                                ['content' => '$'],
-                                            ],
-                                        ]
-                                    ]
-                                )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
-                        </div>
-
-                        <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'its', ['class' => 'form-label']) ?>
-                            <?= $form->field(
-                                    $model, 
-                                    'its',
-                                    [
-                                        'showLabels'=>false,
-                                        'addon' => [ 
-                                            'append' => [
-                                                ['content' => '$'],
-                                            ],
-                                        ]
-                                    ]
-                                )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
-                        </div>
-
-                        <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'aiv', ['class' => 'form-label']) ?>
-                            <?= $form->field(
-                                    $model, 
-                                    'aiv',
-                                    [
-                                        'showLabels'=>false,
-                                        'addon' => [ 
-                                            'append' => [
-                                                ['content' => '$'],
-                                            ],
-                                        ]
-                                    ]
-                                )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
-                        </div>
-
-                        <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'opm', ['class' => 'form-label']) ?>
-                            <?= $form->field(
-                                    $model, 
-                                    'opm',
-                                    [
-                                        'showLabels'=>false,
-                                        'addon' => [ 
-                                            'append' => [
-                                                ['content' => '$'],
-                                            ],
-                                        ]
-                                    ]
-                                )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
+                                )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'13']) ?>
                         </div>
                         
                     </div>
