@@ -728,10 +728,10 @@ echo Editable::widget([
 
         loadValorAduana = () => {
             try{
-                let gastos_transporte = $('#detcompras-gastos_transporte').val()
-                let costo = $('#detcompras-costo').val()
-                let seguro = $('#detcompras-seguro').val()
-                let otros_gastos = $('#detcompras-otros_gastos').val()
+                let gastos_transporte = $('#detcompras-gastos_transporte').val() != '' ? $('#detcompras-gastos_transporte').val() : 0;
+                let costo = $('#detcompras-costo').val() != '' ? $('#detcompras-costo').val() : 0;
+                let seguro = $('#detcompras-seguro').val() != '' ? $('#detcompras-seguro').val() : 0;
+                let otros_gastos = $('#detcompras-otros_gastos').val() != '' ? $('#detcompras-otros_gastos').val() : 0;
                 let totalAduana = parseFloat(gastos_transporte) + parseFloat(seguro) + parseFloat(otros_gastos) + parseFloat(costo)
                 $('#detcompras-valor_aduana').val(totalAduana)
             }catch(e){
