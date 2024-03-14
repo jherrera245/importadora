@@ -23,6 +23,8 @@ use yii\behaviors\BlameableBehavior;
  * @property string|null $detalle_otros_gastos
  * @property float|null $valor_aduana
  * @property float|null $dai
+ *  @property float|null $iva
+ * @property float|null $apm
  * @property float|null $apm
  * @property float|null $vts
  * @property float|null $its
@@ -73,7 +75,7 @@ class DetCompras extends \yii\db\ActiveRecord
         return [
             [['id_compra', 'id_producto', 'cantidad', 'costo', 'descuento', 'uuid'], 'required'],
             [['id_compra', 'id_producto', 'cantidad', 'id_usuario_ing', 'id_usuario_mod'], 'integer'],
-            [['costo', 'descuento', 'gastos_transporte', 'seguro', 'otros_gastos', 'valor_aduana', 'dai', 'apm', 'vts', 'its', 'aiv', 'opm'], 'number'],
+            [['costo', 'descuento', 'gastos_transporte', 'seguro', 'otros_gastos', 'valor_aduana', 'dai','iva', 'apm', 'vts', 'its', 'aiv', 'opm'], 'number'],
             [['fecha_ing', 'fecha_mod'], 'safe'],
             [['detalle_otros_gastos'], 'string', 'max' => 150],
             [['uuid'], 'string', 'max' => 36],
@@ -102,6 +104,7 @@ class DetCompras extends \yii\db\ActiveRecord
             'detalle_otros_gastos' => 'Detalle Otros Gastos',
             'valor_aduana' => 'Valor Aduana',
             'dai' => 'Dai',
+            'iva' => 'IVA',
             'apm' => 'Apm',
             'vts' => 'Vts',
             'its' => 'Its',

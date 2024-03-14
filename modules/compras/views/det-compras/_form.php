@@ -262,7 +262,7 @@ echo Editable::widget([
                                             ],
                                         ]
                                     ]
-                                )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
+                                )->textInput(['type'=>'number','readonly' => true]) ?>
                         </div>
 
                         <div class="col-md-3 col-sm-12">
@@ -439,27 +439,6 @@ echo Editable::widget([
                         'hAlign' => 'right',
                         'vAlign' => 'middle',
                         'width' => '90px',
-                        'pageSummary' => true,
-                        'filter' => false,
-                        'format' => 'currency',
-                    ],
-                    [
-                        'class' => 'kartik\grid\EditableColumn',
-                        'attribute' => 'detalle_otros_gastos',
-                        'editableOptions' => [
-                            'asPopover' => false,
-                            'formOptions' => ['action' => ['/compras/det-compras/editar-detalle-otros-gastos']],
-                            'inputType' => Editable::INPUT_TEXT,
-                            'options' => [
-                                'pluginOptions' => [
-                                    'min' => 0,
-                                ],
-                            ],
-                        ],
-                        'refreshGrid' => true,
-                        'hAlign' => 'right',
-                        'vAlign' => 'middle',
-                        'width' => '150px',
                         'pageSummary' => true,
                         'filter' => false,
                         'format' => 'currency',
@@ -726,3 +705,39 @@ echo Editable::widget([
         </div>
     </div>
 </div>
+
+<?php
+    echo $this->registerJs(
+        "
+
+        $('#detcompras-seguro').on('keyup', () => {
+            loadValorAduana()
+        });
+
+        $('#detcompras-costo').on('keyup', () => {
+            loadValorAduana()
+        });
+
+        $('#detcompras-gastos_transporte').on('keyup', () => {
+            loadValorAduana()
+        });
+
+        $('#detcompras-otros_gastos').on('keyup', () => {
+            loadValorAduana()
+        });
+
+        loadValorAduana = () => {
+            try{
+                let gastos_transporte = $('#detcompras-gastos_transporte').val()
+                let costo = $('#detcompras-costo').val()
+                let seguro = $('#detcompras-seguro').val()
+                let otros_gastos = $('#detcompras-otros_gastos').val()
+                let totalAduana = parseFloat(gastos_transporte) + parseFloat(seguro) + parseFloat(otros_gastos) + parseFloat(costo)
+                $('#detcompras-valor_aduana').val(totalAduana)
+            }catch(e){
+                console.log(e);
+            }
+        }
+        "
+    );
+?>

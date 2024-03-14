@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 27, 2024 at 12:03 AM
+-- Generation Time: Mar 14, 2024 at 05:23 PM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.29
 
@@ -193,7 +193,10 @@ INSERT INTO `tbl_bitacora` (`id_bitacora`, `id_registro`, `controlador`, `accion
 (27, 1, 'ordenes', 'create', '\"{\\n    \\\"id_orden\\\": 1,\\n    \\\"codigo\\\": \\\"ORCL-00001\\\",\\n    \\\"id_cliente\\\": \\\"1\\\",\\n    \\\"id_direccion\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-2-26\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-02-26 09:46:41\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 09:46:41\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": 0\\n}\"', NULL, 1, '2024-02-26 09:46:41'),
 (28, 3, 'clientes', 'create', '\"{\\n    \\\"id_cliente\\\": 3,\\n    \\\"nombre\\\": \\\"Cliente nuevo Contr\\\",\\n    \\\"apellido\\\": \\\"Apellido Contr\\\",\\n    \\\"telefono\\\": \\\"7248-6986\\\",\\n    \\\"email\\\": \\\"sj@gmail.com\\\",\\n    \\\"nit\\\": \\\"2233-9699-69\\\",\\n    \\\"nrc\\\": \\\"252229-66\\\",\\n    \\\"contribuyente\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-26 10:00:22\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 10:00:22\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": \\\"1\\\"\\n}\"', NULL, 1, '2024-02-26 10:00:22'),
 (29, 2, 'ordenes', 'create', '\"{\\n    \\\"id_orden\\\": 2,\\n    \\\"codigo\\\": \\\"ORCL-00002\\\",\\n    \\\"id_cliente\\\": \\\"1\\\",\\n    \\\"id_direccion\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-2-26\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-02-26 11:13:39\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 11:13:39\\\",\\n    \\\"id_usuario_mod\\\": 1,\\n    \\\"estado\\\": 0\\n}\"', NULL, 1, '2024-02-26 11:13:39'),
-(30, 1, 'det-ordenes', 'create', '\"{\\n    \\\"id_det_orden\\\": 1,\\n    \\\"id_orden\\\": \\\"1\\\",\\n    \\\"id_producto\\\": \\\"2\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"precio\\\": \\\"50000.00\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"uuid\\\": \\\"52d68ef3-30f2-4f7c-868b-2e8df655cc06\\\",\\n    \\\"credito_fiscal\\\": null,\\n    \\\"consumidor_final\\\": \\\"\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-26 11:52:44\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 11:52:44\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-02-26 11:52:44');
+(30, 1, 'det-ordenes', 'create', '\"{\\n    \\\"id_det_orden\\\": 1,\\n    \\\"id_orden\\\": \\\"1\\\",\\n    \\\"id_producto\\\": \\\"2\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"precio\\\": \\\"50000.00\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"uuid\\\": \\\"52d68ef3-30f2-4f7c-868b-2e8df655cc06\\\",\\n    \\\"credito_fiscal\\\": null,\\n    \\\"consumidor_final\\\": \\\"\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-26 11:52:44\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 11:52:44\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-02-26 11:52:44'),
+(31, 5, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 5,\\n    \\\"id_compra\\\": \\\"2\\\",\\n    \\\"id_producto\\\": \\\"1\\\",\\n    \\\"cantidad\\\": \\\"2\\\",\\n    \\\"costo\\\": \\\"1222\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"200\\\",\\n    \\\"seguro\\\": \\\"199\\\",\\n    \\\"otros_gastos\\\": \\\"390\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"asdsdsd\\\",\\n    \\\"valor_aduana\\\": \\\"1234\\\",\\n    \\\"dai\\\": \\\"233\\\",\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"e33870c0-76fe-4d16-a276-25ad049c27eb\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 09:19:52\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 09:19:52\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 09:19:52'),
+(32, 5, 'compras', 'create', '\"{\\n    \\\"id_compra\\\": 5,\\n    \\\"codigo\\\": \\\"CMPR-00005\\\",\\n    \\\"num_factura\\\": \\\"12\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-3-14\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"<p>adsadads<br><\\\\/p>\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-03-14 09:39:53\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 09:39:53\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 09:39:53'),
+(33, 6, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 6,\\n    \\\"id_compra\\\": \\\"5\\\",\\n    \\\"id_producto\\\": \\\"2\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"1222\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"123\\\",\\n    \\\"seguro\\\": \\\"123\\\",\\n    \\\"otros_gastos\\\": \\\"123\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"Otros gastos\\\",\\n    \\\"valor_aduana\\\": \\\"0\\\",\\n    \\\"dai\\\": \\\"0.00\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"f72039a6-a07b-4ce6-8f7c-d36c709f49d7\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 09:40:36\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 09:40:36\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 09:40:36');
 
 -- --------------------------------------------------------
 
@@ -281,7 +284,8 @@ INSERT INTO `tbl_compras` (`id_compra`, `codigo`, `num_factura`, `id_proveedor`,
 (1, 'CMPR-00001', 1, 1, 1, '2024-01-04', 0, 'Este es un comentario, puede agregar cualquier tipo de informacion en esta parte<br>', 1, '2024-01-04 23:37:13', 1, '2024-01-06 20:25:01', 1),
 (2, 'CMPR-00002', 2, 1, 1, '2024-01-06', 0, '', 0, '2024-01-06 20:25:44', 1, '2024-01-06 20:25:44', 1),
 (3, 'CMPR-00003', 3, 1, 1, '2024-01-07', 0, '', 1, '2024-01-07 18:46:16', 1, '2024-02-06 22:15:01', 1),
-(4, 'CMPR-00004', 2, 1, 1, '2024-02-09', 0, '', 1, '2024-02-09 15:08:40', 1, '2024-02-09 15:20:53', 1);
+(4, 'CMPR-00004', 2, 1, 1, '2024-02-09', 0, '', 1, '2024-02-09 15:08:40', 1, '2024-02-09 15:20:53', 1),
+(5, 'CMPR-00005', 12, 1, 1, '2024-03-14', 0, '<p>adsadads<br></p>', 0, '2024-03-14 09:39:53', 1, '2024-03-14 09:39:53', 1);
 
 -- --------------------------------------------------------
 
@@ -350,6 +354,7 @@ CREATE TABLE `tbl_det_compras` (
   `detalle_otros_gastos` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `valor_aduana` decimal(10,2) DEFAULT NULL,
   `dai` decimal(10,2) DEFAULT NULL,
+  `iva` decimal(10,2) DEFAULT NULL,
   `apm` decimal(10,2) DEFAULT NULL,
   `vts` decimal(10,2) DEFAULT NULL,
   `its` decimal(10,2) DEFAULT NULL,
@@ -366,10 +371,12 @@ CREATE TABLE `tbl_det_compras` (
 -- Dumping data for table `tbl_det_compras`
 --
 
-INSERT INTO `tbl_det_compras` (`id_det_compra`, `id_compra`, `id_producto`, `cantidad`, `costo`, `descuento`, `gastos_transporte`, `seguro`, `otros_gastos`, `detalle_otros_gastos`, `valor_aduana`, `dai`, `apm`, `vts`, `its`, `aiv`, `opm`, `uuid`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
-(1, 2, 2, 1, '22222.00', '0.00', NULL, '0.00', NULL, NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
-(2, 3, 1, 1, '22000.00', '0.00', NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5278dc9f-169c-472f-b443-0d839efd258b', '2024-01-07 19:37:59', 1, '2024-01-07 19:37:59', 1),
-(4, 4, 2, 1, '20000.00', '0.00', '0.00', '0.00', '0.00', '', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '52d68ef3-30f2-4f7c-868b-2e8df655cc06', '2024-02-09 15:18:01', 1, '2024-02-09 15:18:01', 1);
+INSERT INTO `tbl_det_compras` (`id_det_compra`, `id_compra`, `id_producto`, `cantidad`, `costo`, `descuento`, `gastos_transporte`, `seguro`, `otros_gastos`, `detalle_otros_gastos`, `valor_aduana`, `dai`, `iva`, `apm`, `vts`, `its`, `aiv`, `opm`, `uuid`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
+(1, 2, 2, 1, '22222.00', '0.00', NULL, '0.00', NULL, NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+(2, 3, 1, 1, '22000.00', '0.00', NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5278dc9f-169c-472f-b443-0d839efd258b', '2024-01-07 19:37:59', 1, '2024-01-07 19:37:59', 1),
+(4, 4, 2, 1, '20000.00', '0.00', '0.00', '0.00', '0.00', '', '0.00', '0.00', NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '52d68ef3-30f2-4f7c-868b-2e8df655cc06', '2024-02-09 15:18:01', 1, '2024-02-09 15:18:01', 1),
+(5, 2, 1, 2, '1222.00', '0.00', '200.00', '199.00', '390.00', 'asdsdsd', '1234.00', '233.00', NULL, NULL, NULL, NULL, NULL, NULL, 'e33870c0-76fe-4d16-a276-25ad049c27eb', '2024-03-14 09:19:52', 1, '2024-03-14 09:19:52', 1),
+(6, 5, 2, 1, '1222.00', '0.00', '123.00', '123.00', '123.00', 'Otros gastos', '0.00', '0.00', '13.00', NULL, NULL, NULL, NULL, NULL, 'f72039a6-a07b-4ce6-8f7c-d36c709f49d7', '2024-03-14 09:40:36', 1, '2024-03-14 09:40:36', 1);
 
 -- --------------------------------------------------------
 
@@ -1248,7 +1255,7 @@ ALTER TABLE `tbl_ventas`
 -- AUTO_INCREMENT for table `tbl_bitacora`
 --
 ALTER TABLE `tbl_bitacora`
-  MODIFY `id_bitacora` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_bitacora` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `tbl_categorias`
@@ -1266,7 +1273,7 @@ ALTER TABLE `tbl_clientes`
 -- AUTO_INCREMENT for table `tbl_compras`
 --
 ALTER TABLE `tbl_compras`
-  MODIFY `id_compra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_compra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_condicion_producto`
@@ -1284,7 +1291,7 @@ ALTER TABLE `tbl_departamentos`
 -- AUTO_INCREMENT for table `tbl_det_compras`
 --
 ALTER TABLE `tbl_det_compras`
-  MODIFY `id_det_compra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_det_compra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_det_ordenes`
