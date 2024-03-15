@@ -90,23 +90,24 @@ class DetComprasController extends Controller
         $sub_total = 0;
         $iva = 0;
         $total = 0;
-        $retencion = 0;
+        //$retencion = 0;
 
         $detCompras = DetCompras::find()->where(['id_compra' => $id_compra])->all();
 
         foreach($detCompras as $detalle) {
 
             $cantidadPorCosto = ($detalle->costo * $detalle->cantidad);
-            $totalDescuento = $cantidadPorCosto  * ($detalle->descuento / 100);
 
-            $sub_total += $cantidadPorCosto - $totalDescuento;
-            $iva += ($cantidadPorCosto - $totalDescuento) * 0.13;
-            $total += ($cantidadPorCosto - $totalDescuento) * 1.13;
+            
+            $iva += ($detalle->valor_aduana + $detalle->dai) * 0.13;
+            $sub_total += $cantidadPorCosto + $iva;
+            //$iva += ($cantidadPorCosto - $totalDescuento) * 0.13;
+            //$total += ($cantidadPorCosto - $totalDescuento) * 1.13;
         }
 
-        if($sub_total >= 100) {
-            $retencion = $sub_total * 0.01;
-        }
+        //if($sub_total >= 100) {
+            //$retencion = $sub_total * 0.01;
+        //}
 
         if ($model->load(Yii::$app->request->post())) {
             $transaction = Yii::$app->db->beginTransaction();
@@ -170,7 +171,7 @@ class DetComprasController extends Controller
                 'sub_total' => $sub_total,
                 'iva' => $iva,
                 'total' => $total,
-                'retencion' => $retencion,
+                //'retencion' => $retencion,
             ]);
         }
     }
@@ -256,6 +257,10 @@ class DetComprasController extends Controller
                 'modelClass' => DetCompras::class,
             ],
             'editar-dai' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => DetCompras::class,
+            ],
+            'editar-iva' => [
                 'class' => EditableColumnAction::class,
                 'modelClass' => DetCompras::class,
             ],

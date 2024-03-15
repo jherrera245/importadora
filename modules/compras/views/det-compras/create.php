@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'sub_total' => $sub_total,
         'iva' => $iva,
         'total' => $total,
-        'retencion' => $retencion,
+        //'retencion' => $retencion,
     ]) ?>
 
 </div>

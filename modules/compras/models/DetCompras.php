@@ -16,7 +16,7 @@ use yii\behaviors\BlameableBehavior;
  * @property int $id_producto
  * @property int $cantidad
  * @property float $costo
- * @property float $descuento
+ * @property float|null $descuento
  * @property float|null $gastos_transporte
  * @property float|null $seguro
  * @property float|null $otros_gastos
@@ -73,7 +73,7 @@ class DetCompras extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_compra', 'id_producto', 'cantidad', 'costo', 'descuento', 'uuid'], 'required'],
+            [['id_compra', 'id_producto', 'cantidad', 'costo', 'uuid'], 'required'],
             [['id_compra', 'id_producto', 'cantidad', 'id_usuario_ing', 'id_usuario_mod'], 'integer'],
             [['costo', 'descuento', 'gastos_transporte', 'seguro', 'otros_gastos', 'valor_aduana', 'dai','iva', 'apm', 'vts', 'its', 'aiv', 'opm'], 'number'],
             [['fecha_ing', 'fecha_mod'], 'safe'],

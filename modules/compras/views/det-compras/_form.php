@@ -16,14 +16,14 @@ use kartik\grid\GridView;
 /** @var app\modules\compras\models\DetCompras $model */
 /** @var yii\widgets\ActiveForm $form */
 
-echo Editable::widget([
-    'name'=>'person_name', 
-    'asPopover' => false,
-    'value' => 'Kartik Visweswaran',
-    'header' => 'Name',
-    'size'=>'md',
-    'options' => ['class'=>'form-control', 'placeholder'=>'Enter person name...']
-]);
+//echo Editable::widget([
+    //'name'=>'adsda', 
+    //'asPopover' => false,
+    //'value' => 'Kartik Visweswaran',
+    //'header' => 'Name',
+    //'size'=>'md',
+    //'options' => ['class'=>'form-control', 'placeholder'=>'Enter person name...']
+//]);
 ?>
 
 <div class="row">
@@ -94,11 +94,6 @@ echo Editable::widget([
                         <td><h4><?= number_format($iva, 2) ?></h4></td>
                     </tr>
                     <tr>
-                        <td width="40%"><h4>Retención</h4></td>
-                        <td><h4>$</h4></td>
-                        <td><h4><?= number_format($retencion, 2) ?></h4></td>
-                    </tr>
-                    <tr>
                         <td width="40%"><h4>Total</h4></td>
                         <td><h4>$</h4></td>
                         <td><h4><?= number_format($total, 2) ?></h4></td>
@@ -126,7 +121,7 @@ echo Editable::widget([
                     <div class="row">
 
                         <div class="col-md-12">
-                            <?= Html::activeLabel($model, 'id_producto', ['class' => 'control-label']) ?>
+                            <label for="">Producto</label>
                             <?= $form->field($model, 'id_producto', ['showLabels' => false])->widget(Select2::class, [
                                 'data' => ArrayHelper::map(Productos::find()->all(), 'id_producto', function($model) {
                                     return $model->sku.' '.$model->nombre;
@@ -167,22 +162,6 @@ echo Editable::widget([
                                         ]
                                     ]
                                 )->textInput(['type'=>'number', 'step' => '0.01']) ?>
-                        </div>
-
-                        <div class="col-md-4 col-sm-12">
-                            <?= Html::activeLabel($model, 'descuento', ['class' => 'form-label']) ?>
-                            <?= $form->field(
-                                    $model, 
-                                    'descuento',
-                                    [
-                                        'showLabels'=>false,
-                                        'addon' => [ 
-                                            'append' => [
-                                                ['content' => '%'],
-                                            ],
-                                        ]
-                                    ]
-                                )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
                         </div>
 
                         <div class="col-md-4 col-sm-12">
@@ -233,7 +212,7 @@ echo Editable::widget([
                                 )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
                         </div>
 
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <?= Html::activeLabel($model, 'detalle_otros_gastos', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
@@ -249,7 +228,7 @@ echo Editable::widget([
                                 )->textInput(['type'=>'text']) ?>
                         </div>
 
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <?= Html::activeLabel($model, 'valor_aduana', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
@@ -265,7 +244,7 @@ echo Editable::widget([
                                 )->textInput(['type'=>'number','readonly' => true]) ?>
                         </div>
 
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <?= Html::activeLabel($model, 'dai', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
@@ -281,7 +260,7 @@ echo Editable::widget([
                                 )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'0.00']) ?>
                         </div>
 
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <?= Html::activeLabel($model, 'iva', ['class' => 'form-label']) ?>
                             <?= $form->field(
                                     $model, 
@@ -294,7 +273,7 @@ echo Editable::widget([
                                             ],
                                         ]
                                     ]
-                                )->textInput(['type'=>'number', 'step' => '0.01', 'value'=>'13']) ?>
+                                )->textInput(['type'=>'number', 'step' => '0.01', 'readonly'=>'true']) ?>
                         </div>
                         
                     </div>
@@ -337,7 +316,9 @@ echo Editable::widget([
                         'value' => function($model) {
                             return $model->producto->nombre . ' ' . $model->producto->marca->nombre . ' ' . $model->producto->chasis_grabado;
                         },
-                        'pageSummary' => 'Totales'
+                        'pageSummary' => 'Totales',
+                        'width' => '140px',
+                        'hAlign' => 'center',
                     ],
                     [
                         'class' => 'kartik\grid\EditableColumn',
@@ -353,7 +334,7 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
                         'width' => '80px',
                         'pageSummary' => true,
@@ -373,33 +354,12 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
                         'width' => '80px',
                         'pageSummary' => true,
                         'filter' => false,
                         'format' => 'currency',
-                    ],
-                    [
-                        'class' => 'kartik\grid\EditableColumn',
-                        'attribute' => 'descuento',
-                        'editableOptions' => [
-                            'asPopover' => false,
-                            'formOptions' => ['action' => ['/compras/det-compras/editar-descuento']],
-                            'inputType' => Editable::INPUT_TEXT,
-                            'options' => [
-                                'pluginOptions' => [
-                                    'min' => 0, 
-                                    'max' => 100,
-                                ],
-                            ],
-                        ],
-                        'refreshGrid' => true,
-                        'hAlign' => 'right',
-                        'vAlign' => 'middle',
-                        'width' => '80px',
-                        'pageSummary' => false,
-                        'filter' => false,
                     ],
                     [
                         'class' => 'kartik\grid\EditableColumn',
@@ -415,7 +375,7 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
                         'width' => '90px',
                         'pageSummary' => true,
@@ -436,7 +396,7 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
                         'width' => '90px',
                         'pageSummary' => true,
@@ -457,7 +417,7 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
                         'width' => '80px',
                         'pageSummary' => true,
@@ -478,9 +438,30 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
-                        'width' => '150px',
+                        'width' => '80px',
+                        'pageSummary' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'attribute' => 'iva',
+                        'editableOptions' => [
+                            'asPopover' => false,
+                            'formOptions' => ['action' => ['/compras/det-compras/editar-iva']],
+                            'inputType' => Editable::INPUT_TEXT,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'min' => 0,
+                                ],
+                            ],
+                        ],
+                        'refreshGrid' => true,
+                        'hAlign' => 'center',
+                        'vAlign' => 'middle',
+                        'width' => '80px',
                         'pageSummary' => true,
                         'filter' => false,
                         'format' => 'currency',
@@ -499,9 +480,9 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
-                        'width' => '150px',
+                        'width' => '80px',
                         'pageSummary' => true,
                         'filter' => false,
                         'format' => 'currency',
@@ -520,9 +501,9 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
-                        'width' => '150px',
+                        'width' => '80px',
                         'pageSummary' => true,
                         'filter' => false,
                         'format' => 'currency',
@@ -541,9 +522,9 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
-                        'width' => '150px',
+                        'width' => '80px',
                         'pageSummary' => true,
                         'filter' => false,
                         'format' => 'currency',
@@ -562,9 +543,9 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
-                        'width' => '150px',
+                        'width' => '80px',
                         'pageSummary' => true,
                         'filter' => false,
                         'format' => 'currency',
@@ -583,55 +564,21 @@ echo Editable::widget([
                             ],
                         ],
                         'refreshGrid' => true,
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
-                        'width' => '150px',
+                        'width' => '80px',
                         'pageSummary' => true,
-                        'filter' => false,
-                        'format' => 'currency',
-                    ],
-                    [
-                        'class' => 'kartik\grid\FormulaColumn',
-                        'attribute' => 'Total Descuento',
-                        'hAlign' => 'right',
-                        'vAlign' => 'middle',
-                        'value' => function ($model, $key, $index, $widget) {
-                            $value = compact('model', 'key', 'index');
-                            return ($widget->col(2, $value) * $widget->col(3, $value) * ($widget->col(4, $value) /100));
-                        },
-                        'headerOptions' => ['class' => 'kartik-sheet-style'],
-                        'width' => '200px',
-                        'mergeHeader'=> true,
-                        'pageSummary' => true,
-                        'footer' => true,
                         'filter' => false,
                         'format' => 'currency',
                     ],
                     [
                         'class' => 'kartik\grid\FormulaColumn',
                         'attribute' => 'Sub-Total',
-                        'hAlign' => 'right',
+                        'hAlign' => 'center',
                         'vAlign' => 'middle',
                         'value' => function ($model, $key, $index, $widget) {
                             $value = compact('model', 'key', 'index');
                             return (($widget->col(2, $value) * $widget->col(3, $value)) - $widget->col(5, $value));
-                        },
-                        'headerOptions' => ['class' => 'kartik-sheet-style'],
-                        'width' => '200px',
-                        'mergeHeader'=> true,
-                        'pageSummary' => true,
-                        'footer' => true,
-                        'filter' => false,
-                        'format' => 'currency',
-                    ],
-                    [
-                        'class' => 'kartik\grid\FormulaColumn',
-                        'attribute' => 'IVA',
-                        'hAlign' => 'right',
-                        'vAlign' => 'middle',
-                        'value' => function ($model, $key, $index, $widget) {
-                            $value = compact('model', 'key', 'index');
-                            return ($widget->col(6, $value) * 0.13);
                         },
                         'headerOptions' => ['class' => 'kartik-sheet-style'],
                         'width' => '200px',
@@ -726,6 +673,10 @@ echo Editable::widget([
             loadValorAduana()
         });
 
+        $('#detcompras-dai').on('change', () => {
+            loadValorIVA()
+        });
+
         loadValorAduana = () => {
             try{
                 let gastos_transporte = $('#detcompras-gastos_transporte').val() != '' ? $('#detcompras-gastos_transporte').val() : 0;
@@ -734,6 +685,21 @@ echo Editable::widget([
                 let otros_gastos = $('#detcompras-otros_gastos').val() != '' ? $('#detcompras-otros_gastos').val() : 0;
                 let totalAduana = parseFloat(gastos_transporte) + parseFloat(seguro) + parseFloat(otros_gastos) + parseFloat(costo)
                 $('#detcompras-valor_aduana').val(totalAduana)
+            }catch(e){
+                console.log(e);
+            }
+        }
+
+        loadValorIVA = () => {
+            try{
+                let valor_aduana = $('#detcompras-valor_aduana').val() != '' ? $('#detcompras-valor_aduana').val() : 0;
+                let dai = $('#detcompras-dai').val() != '' ? $('#detcompras-dai').val() : 0;
+                let totalIVA = (parseFloat(valor_aduana) + parseFloat(dai)) * 0.13
+                if(dai == 0) {
+                    $('#detcompras-iva').val(0);
+                }else{
+                    $('#detcompras-iva').val(totalIVA);
+                }
             }catch(e){
                 console.log(e);
             }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 14, 2024 at 05:23 PM
+-- Generation Time: Mar 15, 2024 at 06:06 AM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.29
 
@@ -196,7 +196,14 @@ INSERT INTO `tbl_bitacora` (`id_bitacora`, `id_registro`, `controlador`, `accion
 (30, 1, 'det-ordenes', 'create', '\"{\\n    \\\"id_det_orden\\\": 1,\\n    \\\"id_orden\\\": \\\"1\\\",\\n    \\\"id_producto\\\": \\\"2\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"precio\\\": \\\"50000.00\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"uuid\\\": \\\"52d68ef3-30f2-4f7c-868b-2e8df655cc06\\\",\\n    \\\"credito_fiscal\\\": null,\\n    \\\"consumidor_final\\\": \\\"\\\",\\n    \\\"fecha_ing\\\": \\\"2024-02-26 11:52:44\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-02-26 11:52:44\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-02-26 11:52:44'),
 (31, 5, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 5,\\n    \\\"id_compra\\\": \\\"2\\\",\\n    \\\"id_producto\\\": \\\"1\\\",\\n    \\\"cantidad\\\": \\\"2\\\",\\n    \\\"costo\\\": \\\"1222\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"200\\\",\\n    \\\"seguro\\\": \\\"199\\\",\\n    \\\"otros_gastos\\\": \\\"390\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"asdsdsd\\\",\\n    \\\"valor_aduana\\\": \\\"1234\\\",\\n    \\\"dai\\\": \\\"233\\\",\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"e33870c0-76fe-4d16-a276-25ad049c27eb\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 09:19:52\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 09:19:52\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 09:19:52'),
 (32, 5, 'compras', 'create', '\"{\\n    \\\"id_compra\\\": 5,\\n    \\\"codigo\\\": \\\"CMPR-00005\\\",\\n    \\\"num_factura\\\": \\\"12\\\",\\n    \\\"id_proveedor\\\": \\\"1\\\",\\n    \\\"tipo_compra\\\": \\\"1\\\",\\n    \\\"fecha\\\": \\\"2024-3-14\\\",\\n    \\\"anulado\\\": 0,\\n    \\\"comentarios\\\": \\\"<p>adsadads<br><\\\\/p>\\\",\\n    \\\"estado\\\": 0,\\n    \\\"fecha_ing\\\": \\\"2024-03-14 09:39:53\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 09:39:53\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 09:39:53'),
-(33, 6, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 6,\\n    \\\"id_compra\\\": \\\"5\\\",\\n    \\\"id_producto\\\": \\\"2\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"1222\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"123\\\",\\n    \\\"seguro\\\": \\\"123\\\",\\n    \\\"otros_gastos\\\": \\\"123\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"Otros gastos\\\",\\n    \\\"valor_aduana\\\": \\\"0\\\",\\n    \\\"dai\\\": \\\"0.00\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"f72039a6-a07b-4ce6-8f7c-d36c709f49d7\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 09:40:36\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 09:40:36\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 09:40:36');
+(33, 6, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 6,\\n    \\\"id_compra\\\": \\\"5\\\",\\n    \\\"id_producto\\\": \\\"2\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"1222\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"123\\\",\\n    \\\"seguro\\\": \\\"123\\\",\\n    \\\"otros_gastos\\\": \\\"123\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"Otros gastos\\\",\\n    \\\"valor_aduana\\\": \\\"0\\\",\\n    \\\"dai\\\": \\\"0.00\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"f72039a6-a07b-4ce6-8f7c-d36c709f49d7\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 09:40:36\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 09:40:36\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 09:40:36'),
+(34, 3, 'productos', 'create', '\"{\\n    \\\"id_producto\\\": 3,\\n    \\\"nombre\\\": \\\"Ford Mustang\\\",\\n    \\\"sku\\\": \\\"122233\\\",\\n    \\\"descripcion\\\": \\\"<p>asddd<br><\\\\/p>\\\",\\n    \\\"precio\\\": \\\"12222\\\",\\n    \\\"id_categoria\\\": \\\"2\\\",\\n    \\\"id_sub_categoria\\\": \\\"1\\\",\\n    \\\"id_marca\\\": \\\"1\\\",\\n    \\\"is_car\\\": \\\"0\\\",\\n    \\\"vin\\\": \\\"\\\",\\n    \\\"pais_procedencia\\\": \\\"\\\",\\n    \\\"chasis_grabado\\\": \\\"\\\",\\n    \\\"year\\\": \\\"\\\",\\n    \\\"tipo_combustible\\\": \\\"\\\",\\n    \\\"id_condicion\\\": \\\"\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"estado\\\": \\\"1\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 22:26:47\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 22:26:47\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 22:26:47'),
+(35, 7, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 7,\\n    \\\"id_compra\\\": \\\"2\\\",\\n    \\\"id_producto\\\": \\\"3\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"3628\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"600\\\",\\n    \\\"seguro\\\": \\\"60\\\",\\n    \\\"otros_gastos\\\": \\\"31.80\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"\\\",\\n    \\\"valor_aduana\\\": \\\"4319.8\\\",\\n    \\\"dai\\\": \\\"863.96\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"7f0e72e6-9c15-40bd-bc6c-7eb69104206d\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 22:36:17\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 22:36:17\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 22:36:17'),
+(36, 8, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 8,\\n    \\\"id_compra\\\": \\\"2\\\",\\n    \\\"id_producto\\\": \\\"3\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"3628\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"600\\\",\\n    \\\"seguro\\\": \\\"60\\\",\\n    \\\"otros_gastos\\\": \\\"31.80\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"Detalle de otros gastos\\\",\\n    \\\"valor_aduana\\\": \\\"4319.8\\\",\\n    \\\"dai\\\": \\\"863.96\\\",\\n    \\\"iva\\\": \\\"13\\\",\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"5bc32998-70d5-4b17-b973-21e70ca2999d\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 22:42:14\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 22:42:14\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 22:42:14'),
+(37, 9, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 9,\\n    \\\"id_compra\\\": \\\"2\\\",\\n    \\\"id_producto\\\": \\\"3\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"3628\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"600\\\",\\n    \\\"seguro\\\": \\\"60\\\",\\n    \\\"otros_gastos\\\": \\\"31.80\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"\\\",\\n    \\\"valor_aduana\\\": \\\"4319.8\\\",\\n    \\\"dai\\\": \\\"863.96\\\",\\n    \\\"iva\\\": null,\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"51d18d88-bc08-48f3-8009-2a4be493b70a\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 23:23:21\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 23:23:21\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 23:23:21'),
+(38, 10, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 10,\\n    \\\"id_compra\\\": \\\"2\\\",\\n    \\\"id_producto\\\": \\\"3\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"1000\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"100\\\",\\n    \\\"seguro\\\": \\\"100\\\",\\n    \\\"otros_gastos\\\": \\\"100\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"\\\",\\n    \\\"valor_aduana\\\": \\\"1300\\\",\\n    \\\"dai\\\": \\\"0.00\\\",\\n    \\\"iva\\\": \\\"169\\\",\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"9b9fe75c-f023-4149-b008-665d0f6dbc4b\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 23:37:26\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 23:37:26\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 23:37:26'),
+(39, 11, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 11,\\n    \\\"id_compra\\\": \\\"2\\\",\\n    \\\"id_producto\\\": \\\"3\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"1000\\\",\\n    \\\"descuento\\\": \\\"0.00\\\",\\n    \\\"gastos_transporte\\\": \\\"100\\\",\\n    \\\"seguro\\\": \\\"100\\\",\\n    \\\"otros_gastos\\\": \\\"100\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"sdfsdf\\\",\\n    \\\"valor_aduana\\\": \\\"1300\\\",\\n    \\\"dai\\\": \\\"100\\\",\\n    \\\"iva\\\": \\\"182\\\",\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"7d25c73a-bf3b-4ddb-92cb-efe162f8d6f9\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 23:41:27\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 23:41:27\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 23:41:27'),
+(40, 12, 'det-compras', 'create', '\"{\\n    \\\"id_det_compra\\\": 12,\\n    \\\"id_compra\\\": \\\"2\\\",\\n    \\\"id_producto\\\": \\\"2\\\",\\n    \\\"cantidad\\\": \\\"1\\\",\\n    \\\"costo\\\": \\\"1222\\\",\\n    \\\"descuento\\\": null,\\n    \\\"gastos_transporte\\\": \\\"122\\\",\\n    \\\"seguro\\\": \\\"122\\\",\\n    \\\"otros_gastos\\\": \\\"122\\\",\\n    \\\"detalle_otros_gastos\\\": \\\"sdadasda\\\",\\n    \\\"valor_aduana\\\": \\\"1588\\\",\\n    \\\"dai\\\": \\\"122\\\",\\n    \\\"iva\\\": \\\"222.3\\\",\\n    \\\"apm\\\": null,\\n    \\\"vts\\\": null,\\n    \\\"its\\\": null,\\n    \\\"aiv\\\": null,\\n    \\\"opm\\\": null,\\n    \\\"uuid\\\": \\\"17843c70-0bac-408c-b43b-a8530a187909\\\",\\n    \\\"fecha_ing\\\": \\\"2024-03-14 23:56:04\\\",\\n    \\\"id_usuario_ing\\\": 1,\\n    \\\"fecha_mod\\\": \\\"2024-03-14 23:56:04\\\",\\n    \\\"id_usuario_mod\\\": 1\\n}\"', NULL, 1, '2024-03-14 23:56:04');
 
 -- --------------------------------------------------------
 
@@ -347,7 +354,7 @@ CREATE TABLE `tbl_det_compras` (
   `id_producto` int NOT NULL,
   `cantidad` int NOT NULL,
   `costo` decimal(10,2) NOT NULL,
-  `descuento` decimal(10,2) NOT NULL,
+  `descuento` decimal(10,2) DEFAULT NULL,
   `gastos_transporte` decimal(10,2) DEFAULT NULL,
   `seguro` decimal(10,2) DEFAULT NULL,
   `otros_gastos` decimal(10,2) DEFAULT NULL,
@@ -372,11 +379,11 @@ CREATE TABLE `tbl_det_compras` (
 --
 
 INSERT INTO `tbl_det_compras` (`id_det_compra`, `id_compra`, `id_producto`, `cantidad`, `costo`, `descuento`, `gastos_transporte`, `seguro`, `otros_gastos`, `detalle_otros_gastos`, `valor_aduana`, `dai`, `iva`, `apm`, `vts`, `its`, `aiv`, `opm`, `uuid`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
-(1, 2, 2, 1, '22222.00', '0.00', NULL, '0.00', NULL, NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
 (2, 3, 1, 1, '22000.00', '0.00', NULL, '0.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5278dc9f-169c-472f-b443-0d839efd258b', '2024-01-07 19:37:59', 1, '2024-01-07 19:37:59', 1),
 (4, 4, 2, 1, '20000.00', '0.00', '0.00', '0.00', '0.00', '', '0.00', '0.00', NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '52d68ef3-30f2-4f7c-868b-2e8df655cc06', '2024-02-09 15:18:01', 1, '2024-02-09 15:18:01', 1),
-(5, 2, 1, 2, '1222.00', '0.00', '200.00', '199.00', '390.00', 'asdsdsd', '1234.00', '233.00', NULL, NULL, NULL, NULL, NULL, NULL, 'e33870c0-76fe-4d16-a276-25ad049c27eb', '2024-03-14 09:19:52', 1, '2024-03-14 09:19:52', 1),
-(6, 5, 2, 1, '1222.00', '0.00', '123.00', '123.00', '123.00', 'Otros gastos', '0.00', '0.00', '13.00', NULL, NULL, NULL, NULL, NULL, 'f72039a6-a07b-4ce6-8f7c-d36c709f49d7', '2024-03-14 09:40:36', 1, '2024-03-14 09:40:36', 1);
+(6, 5, 2, 1, '1222.00', '0.00', '123.00', '123.00', '123.00', 'Otros gastos', '0.00', '0.00', '13.00', NULL, NULL, NULL, NULL, NULL, 'f72039a6-a07b-4ce6-8f7c-d36c709f49d7', '2024-03-14 09:40:36', 1, '2024-03-14 09:40:36', 1),
+(11, 2, 3, 1, '1000.00', '0.00', '100.00', '100.00', '100.00', 'sdfsdf', '1300.00', '100.00', '182.00', NULL, NULL, NULL, NULL, NULL, '7d25c73a-bf3b-4ddb-92cb-efe162f8d6f9', '2024-03-14 23:41:27', 1, '2024-03-14 23:41:27', 1),
+(12, 2, 2, 1, '1222.00', NULL, '122.00', '122.00', '122.00', 'sdadasda', '1588.00', '122.00', '222.30', NULL, NULL, NULL, NULL, NULL, '17843c70-0bac-408c-b43b-a8530a187909', '2024-03-14 23:56:04', 1, '2024-03-14 23:56:04', 1);
 
 -- --------------------------------------------------------
 
@@ -896,7 +903,8 @@ CREATE TABLE `tbl_productos` (
 
 INSERT INTO `tbl_productos` (`id_producto`, `nombre`, `sku`, `descripcion`, `precio`, `id_categoria`, `id_sub_categoria`, `id_marca`, `is_car`, `vin`, `pais_procedencia`, `chasis_grabado`, `year`, `tipo_combustible`, `id_condicion`, `iva`, `estado`, `fecha_ing`, `id_usuario_ing`, `fecha_mod`, `id_usuario_mod`) VALUES
 (1, 'Tractor ejemplo 2', '4225-776-3234', '', '30000.00', 2, 1, 1, 0, '', '', '', NULL, '', NULL, NULL, 1, '2024-01-05 20:17:31', 1, '2024-01-07 19:38:50', 1),
-(2, 'Tractor ejemplo 1', '4225-776-3234', '', '50000.00', 2, 1, 1, 0, '', '', '', NULL, '', NULL, 13, 1, '2024-01-05 20:20:47', 1, '2024-01-05 20:20:47', 1);
+(2, 'Tractor ejemplo 1', '4225-776-3234', '', '50000.00', 2, 1, 1, 0, '', '', '', NULL, '', NULL, 13, 1, '2024-01-05 20:20:47', 1, '2024-01-05 20:20:47', 1),
+(3, 'Ford Mustang', '122233', '<p>asddd<br></p>', '12222.00', 2, 1, 1, 0, '', '', '', NULL, '', NULL, 13, 1, '2024-03-14 22:26:47', 1, '2024-03-14 22:26:47', 1);
 
 -- --------------------------------------------------------
 
@@ -1255,7 +1263,7 @@ ALTER TABLE `tbl_ventas`
 -- AUTO_INCREMENT for table `tbl_bitacora`
 --
 ALTER TABLE `tbl_bitacora`
-  MODIFY `id_bitacora` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_bitacora` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `tbl_categorias`
@@ -1291,7 +1299,7 @@ ALTER TABLE `tbl_departamentos`
 -- AUTO_INCREMENT for table `tbl_det_compras`
 --
 ALTER TABLE `tbl_det_compras`
-  MODIFY `id_det_compra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_det_compra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_det_ordenes`
@@ -1345,7 +1353,7 @@ ALTER TABLE `tbl_ordenes`
 -- AUTO_INCREMENT for table `tbl_productos`
 --
 ALTER TABLE `tbl_productos`
-  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_productos_imagenes`
