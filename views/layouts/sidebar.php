@@ -302,7 +302,8 @@ use yii\helpers\Url;
                 <!------- FIN MENU MÓDULO VENTAS  ------->
 
                 <!------- MÓDULO INVENTARIO ------->
-                <?php if (in_array(\Yii::$app->controller->id, ['inventario',])) {
+                
+                <?php if (in_array(\Yii::$app->controller->id, ['inventario', 'kardex'])) {
                     $li = "nav-item has-treeview active menu-open";
                     $a = "nav-link active";
                 } else {
@@ -331,10 +332,26 @@ use yii\helpers\Url;
                                 <p>Inventario</p>
                             </a>
                         </li>
-                        <!--------------------------------------------------> 
+                        <!------------------------------------- SUBMODULO KARDEX --------------------------------------------------------------------->
+                        <?php if (Yii::$app->controller->id == 'kardex' && in_array(\Yii::$app->controller->action->id, ['index', 'create', 'update', 'view'])) {
+                            $li = "nav-item active";
+                            $a = "nav-link active";
+                        } else {
+                            $li = "nav-item";
+                            $a = "nav-link";
+                        }
+                        
+                        ?>
+                        <li class="<?= $li; ?>">
+                            <a class="<?= $a; ?>" href="<?php echo Url::toRoute(['/inventario/kardex/index']); ?>">
+                                <i class="nav-icon far fa-circle text-blue"></i>
+                                <p>Kardex</p>
+                            </a>
+                        </li>
+                        <!------------------------------------- FIN SUBMODULO KARDEX --------------------------------------------------------------------->
+                        <!--------------------------------------------FIN MODULO INVENTARIO--------------------------------------------------------------> 
                     </ul>
                 </li>
-                <!------- FIN MENU MÓDULO VENTAS  ------->
 
                 <!------- MENU USUARIOS ------->
                 <?php if (Yii::$app->controller->id == 'usuarios' || Yii::$app->controller->id == 'route' || Yii::$app->controller->id == 'permission' || Yii::$app->controller->id == 'role' || Yii::$app->controller->id == 'assignment') {

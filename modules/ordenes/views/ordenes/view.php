@@ -224,12 +224,29 @@ use kartik\grid\GridView;
                     ],
                     [
                         'class' => 'kartik\grid\FormulaColumn',
+                        'attribute' => 'valor-neto',
+                        'hAlign' => 'right',
+                        'vAlign' => 'middle',
+                        'value' => function ($model, $key, $index, $widget) {
+                            $value = compact('model', 'key', 'index');
+                            return (($widget->col(6, $value) * 1.13));
+                        },
+                        'headerOptions' => ['class' => 'kartik-sheet-style'],
+                        'width' => '15%',
+                        'mergeHeader'=> true,
+                        'pageSummary' => true,
+                        'footer' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\FormulaColumn',
                         'attribute' => 'IVA',
                         'hAlign' => 'right',
                         'vAlign' => 'middle',
                         'value' => function ($model, $key, $index, $widget) {
                             $value = compact('model', 'key', 'index');
-                            return ($widget->col(6, $value) * 0.13);
+                            return ($widget->col(7, $value) * 0.13);
                         },
                         'headerOptions' => ['class' => 'kartik-sheet-style'],
                         'width' => '10%',

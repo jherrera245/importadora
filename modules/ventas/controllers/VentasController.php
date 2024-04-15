@@ -300,6 +300,7 @@ class VentasController extends Controller
                 }
 
                 $kardex = new Kardex();
+                $kardex->id_venta = $id_venta;
                 $kardex->id_documento = $id_venta;
                 $kardex->cod_documento = $model->codigo;
                 $kardex->num_documento = strval($model->num_factura);

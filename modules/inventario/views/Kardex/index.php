@@ -1,18 +1,17 @@
 <?php
 
-use app\modules\inventario\models\Inventario;
-use app\modules\productos\models\Productos;
+use app\modules\inventario\models\Kardex;
+use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
-use yii\helpers\Url;
+use app\modules\productos\models\Productos;
+
 
 /** @var yii\web\View $this */
-/** @var app\modules\inventario\models\InventarioSearch $searchModel */
+/** @var app\modules\inventario\models\KardexSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
-
-$this->title = 'Inventarios';
+$this->title = 'KARDEX';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -34,9 +33,102 @@ $this->params['breadcrumbs'][] = $this->title;
                         'format' => 'raw',
                         'vAlign' => 'middle',
                         'hAlign' => 'center',
-                        'attribute' => 'id_inventario',
+                        'attribute' => 'num_documento',
                         'value' => function ($model, $key, $index, $widget) {
-                            return Html::tag('span', $model->id_inventario, ['class' => 'badge bg-purple']);
+                            return Html::tag('span', $model->num_documento, ['class' => 'badge bg-red']);
+                        },
+                        'filter' => false,
+                    ],
+                    [
+                        'class' => 'kartik\grid\DataColumn',
+                        'width' => '80px',
+                        'format' => 'raw',
+                        'vAlign' => 'middle',
+                        'hAlign' => 'center',
+                        'attribute' => 'tipo_documento',
+                        'value' => function ($model, $key, $index, $widget) {
+                            return Html::tag('span', $model->tipo_documento, ['class' => 'badge bg-white']);
+                        },
+                        'filter' => false,
+                    ],
+                    [
+                        'class' => 'kartik\grid\DataColumn',
+                        'label' => 'Producto',
+                        'attribute' => 'id_producto',
+                        'width' => '100px',
+                        'vAlign' => 'middle',
+                        'format' => 'html',
+                        'value' => 'producto.nombre',
+                        'filterType' => GridView::FILTER_SELECT2,
+                        'filter' => ArrayHelper::map(Productos::find()->orderBy('nombre')->all(), 'id_producto', 'nombre'),
+                        'filterWidgetOptions' => [
+                            'options' => ['placeholder' => 'Todos...'],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ],
+                    ],
+                    [
+                        'class' => 'kartik\grid\DataColumn',
+                        'width' => '80px',
+                        'format' => 'raw',
+                        'vAlign' => 'middle',
+                        'hAlign' => 'center',
+                        'attribute' => 'id_compra',
+                        'label' => 'Costo Unitario',
+                        'value' => function ($model) {
+                            if ($model->tipo_documento == 'COMPRA') {
+                                $detalleCompra = $model->compra->getDetCompras()->where(['id_producto' => $model->id_producto])->one();
+                                if ($detalleCompra) {
+                                    return $detalleCompra->costo;
+                                }
+                            }else if($model->tipo_documento == 'VENTA'){
+                                $detalleVenta = $model->venta->orden->getDetOrdenes()->where(['id_producto' => $model->id_producto])->one();
+                                if ($detalleVenta) {
+                                    return $detalleVenta->precio;
+                                }
+                            }
+                            return 'N/A';
+                        },
+                    ],
+                    [
+                        'class' => 'kartik\grid\DataColumn',
+                        'width' => '80px',
+                        'format' => 'raw',
+                        'vAlign' => 'middle',
+                        'hAlign' => 'center',
+                        'attribute' => 'cantidad',
+                        'value' => function ($model, $key, $index, $widget) {
+                            return $model->cantidad;
+                        },
+                        'filter' => false,
+                    ],
+                    [
+                        'class' => 'kartik\grid\FormulaColumn',
+                        'attribute' => 'Sub-Total',
+                        'hAlign' => 'center',
+                        'vAlign' => 'middle',
+                        'value' => function ($model, $key, $index, $widget) {
+                            $value = compact('model', 'key', 'index');
+                            return (($widget->col(4, $value) * $widget->col(5, $value)));
+                        },
+                        'headerOptions' => ['class' => 'kartik-sheet-style'],
+                        'width' => '200px',
+                        'mergeHeader'=> true,
+                        'pageSummary' => true,
+                        'footer' => true,
+                        'filter' => false,
+                        'format' => 'currency',
+                    ],
+                    [
+                        'class' => 'kartik\grid\DataColumn',
+                        'width' => '80px',
+                        'format' => 'raw',
+                        'vAlign' => 'middle',
+                        'hAlign' => 'center',
+                        'attribute' => 'uuid',
+                        'value' => function ($model, $key, $index, $widget) {
+                            return Html::tag('span', $model->uuid, ['class' => 'badge bg-purple']);
                         },
                         'filter' => false,
                     ],
@@ -65,56 +157,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'opens' => 'left'
                             ],
                         ]),
-                    ],
-                    [
-                        'class' => 'kartik\grid\DataColumn',
-                        'attribute' => 'id_producto',
-                        'vAlign' => 'middle',
-                        'format' => 'html',
-                        'value' => 'producto.nombre',
-                        'filterType' => GridView::FILTER_SELECT2,
-                        'filter' => ArrayHelper::map(Productos::find()->orderBy('nombre')->all(), 'id_producto', 'nombre'),
-                        'filterWidgetOptions' => [
-                            'options' => ['placeholder' => 'Todos...'],
-                            'pluginOptions' => [
-                                'allowClear' => true
-                            ],
-                        ],
-                    ],
-                    [
-                        'class' => 'kartik\grid\DataColumn',
-                        'attribute' => 'existencia',
-                        'vAlign' => 'middle',
-                        'format' => 'html',
-                        'value' => function ($model, $key, $index, $widget) {
-                            return Html::tag('span', $model->existencia,  ['view', 'id_inventario' => $model->id_inventario]);                            
-                        },
-                        'filterType' => GridView::FILTER_SELECT2,
-                        'filter' => ArrayHelper::map(Inventario::find()->orderBy('existencia')->all(), 'existencia', 'existencia'),
-                        'filterWidgetOptions' => [
-                            'options' => ['placeholder' => 'Todos...'],
-                            'pluginOptions' => [
-                                'allowClear' => true
-                            ],
-                        ],
-                    ],
-                    [
-                        'class' => 'kartik\grid\DataColumn',
-                        'attribute' => 'existencia_original',
-                        'vAlign' => 'middle',
-                        'format' => 'html',
-                        'value' => function ($model, $key, $index, $widget) {
-                            return Html::tag('span', $model->existencia_original,  ['view', 'id_inventario' => $model->id_inventario]);                            
-                            
-                        },
-                        'filterType' => GridView::FILTER_SELECT2,
-                        'filter' => ArrayHelper::map(Inventario::find()->orderBy('existencia_original')->all(), 'existencia_original', 'existencia_original'),
-                        'filterWidgetOptions' => [
-                            'options' => ['placeholder' => 'Todos...'],
-                            'pluginOptions' => [
-                                'allowClear' => true
-                            ],
-                        ],
                     ],
                     
                 ];
@@ -163,7 +205,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     //'showPageSummary'=>$pageSummary,
                     'panel' => [
                         'type' => 'dark',
-                        'heading' => 'INVENTARIO',
+                        'heading' => 'Kardex',
                     ],
                     'persistResize' => false,
                 ]);

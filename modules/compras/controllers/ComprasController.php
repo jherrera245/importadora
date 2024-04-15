@@ -137,6 +137,7 @@ class ComprasController extends Controller
                         implode("<br>", \yii\helpers\ArrayHelper::getColumn($bitacora->getErrors(), 0, false))
                     );
                 }
+                
 
                 $transaction->commit();
 
@@ -284,6 +285,7 @@ class ComprasController extends Controller
                 }
 
                 $kardex = new Kardex();
+                $kardex->id_compra = $id_compra;
                 $kardex->id_documento = $id_compra;
                 $kardex->cod_documento = $model->codigo;
                 $kardex->num_documento = strval($model->num_factura);
